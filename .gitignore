@@ -1,0 +1,6 @@
+# Windows system files
+desktop.ini
+Thumbs.db
+
+# Ignore specific directories
+/assets/fonts/

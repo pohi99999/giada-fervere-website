@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body data-page-title-key="performances_title">
 
     <div class="page-background-video">
         <video autoplay muted loop playsinline poster="assets/images/hatterf1.jpg">
@@ -22,13 +22,13 @@
     <header id="main-header" class="subpage-header">
         <div class="header-overlay"></div>
         <div class="header-content">
-            <h1 class="artist-name">Giada Fervere</h1>
+            <h1 class="artist-name" data-translate="main_title">Giada Fervere</h1>
             <nav class="main-nav">
-                <a href="rolam.html" class="nav-item about">Rólam</a>
-                <a href="eloadasaim.html" class="nav-item performances">Előadásaim</a>
-                <a href="alkotasaim.html" class="nav-item creations">Alkotásaim</a>
-                <a href="rendezvenyek.html" class="nav-item events">Rendezvények</a>
-                <a href="kapcsolat.html" class="nav-item contact">Kapcsolat</a>
+                <a href="rolam.html" class="nav-item about" data-translate="nav_about">Rólam</a>
+                <a href="eloadasaim.html" class="nav-item performances" data-translate="nav_performances">Előadásaim</a>
+                <a href="alkotasaim.html" class="nav-item creations" data-translate="nav_creations">Alkotásaim</a>
+                <a href="rendezvenyek.html" class="nav-item events" data-translate="nav_events">Rendezvények</a>
+                <a href="kapcsolat.html" class="nav-item contact" data-translate="nav_contact">Kapcsolat</a>
 
                 <!-- ÚJ, STÍLUSOS NYELVVÁLTÓ -->
                 <div class="language-switcher">
@@ -70,11 +70,11 @@
 
     <main class="page-section" id="performances-section">
         <div class="section-content-fullwidth">
-            <h2>Előadásaim</h2>
+            <h2 data-translate="performances_title">Előadásaim</h2>
             
             <div class="content-block" id="live-poetry">
                 <div class="video-gallery-container">
-                    <h3 class="gallery-title">Élő Versek</h3>
+                    <h3 class="gallery-title" data-translate="performances_live_poetry_title">Élő Versek</h3>
                     <div class="video-gallery-grid">
                         
                         <div class="video-item">
@@ -157,7 +157,7 @@
             <!-- ZENEI ELŐADÁS SZEKCIÓ -->
             <div class="content-block" id="music-performance">
                 <div class="video-gallery-container">
-                    <h3 class="gallery-title">Zenei Előadások</h3>
+                    <h3 class="gallery-title" data-translate="performances_music_title">Zenei Előadások</h3>
                     <div class="video-gallery-grid">
                         
                         <div class="video-item">
@@ -231,11 +231,11 @@
     </main>
 
     <footer id="main-footer">
-        <div class="copyright">
+        <div class="copyright" data-translate="copyright">
             © 2025 Giada Fervere Produkció - minden jog fenntartva.
         </div>
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="js/translations.js"></script>
 </body>
-</html>

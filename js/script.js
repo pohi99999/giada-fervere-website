@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- ÚJ, ÁLTALÁNOS MODÁLKEZELŐ LOGIKA ---
+    // --- ÁLTALÁNOS MODÁLKEZELŐ LOGIKA ---
     const openModalButtons = document.querySelectorAll('[data-modal-target]');
     const closeModalButtons = document.querySelectorAll('.modal-close-btn');
     const modals = document.querySelectorAll('.modal');
@@ -90,84 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
-    // --- GALÉRIA DINAMIKUS BETÖLTÉSE ---
-    function loadGallery() {
-        const galleryGrid = document.getElementById('paintings-gallery');
-        if (!galleryGrid) return;
-
-        // 49 festmény betöltése
-        for (let i = 1; i <= 49; i++) {
-            const galleryItem = document.createElement('div');
-            galleryItem.className = 'gallery-item';
-            
-            const img = document.createElement('img');
-            img.src = `assets/images/${i}.jpg`;
-            img.alt = `Alkotás ${i}`;
-            img.loading = 'lazy';
-            
-            galleryItem.appendChild(img);
-            galleryGrid.appendChild(galleryItem);
-        }
-        
-        // Lightbox inicializálása a dinamikusan betöltött képekhez
-        initializeLightbox();
-    }
-
-    // --- VERSEK LAPOZÓ RENDSZER ---
-    function initializePoemNavigation() {
-        const prevBtn = document.getElementById('prev-poem');
-        const nextBtn = document.getElementById('next-poem');
-        const currentPoemSpan = document.getElementById('current-poem');
-        const totalPoemsSpan = document.getElementById('total-poems');
-        const poemArticles = document.querySelectorAll('.poem-article');
-        
-        if (!prevBtn || !nextBtn || !currentPoemSpan || !totalPoemsSpan || poemArticles.length === 0) {
-            return;
-        }
-
-        let currentPoem = 1;
-        const totalPoems = poemArticles.length;
-        
-        totalPoemsSpan.textContent = totalPoems;
-
-        function showPoem(poemNumber) {
-            // Összes vers elrejtése
-            poemArticles.forEach(article => {
-                article.classList.remove('active');
-            });
-            
-            // Aktuális vers megjelenítése
-            const targetPoem = document.querySelector(`[data-poem="${poemNumber}"]`);
-            if (targetPoem) {
-                targetPoem.classList.add('active');
-            }
-            
-            // Navigációs gombok állapotának frissítése
-            prevBtn.disabled = poemNumber === 1;
-            nextBtn.disabled = poemNumber === totalPoems;
-            
-            // Számláló frissítése
-            currentPoemSpan.textContent = poemNumber;
-        }
-
-        prevBtn.addEventListener('click', () => {
-            if (currentPoem > 1) {
-                currentPoem--;
-                showPoem(currentPoem);
-            }
-        });
-
-        nextBtn.addEventListener('click', () => {
-            if (currentPoem < totalPoems) {
-                currentPoem++;
-                showPoem(currentPoem);
-            }
-        });
-
-        // Kezdeti állapot beállítása
-        showPoem(currentPoem);
-    }
 
     // --- KÉPNAGYÍTÓ LIGHTBOX KÓD ---
     function initializeLightbox() {
@@ -239,15 +161,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // --- INICIALIZÁLÁS ---
-    // Galéria betöltése (ha van)
-    loadGallery();
-    
-    // Versek navigáció inicializálása (ha van)
-    initializePoemNavigation();
-    
-    // Ha már vannak képek a galériában (statikusan), lightbox inicializálása
+    // A galéria képeket statikusan töltjük be a HTML-ben, így nincs szükség dinamikus betöltésre.
+    // A lightboxot inicializáljuk, ha vannak galériaelemek.
     if (document.querySelectorAll('.gallery-item').length > 0) {
         initializeLightbox();
     }
 });
-

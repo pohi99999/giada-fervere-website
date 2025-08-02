@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
 </head>
-<body class="landing-page">
+<body class="landing-page" data-page-title-key="main_title">
 
     <!-- Animált intro szekció -->
     <div id="intro-sequence" class="intro-sequence">
@@ -26,17 +26,17 @@
         <div class="header-overlay"></div>
 
         <div class="header-content">
-            <h1 class="artist-name">
+            <h1 class="artist-name" data-translate="main_title">
                 <span>G</span><span>I</span><span>A</span><span>D</span><span>A</span><span> </span><span>F</span><span>E</span><span>R</span><span>V</span><span>E</span><span>R</span><span>E</span>
             </h1>
 
             <!-- FRISSÍTETT NAVIGÁCIÓ -->
             <nav class="main-nav">
-                <a href="rolam.html" class="nav-item about">Rólam</a>
-                <a href="eloadasaim.html" class="nav-item performances">Előadásaim</a>
-                <a href="alkotasaim.html" class="nav-item creations">Alkotásaim</a>
-                <a href="rendezvenyek.html" class="nav-item events">Rendezvények</a>
-                <a href="kapcsolat.html" class="nav-item contact">Kapcsolat</a>
+                <a href="rolam.html" class="nav-item about" data-translate="nav_about">Rólam</a>
+                <a href="eloadasaim.html" class="nav-item performances" data-translate="nav_performances">Előadásaim</a>
+                <a href="alkotasaim.html" class="nav-item creations" data-translate="nav_creations">Alkotásaim</a>
+                <a href="rendezvenyek.html" class="nav-item events" data-translate="nav_events">Rendezvények</a>
+                <a href="kapcsolat.html" class="nav-item contact" data-translate="nav_contact">Kapcsolat</a>
             
                 <!-- ÚJ, STÍLUSOS NYELVVÁLTÓ -->
                 <div class="language-switcher">
@@ -78,11 +78,12 @@
 
     <!-- Lábléc Szekció -->
     <footer id="main-footer">
-        <div class="copyright">
+        <div class="copyright" data-translate="copyright">
             © 2025 Giada Fervere Produkció - minden jog fenntartva.
         </div>
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="js/translations.js"></script>
 </body>
 </html>

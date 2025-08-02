@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body data-page-title-key="contact_title">
 
     <!-- Fix háttérvideó ehhez az oldalhoz -->
     <div class="page-background-video">
@@ -23,13 +23,13 @@
     <header id="main-header" class="subpage-header">
         <div class="header-overlay"></div>
         <div class="header-content">
-            <h1 class="artist-name">Giada Fervere</h1>
+            <h1 class="artist-name" data-translate="main_title">Giada Fervere</h1>
             <nav class="main-nav">
-                <a href="rolam.html" class="nav-item about">Rólam</a>
-                <a href="eloadasaim.html" class="nav-item performances">Előadásaim</a>
-                <a href="alkotasaim.html" class="nav-item creations">Alkotásaim</a>
-                <a href="rendezvenyek.html" class="nav-item events">Rendezvények</a>
-                <a href="kapcsolat.html" class="nav-item contact">Kapcsolat</a>
+                <a href="rolam.html" class="nav-item about" data-translate="nav_about">Rólam</a>
+                <a href="eloadasaim.html" class="nav-item performances" data-translate="nav_performances">Előadásaim</a>
+                <a href="alkotasaim.html" class="nav-item creations" data-translate="nav_creations">Alkotásaim</a>
+                <a href="rendezvenyek.html" class="nav-item events" data-translate="nav_events">Rendezvények</a>
+                <a href="kapcsolat.html" class="nav-item contact" data-translate="nav_contact">Kapcsolat</a>
 
                 <!-- ÚJ, STÍLUSOS NYELVVÁLTÓ -->
                 <div class="language-switcher">
@@ -71,21 +71,21 @@
 
     <main class="page-section" id="contact-section">
         <div class="section-content">
-            <h2>Kapcsolat</h2>
-            <p class="contact-intro">Lépj kapcsolatba Giada Ferverével. Írj neki üzenetet az alábbi elérhetőségek valamelyikén.</p>
+            <h2 data-translate="contact_title">Kapcsolat</h2>
+            <p class="contact-intro" data-translate="contact_intro">Lépj kapcsolatba Giada Ferverével. Írj neki üzenetet az alábbi elérhetőségek valamelyikén.</p>
             
             <div class="contact-details">
-                <h3 class="contact-name">Giada Fervere</h3>
+                <h3 class="contact-name" data-translate="contact_artist_name">Giada Fervere</h3>
                 <div class="contact-info-group">
-                    <h4 class="contact-info-title">Általános / Produkció</h4>
+                    <h4 class="contact-info-title" data-translate="contact_general_title">Általános / Produkció</h4>
                     <a href="mailto:production@giadafervere.com" class="contact-email">production@giadafervere.com</a>
                 </div>
                 <div class="contact-info-group">
-                    <h4 class="contact-info-title">Művészeti Projektek</h4>
+                    <h4 class="contact-info-title" data-translate="contact_art_title">Művészeti Projektek</h4>
                     <a href="mailto:art@giadafervere.com" class="contact-email">art@giadafervere.com</a>
                 </div>
                  <div class="contact-info-group">
-                    <h4 class="contact-info-title">Zenei Projektek</h4>
+                    <h4 class="contact-info-title" data-translate="contact_music_title">Zenei Projektek</h4>
                     <a href="mailto:music@giadafervere.com" class="contact-email">music@giadafervere.com</a>
                 </div>
             </div>
@@ -106,11 +106,12 @@
             </div>
             <a href="mailto:production@giadafervere.com" class="footer-email">production@giadafervere.com</a>
         </div>
-        <div class="copyright">
+        <div class="copyright" data-translate="copyright">
             © 2025 Giada Fervere Produkció - minden jog fenntartva.
         </div>
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="js/translations.js"></script>
 </body>
 </html>

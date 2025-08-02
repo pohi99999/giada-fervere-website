@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body data-page-title-key="creations_title">
 
     <!-- Fix háttérvideó ehhez az oldalhoz -->
     <div class="page-background-video">
@@ -23,13 +23,13 @@
     <header id="main-header" class="subpage-header">
         <div class="header-overlay"></div>
         <div class="header-content">
-            <h1 class="artist-name">Giada Fervere</h1>
+            <h1 class="artist-name" data-translate="main_title">Giada Fervere</h1>
             <nav class="main-nav">
-                <a href="rolam.html" class="nav-item about">Rólam</a>
-                <a href="eloadasaim.html" class="nav-item performances">Előadásaim</a>
-                <a href="alkotasaim.html" class="nav-item creations">Alkotásaim</a>
-                <a href="rendezvenyek.html" class="nav-item events">Rendezvények</a>
-                <a href="kapcsolat.html" class="nav-item contact">Kapcsolat</a>
+                <a href="rolam.html" class="nav-item about" data-translate="nav_about">Rólam</a>
+                <a href="eloadasaim.html" class="nav-item performances" data-translate="nav_performances">Előadásaim</a>
+                <a href="alkotasaim.html" class="nav-item creations" data-translate="nav_creations">Alkotásaim</a>
+                <a href="rendezvenyek.html" class="nav-item events" data-translate="nav_events">Rendezvények</a>
+                <a href="kapcsolat.html" class="nav-item contact" data-translate="nav_contact">Kapcsolat</a>
             
                 <!-- ÚJ, STÍLUSOS NYELVVÁLTÓ -->
                 <div class="language-switcher">
@@ -71,29 +71,29 @@
 
     <main class="page-section" id="creations-section">
         <div class="section-content-fullwidth">
-            <h2>Alkotásaim</h2>
+            <h2 data-translate="creations_title">Alkotásaim</h2>
             
             <div class="choice-card-container">
                 <div class="choice-card">
                     <div class="choice-card-image-wrapper">
                         <img src="assets/images/7.jpg" alt="Festmények borító" class="choice-card-image">
                     </div>
-                    <h3 class="choice-card-title">Festmények</h3>
-                    <button class="btn" data-modal-target="#gallery-modal">Galéria megnyitása</button>
+                    <h3 class="choice-card-title" data-translate="creations_card_paintings_title">Festmények</h3>
+                    <button class="btn" data-modal-target="#gallery-modal" data-translate="creations_card_paintings_button">Galéria megnyitása</button>
                 </div>
                 <div class="choice-card">
                      <div class="choice-card-image-wrapper">
                         <img src="assets/images/borito.jpeg" alt="Versek borító" class="choice-card-image">
                     </div>
-                    <h3 class="choice-card-title">Verseim</h3>
-                    <button class="btn" data-modal-target="#poems-modal">Versek olvasása</button>
+                    <h3 class="choice-card-title" data-translate="creations_card_poems_title">Verseim</h3>
+                    <button class="btn" data-modal-target="#poems-modal" data-translate="creations_card_poems_button">Versek olvasása</button>
                 </div>
             </div>
         </div>
     </main>
 
     <footer id="main-footer">
-        <div class="copyright">
+        <div class="copyright" data-translate="copyright">
             © 2025 Giada Fervere Produkció - minden jog fenntartva.
         </div>
     </footer>
@@ -104,7 +104,7 @@
             <button class="modal-close-btn">&times;</button>
             <div class="modal-body">
                 <div class="gallery-container">
-                    <h3 class="gallery-title">Festmények Galéria</h3>
+                    <h3 class="gallery-title" data-translate="gallery_modal_title">Festmények Galéria</h3>
                     <div class="gallery-grid">
                         <!-- A 49 kép helye -->
                         <div class="gallery-item"><img src="assets/images/1.jpeg" alt="Alkotás 1" loading="lazy"></div>
@@ -168,10 +168,10 @@
             <button class="modal-close-btn">&times;</button>
             <div class="modal-body">
                 <div class="poetry-container">
-                    <h3 class="gallery-title">Verseim</h3>
+                    <h3 class="gallery-title" data-translate="poems_modal_title">Verseim</h3>
                     <article class="poem-article">
-                        <h4 class="poem-title">Haldokló Varázs</h4>
-                        <p class="poem-text">Düledék közt andalogva
+                        <h4 class="poem-title" data-translate="poem_1_title">Haldokló Varázs</h4>
+                        <p class="poem-text" data-translate="poem_1_text">Düledék közt andalogva
 Egy letűnt kor sápadt-emléke pislákol.
 Nyikorgó, rozsda-ett kapun túl
 Elmém árnya közt kísért;
@@ -255,8 +255,8 @@ Lélekszabadítóm.
 Mert nem álmodik már: Kinek halottak a csillagok.</p>
                     </article>
                     <article class="poem-article">
-                        <h4 class="poem-title">Metamorfózis</h4>
-                        <p class="poem-text">Szirtből hasadt martalék omlott
+                        <h4 class="poem-title" data-translate="poem_2_title">Metamorfózis</h4>
+                        <p class="poem-text" data-translate="poem_2_text">Szirtből hasadt martalék omlott
 Bábban-rekedt fáklyámra.
 Bebocsátást remélve a végtelen-létbe
 Csendes Alázattal viseltem mostoha-sorsomat…
@@ -298,8 +298,8 @@ Mert nem érhet véget,
 Minek nem láttad kezdetét</p>
                     </article>
                     <article class="poem-article">
-                        <h4 class="poem-title">Halálfaló Könnyszivárvány</h4>
-                        <p class="poem-text">Nem öli ártalom, Nem szennyzi bűn;
+                        <h4 class="poem-title" data-translate="poem_3_title">Halálfaló Könnyszivárvány</h4>
+                        <p class="poem-text" data-translate="poem_3_text">Nem öli ártalom, Nem szennyzi bűn;
 Beleciterázik a szív is, mely Érzi:
 E Nemes-Adomány Fentről jő!
 Közvetítő-csoda bűbájos pátosza,
@@ -404,5 +404,5 @@ Mely Gyönyör-tüskéivel a világot is Elemészti!</p>
     </div>
 
     <script src="js/script.js"></script>
+    <script src="js/translations.js"></script>
 </body>
-</html>
