@@ -1,9 +1,11 @@
 // Többnyelvű rendszer - Giada Fervere Website
-// Verzió: 2.0 - A stílusos HTML-alapú váltóhoz igazítva
+// Verzió: 3.0 - Csak fordítási adatokat tartalmaz
 
 const translations = {
     // MAGYAR
     hu: {
+        name: "Magyar",
+        flag: "assets/images/flags/hu.svg",
         // Navigáció és Lábléc
         nav_about: "Rólam",
         nav_performances: "Előadásaim",
@@ -63,6 +65,8 @@ const translations = {
     },
     // ANGOL
     en: {
+        name: "English",
+        flag: "assets/images/flags/gb.svg",
         nav_about: "About",
         nav_performances: "Performances",
         nav_creations: "Creations",
@@ -73,7 +77,7 @@ const translations = {
         about_title: "About Me",
         about_p1: "Giada Fervere is a multidisciplinary artist whose creative universe comes to life at the intersection of painting, music, and poetry. Her work is a deep, inner journey where brushstrokes, violin melodies, and piano chords weave together into a single, coherent message.",
         about_p2: "Her art is a means of expression; a dialogue between the visible and invisible worlds, where every painting is a poem, and every melody is a told story. Her goal is to create emotional spaces through dark aesthetics and subtle symbolism that make us think, touch us, and stay with us.",
-        about_quote: ""When I looked in the mirror, I no longer saw the old girl"",
+        about_quote: "\"When I looked in the mirror, I no longer saw the old girl\"",
         about_article_link: "article: www.heol.hu",
         creations_title: "Creations",
         creations_card_paintings_title: "Paintings",
@@ -104,6 +108,8 @@ const translations = {
     },
     // NÉMET
     de: {
+        name: "Deutsch",
+        flag: "assets/images/flags/de.svg",
         nav_about: "Über mich",
         nav_performances: "Aufführungen",
         nav_creations: "Kreationen",
@@ -145,6 +151,8 @@ const translations = {
     },
     // FRANCIA
     fr: {
+        name: "Français",
+        flag: "assets/images/flags/fr.svg",
         nav_about: "À propos",
         nav_performances: "Spectacles",
         nav_creations: "Créations",
@@ -186,6 +194,8 @@ const translations = {
     },
     // OLASZ
     it: {
+        name: "Italiano",
+        flag: "assets/images/flags/it.svg",
         nav_about: "Chi sono",
         nav_performances: "Spettacoli",
         nav_creations: "Creazioni",
@@ -196,7 +206,7 @@ const translations = {
         about_title: "Chi sono",
         about_p1: "Giada Fervere è un'artista multidisciplinare il cui universo creativo prende vita all'intersezione tra pittura, musica e poesia. Il suo lavoro è un viaggio profondo e interiore dove pennellate, melodie di violino e accordi di pianoforte si intrecciano in un messaggio unico e coerente.",
         about_p2: "La sua arte è un mezzo di espressione; un dialogo tra i mondi visibile e invisibile, dove ogni dipinto è una poesia e ogni melodia una storia raccontata. Il suo obiettivo è creare spazi emotivi attraverso un'estetica scura e un simbolismo sottile che ci fanno riflettere, ci toccano e rimangono con noi.",
-        about_quote: ""Quando mi sono guardata allo specchio, non ho più visto la vecchia ragazza"",
+        about_quote: "\"Quando mi sono guardata allo specchio, non ho più visto la vecchia ragazza\"",
         about_article_link: "articolo: www.heol.hu",
         creations_title: "Creazioni",
         creations_card_paintings_title: "Dipinti",
@@ -226,68 +236,3 @@ const translations = {
         poem_3_title: "Arcobaleno di lacrime mangia-morte"
     }
 };
-
-document.addEventListener('DOMContentLoaded', () => {
-    const languageSwitcher = document.querySelector('.language-switcher');
-    if (!languageSwitcher) return;
-
-    const currentLanguageDisplay = languageSwitcher.querySelector('.current-language');
-    const languageDropdown = languageSwitcher.querySelector('.language-dropdown');
-    const currentLangFlag = currentLanguageDisplay.querySelector('.lang-flag');
-    const currentLangText = currentLanguageDisplay.querySelector('.lang-text');
-
-    function getStoredLanguage() {
-        return localStorage.getItem('giada-language') || 'hu';
-    }
-
-    function setStoredLanguage(lang) {
-        localStorage.setItem('giada-language', lang);
-    }
-
-    function translatePage(lang) {
-        const t = translations[lang];
-        if (!t) return;
-
-        document.querySelectorAll('[data-translate]').forEach(el => {
-            const key = el.getAttribute('data-translate');
-            if (t[key]) {
-                el.innerHTML = t[key];
-            }
-        });
-        
-        // Címsor frissítése
-        const pageTitleKey = document.body.getAttribute('data-page-title-key');
-        if (pageTitleKey && t[pageTitleKey]) {
-            document.title = t[pageTitleKey];
-        } else {
-            document.title = "Giada Fervere";
-        }
-    }
-
-    function updateSwitcherDisplay(lang) {
-        const langOption = languageDropdown.querySelector(`[data-lang="${lang}"]`);
-        if (!langOption) return;
-
-        const newFlagSrc = langOption.querySelector('.lang-flag').getAttribute('src');
-        const newLangText = langOption.querySelector('.lang-text').textContent;
-
-        currentLangFlag.setAttribute('src', newFlagSrc);
-        currentLangText.textContent = newLangText;
-    }
-
-    languageDropdown.addEventListener('click', (e) => {
-        const link = e.target.closest('a[data-lang]');
-        if (link) {
-            e.preventDefault();
-            const selectedLang = link.getAttribute('data-lang');
-            setStoredLanguage(selectedLang);
-            translatePage(selectedLang);
-            updateSwitcherDisplay(selectedLang);
-        }
-    });
-
-    // Kezdeti beállítás
-    const initialLang = getStoredLanguage();
-    translatePage(initialLang);
-    updateSwitcherDisplay(initialLang);
-});

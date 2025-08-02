@@ -160,10 +160,96 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // --- NYELVVÁLTÓ LOGIKA (VERZIÓ 3.0) ---
+    const languageSwitcher = document.querySelector('.language-switcher');
+
+    function getStoredLanguage() {
+        return localStorage.getItem('giada-language') || 'hu';
+    }
+
+    function setStoredLanguage(lang) {
+        localStorage.setItem('giada-language', lang);
+    }
+
+    function translatePage(lang) {
+        const t = translations[lang];
+        if (!t) return;
+
+        document.querySelectorAll('[data-translate]').forEach(el => {
+            const key = el.getAttribute('data-translate');
+            if (t[key]) {
+                el.innerHTML = t[key];
+            }
+        });
+        
+        const pageTitleKey = document.body.getAttribute('data-page-title-key');
+        if (pageTitleKey && t[pageTitleKey]) {
+            document.title = t[pageTitleKey];
+        } else {
+            document.title = "Giada Fervere";
+        }
+
+        // Frissítjük a HTML lang attribútumot is
+        document.documentElement.lang = lang;
+    }
+
+    function populateLanguageSwitcher(currentLang) {
+        if (!languageSwitcher) return;
+
+        const currentLangData = translations[currentLang];
+        const otherLangs = Object.keys(translations).filter(lang => lang !== currentLang);
+
+        let dropdownHTML = '';
+        otherLangs.forEach(lang => {
+            const langData = translations[lang];
+            dropdownHTML += `
+                <li>
+                    <a href="#" data-lang="${lang}">
+                        <img src="${langData.flag}" alt="${langData.name} (${lang.toUpperCase()}) flag" class="lang-flag">
+                        <span class="lang-text">${lang.toUpperCase()}</span>
+                    </a>
+                </li>
+            `;
+        });
+
+        const switcherHTML = `
+            <div class="current-language">
+                <img src="${currentLangData.flag}" alt="${currentLangData.name} flag" class="lang-flag">
+                <span class="lang-text">${currentLang.toUpperCase()}</span>
+                <span class="arrow-down"></span>
+            </div>
+            <ul class="language-dropdown">
+                ${dropdownHTML}
+            </ul>
+        `;
+
+        languageSwitcher.innerHTML = switcherHTML;
+
+        // Újra hozzárendeljük az eseményfigyelőt, mert a tartalom felülíródott
+        languageSwitcher.querySelector('.language-dropdown').addEventListener('click', handleLanguageChange);
+    }
+
+    function handleLanguageChange(e) {
+        const link = e.target.closest('a[data-lang]');
+        if (link) {
+            e.preventDefault();
+            const selectedLang = link.getAttribute('data-lang');
+            setStoredLanguage(selectedLang);
+            translatePage(selectedLang);
+            populateLanguageSwitcher(selectedLang); // Újraépítjük a menüt
+        }
+    }
+
+    function initLocalization() {
+        if (!languageSwitcher || typeof translations === 'undefined') return;
+        const initialLang = getStoredLanguage();
+        translatePage(initialLang);
+        populateLanguageSwitcher(initialLang);
+    }
+
     // --- INICIALIZÁLÁS ---
-    // A galéria képeket statikusan töltjük be a HTML-ben, így nincs szükség dinamikus betöltésre.
-    // A lightboxot inicializáljuk, ha vannak galériaelemek.
     if (document.querySelectorAll('.gallery-item').length > 0) {
         initializeLightbox();
     }
+    initLocalization();
 });
