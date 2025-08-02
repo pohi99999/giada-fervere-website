@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giada Fervere - Kapcsolat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Fix háttérvideó ehhez az oldalhoz -->
+    <div class="page-background-video">
+        <video autoplay muted loop playsinline>
+            <source src="assets/videos/hatt1.mp4" type="video/mp4">
+            A böngésződ nem támogatja a videó elemet.
+        </video>
+        <div class="page-background-overlay"></div>
+    </div>
+
+    <header id="main-header" class="subpage-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <h1 class="artist-name">Giada Fervere</h1>
+            <nav class="main-nav">
+                <a href="rolam.html" class="nav-item about">Rólam</a>
+                <a href="eloadasaim.html" class="nav-item performances">Előadásaim</a>
+                <a href="alkotasaim.html" class="nav-item creations">Alkotásaim</a>
+                <a href="rendezvenyek.html" class="nav-item events">Rendezvények</a>
+                <a href="kapcsolat.html" class="nav-item contact">Kapcsolat</a>
+
+                <!-- ÚJ, STÍLUSOS NYELVVÁLTÓ -->
+                <div class="language-switcher">
+                    <div class="current-language">
+                        <img src="assets/images/flags/hu.svg" alt="Magyar zászló" class="lang-flag">
+                        <span class="lang-text">HU</span>
+                        <span class="arrow-down"></span>
+                    </div>
+                    <ul class="language-dropdown">
+                        <li>
+                            <a href="#" data-lang="en">
+                                <img src="assets/images/flags/gb.svg" alt="Angol zászló" class="lang-flag">
+                                <span class="lang-text">EN</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-lang="de">
+                                <img src="assets/images/flags/de.svg" alt="Német zászló" class="lang-flag">
+                                <span class="lang-text">DE</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-lang="fr">
+                                <img src="assets/images/flags/fr.svg" alt="Francia zászló" class="lang-flag">
+                                <span class="lang-text">FR</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-lang="it">
+                                <img src="assets/images/flags/it.svg" alt="Olasz zászló" class="lang-flag">
+                                <span class="lang-text">IT</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-section" id="contact-section">
+        <div class="section-content">
+            <h2>Kapcsolat</h2>
+            <p class="contact-intro">Lépj kapcsolatba Giada Ferverével. Írj neki üzenetet az alábbi elérhetőségek valamelyikén.</p>
+            
+            <div class="contact-details">
+                <h3 class="contact-name">Giada Fervere</h3>
+                <div class="contact-info-group">
+                    <h4 class="contact-info-title">Általános / Produkció</h4>
+                    <a href="mailto:production@giadafervere.com" class="contact-email">production@giadafervere.com</a>
+                </div>
+                <div class="contact-info-group">
+                    <h4 class="contact-info-title">Művészeti Projektek</h4>
+                    <a href="mailto:art@giadafervere.com" class="contact-email">art@giadafervere.com</a>
+                </div>
+                 <div class="contact-info-group">
+                    <h4 class="contact-info-title">Zenei Projektek</h4>
+                    <a href="mailto:music@giadafervere.com" class="contact-email">music@giadafervere.com</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- KIBŐVÍTETT LÁBLÉC -->
+    <footer id="main-footer" class="footer-enhanced">
+        <div class="footer-content-wrapper">
+            <img src="assets/images/logo-intro.jpg" alt="Giada Fervere Logo" class="footer-logo">
+            <div class="footer-social-links">
+                <a href="https://www.facebook.com/profile.php?id=100070613388519" target="_blank" class="social-icon" title="Facebook">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"></path></svg>
+                </a>
+                <a href="https://www.instagram.com/giadafervere/" target="_blank" class="social-icon" title="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"></path></svg>
+                </a>
+            </div>
+            <a href="mailto:production@giadafervere.com" class="footer-email">production@giadafervere.com</a>
+        </div>
+        <div class="copyright">
+            © 2025 Giada Fervere Produkció - minden jog fenntartva.
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

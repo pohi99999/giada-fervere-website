@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giada Fervere</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts Link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+</head>
+<body class="landing-page">
+
+    <!-- Animált intro szekció -->
+    <div id="intro-sequence" class="intro-sequence">
+        <img src="assets/images/logo-intro.jpg" alt="Giada Fervere Logo" class="intro-logo">
+    </div>
+
+    <!-- Fejléc Szekció -->
+    <header id="main-header">
+        <video autoplay muted loop id="background-video" poster="assets/images/rolam-bg.jpg">
+            <source src="assets/videos/background-intro.mp4" type="video/mp4">
+            A böngésződ nem támogatja a videó elemet.
+        </video>
+        <div class="header-overlay"></div>
+
+        <div class="header-content">
+            <h1 class="artist-name">
+                <span>G</span><span>I</span><span>A</span><span>D</span><span>A</span><span> </span><span>F</span><span>E</span><span>R</span><span>V</span><span>E</span><span>R</span><span>E</span>
+            </h1>
+
+            <!-- FRISSÍTETT NAVIGÁCIÓ -->
+            <nav class="main-nav">
+                <a href="rolam.html" class="nav-item about">Rólam</a>
+                <a href="eloadasaim.html" class="nav-item performances">Előadásaim</a>
+                <a href="alkotasaim.html" class="nav-item creations">Alkotásaim</a>
+                <a href="rendezvenyek.html" class="nav-item events">Rendezvények</a>
+                <a href="kapcsolat.html" class="nav-item contact">Kapcsolat</a>
+            
+                <!-- ÚJ, STÍLUSOS NYELVVÁLTÓ -->
+                <div class="language-switcher">
+                    <div class="current-language">
+                        <img src="assets/images/flags/hu.svg" alt="Magyar zászló" class="lang-flag">
+                        <span class="lang-text">HU</span>
+                        <span class="arrow-down"></span>
+                    </div>
+                    <ul class="language-dropdown">
+                        <li>
+                            <a href="#" data-lang="en">
+                                <img src="assets/images/flags/gb.svg" alt="Angol zászló" class="lang-flag">
+                                <span class="lang-text">EN</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-lang="de">
+                                <img src="assets/images/flags/de.svg" alt="Német zászló" class="lang-flag">
+                                <span class="lang-text">DE</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-lang="fr">
+                                <img src="assets/images/flags/fr.svg" alt="Francia zászló" class="lang-flag">
+                                <span class="lang-text">FR</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" data-lang="it">
+                                <img src="assets/images/flags/it.svg" alt="Olasz zászló" class="lang-flag">
+                                <span class="lang-text">IT</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Lábléc Szekció -->
+    <footer id="main-footer">
+        <div class="copyright">
+            © 2025 Giada Fervere Produkció - minden jog fenntartva.
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
