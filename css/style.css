@@ -149,7 +149,7 @@ body:not(.landing-page) #main-footer {
 
 .artist-name {
     font-family: var(--font-header-name);
-    font-size: 5em;
+    font-size: clamp(3em, 8vw, 5em); /* EREDETI: 5em */
     font-weight: 300;
     color: var(--color-intro-text);
     text-transform: uppercase;
@@ -159,7 +159,7 @@ body:not(.landing-page) #main-footer {
 }
 
 .subpage-header .artist-name {
-    font-size: 3.5em;
+    font-size: clamp(2.5em, 7vw, 3.5em); /* EREDETI: 3.5em */
     opacity: 1;
     transition: none;
 }
@@ -303,10 +303,21 @@ body:not(.landing-page) #main-footer {
 }
 
 .page-section h2 {
-    font-size: 3.5em;
+    font-size: clamp(2.5em, 6vw, 3.5em); /* EREDETI: 3.5em */
     color: var(--color-accent-gold);
     font-family: var(--font-header-name);
     margin-bottom: 30px;
+}
+
+/* Közvetlenül a .page-section h2 után illeszd be */
+.section-content-fullwidth, .section-content {
+    width: 100%;
+    max-width: 1400px; /* Megakadályozza a tartalom túlzott szétterülését */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box; /* Biztosítja, hogy a padding ne növelje a méretet */
 }
 
 /* --- "Rólam" oldal specifikus javítás --- */
