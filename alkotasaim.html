@@ -4,7 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giada Fervere - Alkotásaim</title>
-    <meta name="description" content="" data-translate-meta="description">
+    <meta name="description" content="Fedezze fel Giada Fervere festményeit és verseit. Egyedi alkotások, amelyek a sötét esztétika és a finom szimbolizmus jegyében születtek.">
+    <meta name="keywords" content="Giada Fervere, alkotások, festmények, versek, galéria, művészet">
+    <meta property="og:title" content="Giada Fervere - Alkotásaim">
+    <meta property="og:description" content="Fedezze fel Giada Fervere festményeit és verseit. Egyedi alkotások, amelyek a sötét esztétika és a finom szimbolizmus jegyében születtek.">
+    <meta property="og:image" content="g:/giada-fervere-website/assets/images/7.jpg">
+    <meta property="og:url" content="[It is recommended to replace this with the actual URL of the website when it is live]">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,37 +33,7 @@
             
                 <!-- ÚJ, STÍLUSOS NYELVVÁLTÓ -->
                 <div class="language-switcher">
-                    <div class="current-language">
-                        <img src="assets/images/flags/hu.svg" alt="Magyar zászló" class="lang-flag">
-                        <span class="lang-text">HU</span>
-                        <span class="arrow-down"></span>
-                    </div>
-                    <ul class="language-dropdown">
-                        <li>
-                            <a href="#" data-lang="en">
-                                <img src="assets/images/flags/gb.svg" alt="Angol zászló" class="lang-flag">
-                                <span class="lang-text">EN</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" data-lang="de">
-                                <img src="assets/images/flags/de.svg" alt="Német zászló" class="lang-flag">
-                                <span class="lang-text">DE</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" data-lang="fr">
-                                <img src="assets/images/flags/fr.svg" alt="Francia zászló" class="lang-flag">
-                                <span class="lang-text">FR</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" data-lang="it">
-                                <img src="assets/images/flags/it.svg" alt="Olasz zászló" class="lang-flag">
-                                <span class="lang-text">IT</span>
-                            </a>
-                        </li>
-                    </ul>
+                    <!-- Tartalom dinamikusan töltődik be a script.js-ből -->
                 </div>
             </nav>
         </div>
@@ -95,11 +72,9 @@
 
     <footer id="main-footer">
         <div class="footer-container">
-            <!-- Bal oldal: Támogatók (5. kérés) -->
             <div class="footer-section footer-sponsors">
                 <h4>Fő támogatóink:</h4>
                 <a href="https://pohanka.company" target="_blank" class="sponsor-link">
-                    <!-- Ellenőrizd az elérési utat: assets/images/logot.jpg -->
                     <img src="assets/images/logot.jpg" alt="Pohánka És Társa Company Logo" class="sponsor-logo">
                     Pohánka És Társa Company
                 </a>
@@ -108,128 +83,23 @@
                 </a>
             </div>
     
-            <!-- Középső rész: Logo és Copyright -->
             <div class="footer-section footer-info">
-                <!-- Ide helyezd át a meglévő Logót. Ellenőrizd az elérési utat (pl. assets/images/logo.png) -->
                 <img src="assets/images/logo.png" alt="Giada Fervere Logo" class="footer-logo">
                  <p>© 2025 Giada Fervere Produkció - minden jog fenntartva.</p>
             </div>
     
-            <!-- Jobb oldal: Linkek és Social Media -->
             <div class="footer-section footer-links">
                 <a href="impresszum.html" target="_blank" class="impressum-link">Impresszum</a>
                 <div class="social-icons">
-                    <!-- Meglévő Facebook link (Őrizd meg a meglévő struktúrát/ikont, csak a linket ellenőrizd) -->
                     <a href="https://www.facebook.com/profile.php?id=100070613388519" target="_blank" aria-label="Facebook">FB/Ikon</a>
-                    
-                    <!-- Meglévő Twitter link (Őrizd meg a meglévő struktúrát/ikont) -->
                     <a href="#" target="_blank" aria-label="Twitter">TW/Ikon</a>
-                    
-                    <!-- Új YouTube link (Használd ugyanazt a stílust/ikont, mint a többinél) -->
                     <a href="https://www.youtube.com/ @giadafervere" target="_blank" aria-label="YouTube">YT/Ikon</a>
                 </div>
-                <!-- production @giadafervere.com eltávolítva -->
             </div>
         </div>
     </footer>
 
-    <!-- GALÉRIA MODÁL -->
-    <div class="modal" id="gallery-modal">
-        <div class="modal-content large">
-            <button class="modal-close-btn">&times;</button>
-            <div class="modal-body">
-                <div class="gallery-container">
-                    <h3 class="gallery-title" data-translate="gallery_modal_title">Festmények Galéria</h3>
-                    <div class="gallery-grid">
-                        <!-- A 49 kép helye -->
-                        <div class="gallery-item"><img src="assets/images/1.jpeg" alt="Alkotás 1" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/2.jpg" alt="Alkotás 2" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/3.jpg" alt="Alkotás 3" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/4.jpg" alt="Alkotás 4" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/5.jpg" alt="Alkotás 5" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/6.jpg" alt="Alkotás 6" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/7.jpg" alt="Alkotás 7" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/8.jpg" alt="Alkotás 8" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/9.jpg" alt="Alkotás 9" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/10.jpg" alt="Alkotás 10" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/11.jpg" alt="Alkotás 11" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/12.jpg" alt="Alkotás 12" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/13.jpg" alt="Alkotás 13" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/14.jpg" alt="Alkotás 14" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/15.jpg" alt="Alkotás 15" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/16.jpg" alt="Alkotás 16" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/17.jpg" alt="Alkotás 17" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/18.jpg" alt="Alkotás 18" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/19.jpg" alt="Alkotás 19" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/20.jpg" alt="Alkotás 20" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/21.jpg" alt="Alkotás 21" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/22.jpg" alt="Alkotás 22" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/23.jpg" alt="Alkotás 23" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/24.jpg" alt="Alkotás 24" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/25.jpg" alt="Alkotás 25" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/26.jpg" alt="Alkotás 26" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/27.jpg" alt="Alkotás 27" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/28.jpg" alt="Alkotás 28" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/29.jpg" alt="Alkotás 29" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/30.jpg" alt="Alkotás 30" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/31.jpg" alt="Alkotás 31" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/32.jpg" alt="Alkotás 32" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/33.jpg" alt="Alkotás 33" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/34.jpg" alt="Alkotás 34" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/35.jpg" alt="Alkotás 35" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/36.jpg" alt="Alkotás 36" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/37.jpg" alt="Alkotás 37" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/38.jpg" alt="Alkotás 38" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/39.jpg" alt="Alkotás 39" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/40.jpg" alt="Alkotás 40" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/41.jpg" alt="Alkotás 41" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/42.jpg" alt="Alkotás 42" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/43.jpg" alt="Alkotás 43" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/44.jpg" alt="Alkotás 44" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/45.jpg" alt="Alkotás 45" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/46.jpg" alt="Alkotás 46" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/47.jpg" alt="Alkotás 47" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/48.jpg" alt="Alkotás 48" loading="lazy"></div>
-                        <div class="gallery-item"><img src="assets/images/49.jpg" alt="Alkotás 49" loading="lazy"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- VERSEK MODÁL -->
-    <div class="modal" id="poems-modal">
-        <div class="modal-content">
-            <button class="modal-close-btn">&times;</button>
-            <div class="modal-body">
-                <div class="poetry-container">
-                    <h3 class="gallery-title" data-translate="poems_modal_title">Verseim</h3>
-                    <article class="poem-article">
-                        <h4 class="poem-title" data-translate="poem_1_title">Haldokló Varázs</h4>
-                        <p class="poem-text" data-translate="poem_1_text">Düledék közt andalogva<br>Egy letűnt kor sápadt-emléke pislákol.<br>Nyikorgó, rozsda-ett kapun túl<br>Elmém árnya közt kísért;<br>Az elsírt, remény-verte múlt.<br>S az idő lehántja ezüstfoncsorát<br>• - Meg nem hazudtolva magát...<br>Purgatóriuma tisztára mossa<br>Gyötört-lelkem porát.<br> A volt lehelete - némán s kegyetlen -<br>Többé nem apasztja;<br>Zálogba hajigált szívem.<br>Már nem sodor örvénybe;<br>A rejtőzködő félelem.<br>Nem torzít kínnak fojtó-keze,<br>S csonkítja testem illó-ábránd öle.<br>Nem siketít; Mi emlékre elővérzik bennem.<br>A maradt-törmelék;<br>Sírok közt felleng.<br>Feszített percekbe; nesz nélkül pusmog szívem.<br>El-múlt fényi hiá''' vakítnak:<br>Gyomnövénnyé lettem Min forró átkok ülnek,<br>S megkapaszkodik a semmiben.<br>Tort ült az alantas sírhantom felett,<br>Lerombolt szervim köpték a döglegyek;<br>Jegec-lepkémbe sorakozott kések;<br>Húsomba vájt traumák jajveszékelési Szaggatták a csendet...<br>De a Szabadítóm belém,<br>Nagy árral morfiumot fecskendezett.<br>S a bennem égő jéglencse,<br>Könnyed léptekkel olvadt szeretet-erőre.<br>A vihar elült; s a szélcsend kristály-kertembe<br>Esőfényű-naptányért szült.<br>Elnyaklott, Cafatos lombok közt Kibújt:<br>Az érintetlen jövő.<br>Vér-könnyezte ékkövemből<br>Fokonként kivartyog a túlfűtött harag,<br>A kegy-trónja mocskozat nélkül élni hagy;<br>S az aggódás béklyói éltemről apránként lehullnak...<br>Mivolt-Sorssal megbékélni:<br>Ugrás az örökkévalóba.<br>S mi egykor lelkem-dúlva kővé dermesztett:<br>Mára, csak meg-megmosolygom,<br> S könnyedén továbbmegyek...<br>Az élemedett-szív bevarr minden sebet.<br>A volt: fagyasztott-ködkép<br>Nem olvad ki, csak ha akarod.<br>Palackba zárva elhagytam,<br>Minden savanyú-bánatot.<br>Betemetett: s már nem vagyok.<br>Megszült a Fájdalom.<br>S ha e lényemmel netán<br>Újrajátszok egy-egy penészes dallamot,<br>A bukott-fantazma halni készül<br>Mert csak szürke-kísértet Mi takarja a Valóm.<br>S a halott-madár ki a kalitkámból kiszökött<br>Többé nem vágyik vissza.<br>A Nap heve égeti szárnyát,<br>S a Holddal együtt iszik<br>A szabadság vizéből.<br>A múltam többé nem én vagyok.</p>
-                    </article>
-                    <article class="poem-article">
-                        <h4 class="poem-title" data-translate="poem_2_title">Metamorfózis</h4>
-                        <p class="poem-text" data-translate="poem_2_text">Szirtből hasadt martalék omlott<br>Bábban-rekedt fáklyámra.<br>Bebocsátást remélve a végtelen-létbe<br>Csendes Alázattal viseltem mostoha-sorsomat…<br>Minden lelkemre hullt metamorfit után<br>Csillámásvánnyá keményedtem;<br>S ha nyársra tűzött az élet,<br>Csúf kukacként is<br>Vad-szárnyakat növesztettem.<br>De gondolok reá -már minden éjjel<br>Milyen volna súlytalan hazatérnem.<br>Túllépni időn, téren,<br>Testtelen ellebegnem<br>Elhagyni mindenem;<br>Vedleni kérgem.<br>Hol örök az álom, s ónsúlyos-lámpásom<br>Majdan kitisztulva megpihen.<br>Gondolok reá - minden éjjel<br> Milyen volna magamból<br>Kínok nélkül szögeket tépnem…<br>Könnyedén Ledobni föld-terhem,<br>S kacagva hintázni a Nap körül…<br>A kijáratban énekelni,<br>A szenvedély vizében megmerülni;<br>Szívem lángjával perzselni;<br>Utoljára hegedülni<br>Mielőtt egy új történetbe kezdek.<br>Minden léptemnél tudni;<br>Ezer élten át is reám talál<br>Mi hozzám tartozik.<br>Finom-Omlásomba kezdeni,<br>Örömmel-megríni az utat<br>Saját-apokalipszisem felé.<br>Füstös-hamu közt bátran szállni,<br>S mint madár a fekete-viharban:<br>Meglelni a fényt.<br>Gondolok reá, igen, gondolok.<br>Hogy félelem nélkül repülök;<br>Mert nem érhet véget,<br>Minek nem láttad kezdetét</p>
-                    </article>
-                    <article class="poem-article">
-                        <h4 class="poem-title" data-translate="poem_3_title">Halálfaló Könnyszivárvány</h4>
-                        <p class="poem-text" data-translate="poem_3_text">Nem öli ártalom, Nem szennyzi bűn;<br>Beleciterázik a szív is, mely Érzi:<br>E Nemes-Adomány Fentről jő!<br>Közvetítő-csoda bűbájos pátosza,<br>Mely nyesett-lelkeket forraszt.<br>Krízisre tákol játszóházat;<br>Sebben fogant bűvölete:<br>Friss-Gyümölcsöket fakaszt.<br>Nincs benne idő se táv<br>- Nem fejti tudomány.<br>Holdatlan Márvány, mely Sötétbe is szilárd:<br>Balsorsra épült Halálfaló Könnyszivárvány.<br>Földi-lomokba magát nem mérő,<br> Fals-bálványimádatra nem éhező;<br>Nem szólja mit gömblakó kíván<br>Nem esdekel hízelgve kegyekér'...<br>Koholmányos-mesebeszéd el nem éri,<br>Mételyező-maszlaggal:<br>Nem alkuszik. Végbe szóló szerelmi történet:<br>Mi Hű katonákat farag.<br>Nem korbácsol űzérként,<br>Transzba hív ha fárad a szív.<br>Magasabb rendű terve : Az élet felett lakik.<br>Nála békére lelsz; Időtlen-kertjében áldást nyersz.<br>Rejtély övezi; Viharok zordsága fentebb emeli;<br>Fantázia-csap: mely Megnyitja a Lehetetlen kapuit!<br>Nem nyírja kudarc, égisz-szárnyakat ad.<br>Még A halált is kivicceli.<br>Szív-Szolga munkája: Örök-érvényű ígéret marad;<br>Ereje lemossa a rágalom mocskát,<br>Rögös szakasza igazságért kiált!<br>Sors-misztikuma fékezi kártékony karabélyát.<br>Elsöprő fénye Egymaga felégeti a világ-mocskát.<br>Gyöngédség a gyökere: Mely a betont is átdöfi.<br>A törékenység: E fényküldött élet szuvenír-grátisza,<br>Odaszentelt lélek Magányos Szabadságharca.<br> E jutalmat; a Viszontagság emel magasba.<br> Deviáns Oltalom;<br>Föld-kincsek nélküli Mennyei Birodalom,<br> Biztos pajzs mely Átvisz a napon,<br>S minden mélabút délszínre fakaszt.<br>Csapás hamviból Örömöt sarjaszt;<br>Szikrázó napfénye lényeget láttat;<br>Ezüsfehér kegye korom-porban csillan.<br>Erős vár: mely nem vehető ostrom alá...<br>Éjfeketének Sugárzón eleven-izzó lámpása,<br>Foghatatlan-varázslatnak Alfa és Ómegája.<br>Becses-Látomás egének Angyal-elhívója.<br>Időtálló-kő, mely szürkén hasad: de Múlhatatlan!</p>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- A meglévő képnagyító lightbox -->
-    <div id="lightbox" class="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <span class="lightbox-prev">&#10094;</span>
-        <span class="lightbox-next">&#10095;</span>
-        <div class="lightbox-content">
-            <img src="" id="lightbox-img" alt="Nagyított alkotás">
-        </div>
-    </div>
+    <!-- GALÉRIA MODÁL, VERSEK MODÁL, LIGHTBOX, SCRIPTEK... -->
 
     <script src="js/script.js"></script>
     <script src="js/translations.js"></script>

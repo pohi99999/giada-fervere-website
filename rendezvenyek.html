@@ -4,7 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giada Fervere - Rendezvények</title>
-    <meta name="description" content="" data-translate-meta="description">
+    <meta name="description" content="Tekintse meg Giada Fervere közelgő eseményeit, kiállításait és fellépéseit. Ne maradjon le a legújabb rendezvényekről!">
+    <meta name="keywords" content="Giada Fervere, rendezvények, események, kiállítás, fellépés, koncert">
+    <meta property="og:title" content="Giada Fervere - Rendezvények">
+    <meta property="og:description" content="Tekintse meg Giada Fervere közelgő eseményeit, kiállításait és fellépéseit. Ne maradjon le a legújabb rendezvényekről!">
+    <meta property="og:image" content="g:/giada-fervere-website/assets/videos/rend.mp4">
+    <meta property="og:url" content="[It is recommended to replace this with the actual URL of the website when it is live]">
+    <meta property="og:type" content="website">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,37 +33,7 @@
 
                 <!-- ÚJ, STÍLUSOS NYELVVÁLTÓ -->
                 <div class="language-switcher">
-                    <div class="current-language">
-                        <img src="assets/images/flags/hu.svg" alt="Magyar zászló" class="lang-flag">
-                        <span class="lang-text">HU</span>
-                        <span class="arrow-down"></span>
-                    </div>
-                    <ul class="language-dropdown">
-                        <li>
-                            <a href="#" data-lang="en">
-                                <img src="assets/images/flags/gb.svg" alt="Angol zászló" class="lang-flag">
-                                <span class="lang-text">EN</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" data-lang="de">
-                                <img src="assets/images/flags/de.svg" alt="Német zászló" class="lang-flag">
-                                <span class="lang-text">DE</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" data-lang="fr">
-                                <img src="assets/images/flags/fr.svg" alt="Francia zászló" class="lang-flag">
-                                <span class="lang-text">FR</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" data-lang="it">
-                                <img src="assets/images/flags/it.svg" alt="Olasz zászló" class="lang-flag">
-                                <span class="lang-text">IT</span>
-                            </a>
-                        </li>
-                    </ul>
+                    <!-- Tartalom dinamikusan töltődik be a script.js-ből -->
                 </div>
             </nav>
         </div>
@@ -64,7 +41,6 @@
 
     <section id="rendezvenyek" class="has-video-bg">
         <video autoplay muted loop playsinline class="section-background-video">
-            <!-- Ellenőrizd az elérési utat: assets/rend.mp4 -->
             <source src="assets/videos/rend.mp4" type="video/mp4">
         </video>
         <div class="content-wrapper">
@@ -87,44 +63,33 @@
     </section>
 
     <footer id="main-footer">
-    <div class="footer-container">
-        <!-- Bal oldal: Támogatók (5. kérés) -->
-        <div class="footer-section footer-sponsors">
-            <h4>Fő támogatóink:</h4>
-            <a href="https://pohanka.company" target="_blank" class="sponsor-link">
-                <!-- Ellenőrizd az elérési utat: assets/images/logot.jpg -->
-                <img src="assets/images/logot.jpg" alt="Pohánka És Társa Company Logo" class="sponsor-logo">
-                Pohánka És Társa Company
-            </a>
-            <a href="https://classica2.com" target="_blank" class="sponsor-link">
-                Classica-2 Kft
-            </a>
-        </div>
-
-        <!-- Középső rész: Logo és Copyright -->
-        <div class="footer-section footer-info">
-            <!-- Ide helyezd át a meglévő Logót. Ellenőrizd az elérési utat (pl. assets/images/logo.png) -->
-            <img src="assets/images/logo.png" alt="Giada Fervere Logo" class="footer-logo">
-             <p>© 2025 Giada Fervere Produkció - minden jog fenntartva.</p>
-        </div>
-
-        <!-- Jobb oldal: Linkek és Social Media -->
-        <div class="footer-section footer-links">
-            <a href="impresszum.html" target="_blank" class="impressum-link">Impresszum</a>
-            <div class="social-icons">
-                <!-- Meglévő Facebook link (Őrizd meg a meglévő struktúrát/ikont, csak a linket ellenőrizd) -->
-                <a href="https://www.facebook.com/profile.php?id=100070613388519" target="_blank" aria-label="Facebook">FB/Ikon</a>
-                
-                <!-- Meglévő Twitter link (Őrizd meg a meglévő struktúrát/ikont) -->
-                <a href="#" target="_blank" aria-label="Twitter">TW/Ikon</a>
-                
-                <!-- Új YouTube link (Használd ugyanazt a stílust/ikont, mint a többinél) -->
-                <a href="https://www.youtube.com/ @giadafervere" target="_blank" aria-label="YouTube">YT/Ikon</a>
+        <div class="footer-container">
+            <div class="footer-section footer-sponsors">
+                <h4>Fő támogatóink:</h4>
+                <a href="https://pohanka.company" target="_blank" class="sponsor-link">
+                    <img src="assets/images/logot.jpg" alt="Pohánka És Társa Company Logo" class="sponsor-logo">
+                    Pohánka És Társa Company
+                </a>
+                <a href="https://classica2.com" target="_blank" class="sponsor-link">
+                    Classica-2 Kft
+                </a>
             </div>
-            <!-- production @giadafervere.com eltávolítva -->
+    
+            <div class="footer-section footer-info">
+                <img src="assets/images/logo.png" alt="Giada Fervere Logo" class="footer-logo">
+                 <p>© 2025 Giada Fervere Produkció - minden jog fenntartva.</p>
+            </div>
+    
+            <div class="footer-section footer-links">
+                <a href="impresszum.html" target="_blank" class="impressum-link">Impresszum</a>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=100070613388519" target="_blank" aria-label="Facebook">FB/Ikon</a>
+                    <a href="#" target="_blank" aria-label="Twitter">TW/Ikon</a>
+                    <a href="https://www.youtube.com/ @giadafervere" target="_blank" aria-label="YouTube">YT/Ikon</a>
+                </div>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
     <script src="js/script.js"></script>
     <script src="js/translations.js"></script>
