@@ -4,20 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giada Fervere - Művész Portfólió</title>
+    <!-- SEO Meta Tags - A JS frissíti ezeket nyelvváltáskor az index_description alapján -->
     <meta name="description" content="Giada Fervere hivatalos weboldala. Fedezze fel alkotásaimat, olvasson a blogomon és vegye fel velem a kapcsolatot.">
     <meta name="keywords" content="Giada Fervere, művész, festő, előadóművész, költő, portfólió, blog, művészet, alkotások">
+    
+    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Giada Fervere - Művész Portfólió">
-    <meta property="og:description" content="Giada Fervere hivatalos weboldala. Fedezze fel alkotásaimat, olvasson a blogomon és vegye fel velem a kapcsolatot.">
-    <meta property="og:image" content="g:/giada-fervere-website/assets/images/borito.jpeg">
-    <meta property="og:url" content="[It is recommended to replace this with the actual URL of the website when it is live]">
+    <meta property="og:description" content="Giada Fervere hivatalos weboldala.">
+    <meta property="og:image" content="assets/images/borito.jpeg">
+    <!-- <meta property="og:url" content="[Valós URL élesítéskor]"> -->
     <meta property="og:type" content="website">
 
     <link rel="stylesheet" href="css/style.css">
-    <!-- Google Fonts Link -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght @assets\images\10.jpg,400..900;1,400..900&family=Cormorant+Garamond:ital,wght @assets\images\10.jpg,300..700;1,300..700&display=swap" rel="stylesheet">
 </head>
+<!-- A 'landing-page' osztály aktiválja az intro animációt -->
 <body class="landing-page" data-page-title-key="main_title">
 
     <!-- Animált intro szekció -->
@@ -25,40 +29,39 @@
         <img src="assets/images/logo-intro.jpg" alt="Giada Fervere Logo" class="intro-logo">
     </div>
 
-    <!-- Fejléc Szekció -->
-    <header id="main-header">
+    <!-- Fix Háttérvideó és Overlay (page-background-video használata) -->
+    <!-- Instrukció: Ez biztosítja a fix, követő hátteret -->
+    <div class="page-background-video">
         <video autoplay muted loop playsinline id="background-video" poster="assets/images/borito.jpeg">
             <source src="assets/videos/background-intro.webm" type="video/webm">
             <source src="assets/videos/background-intro.mp4" type="video/mp4">
             A böngésződ nem támogatja a videó lejátszást.
         </video>
-        <div class="video-overlay"></div>
-        <div class="header-overlay"></div>
+        <!-- Sötétítő réteg a videó felett -->
+        <div class="page-background-overlay"></div>
+    </div>
+    
 
+    <!-- Fejléc Szekció -->
+    <header id="main-header">
         <div class="header-content">
             <h1 class="artist-name" data-translate="main_title">
+                <!-- A betűnkénti span segít a stílusozásban/animációban, ha szükséges -->
                 <span>G</span><span>I</span><span>A</span><span>D</span><span>A</span><span> </span><span>F</span><span>E</span><span>R</span><span>V</span><span>E</span><span>R</span><span>E</span>
             </h1>
 
-            <!-- FRISSÍTETT NAVIGÁCIÓ -->
+            <!-- Navigáció -->
             <nav class="main-nav">
-                <a href="rolam.html" class="nav-item about" data-translate="nav_about">Rólam</a>
-                <a href="eloadasaim.html" class="nav-item performances" data-translate="nav_performances">Előadásaim</a>
-                <a href="alkotasaim.html" class="nav-item creations" data-translate="nav_creations">Alkotásaim</a>
-                <a href="rendezvenyek.html" class="nav-item events" data-translate="nav_events">Rendezvények</a>
-                <a href="kapcsolat.html" class="nav-item contact" data-translate="nav_contact">Kapcsolat</a>
-                <a href="blog.html" target="_blank" class="nav-item blog" data-translate="nav_blog">Friss Hírek, Blogbejegyzések</a>
+                <a href="rolam.html" class="nav-item" data-translate="nav_about">Rólam</a>
+                <a href="eloadasaim.html" class="nav-item" data-translate="nav_performances">Előadásaim</a>
+                <a href="alkotasaim.html" class="nav-item" data-translate="nav_creations">Alkotásaim</a>
+                <a href="rendezvenyek.html" class="nav-item" data-translate="nav_events">Rendezvények</a>
+                <a href="kapcsolat.html" class="nav-item" data-translate="nav_contact">Kapcsolat</a>
+                <a href="blog.html" class="nav-item" data-translate="nav_blog">Friss Hírek, Blogbejegyzések</a>
             
-                <!-- ÚJ, STÍLUSOS NYELVVÁLTÓ -->
+                <!-- Nyelvváltó (Dinamikusan tölti be a JS) -->
                 <div class="language-switcher">
-                    <div class="current-language">
-                        <img src="assets/images/flags/hu.svg" alt="Magyar zászló" class="lang-flag">
-                        <span class="lang-text">HU</span>
-                        <span class="arrow-down"></span>
-                    </div>
-                    <ul class="language-dropdown">
-                        <!-- A nyelvek dinamikusan lesznek betöltve a script.js segítségével -->
-                    </ul>
+                    <!-- Tartalom JS által generálva -->
                 </div>
             </nav>
         </div>
@@ -67,11 +70,10 @@
     <!-- Lábléc Szekció -->
     <footer id="main-footer">
         <div class="footer-container">
-            <!-- Bal oldal: Támogatók (5. kérés) -->
+            <!-- Bal oldal: Támogatók -->
             <div class="footer-section footer-sponsors">
-                <h4>Fő támogatóink:</h4>
+                <h4 data-translate="footer_sponsors">Fő támogatóink:</h4>
                 <a href="https://pohanka.company" target="_blank" class="sponsor-link">
-                    <!-- Ellenőrizd az elérési utat: assets/images/logot.jpg -->
                     <img src="assets/images/logot.jpg" alt="Pohánka És Társa Company Logo" class="sponsor-logo">
                     Pohánka És Társa Company
                 </a>
@@ -82,30 +84,25 @@
     
             <!-- Középső rész: Logo és Copyright -->
             <div class="footer-section footer-info">
-                <!-- Ide helyezd át a meglévő Logót. Ellenőrizd az elérési utat (pl. assets/images/logo.png) -->
                 <img src="assets/images/logo.png" alt="Giada Fervere Logo" class="footer-logo">
-                 <p>© 2025 Giada Fervere Produkció - minden jog fenntartva.</p>
+                 <p data-translate="copyright">© 2025 Giada Fervere Produkció - minden jog fenntartva.</p>
             </div>
     
             <!-- Jobb oldal: Linkek és Social Media -->
             <div class="footer-section footer-links">
-                <a href="impresszum.html" target="_blank" class="impressum-link">Impresszum</a>
+                <a href="impresszum.html" target="_blank" class="impressum-link" data-translate="footer_imprint">Impresszum</a>
                 <div class="social-icons">
-                    <!-- Meglévő Facebook link (Őrizd meg a meglévő struktúrát/ikont, csak a linket ellenőrizd) -->
-                    <a href="https://www.facebook.com/profile.php?id=100070613388519" target="_blank" aria-label="Facebook">FB/Ikon</a>
-                    
-                    <!-- Meglévő Twitter link (Őrizd meg a meglévő struktúrát/ikont) -->
-                    <a href="#" target="_blank" aria-label="Twitter">TW/Ikon</a>
-                    
-                    <!-- Új YouTube link (Használd ugyanazt a stílust/ikont, mint a többinél) -->
-                    <a href="https://www.youtube.com/ @giadafervere" target="_blank" aria-label="YouTube">YT/Ikon</a>
+                    <!-- Gemini/Qwen: Cseréljétek le ezeket valódi ikonokra (pl. FontAwesome vagy SVG), ha szükséges -->
+                    <a href="https://www.facebook.com/profile.php?id=100070613388519" target="_blank" aria-label="Facebook">FB</a>
+                    <a href="#" target="_blank" aria-label="Twitter">TW</a>
+                    <a href="https://www.youtube.com/ @giadafervere" target="_blank" aria-label="YouTube">YT</a>
                 </div>
-                <!-- production @giadafervere.com eltávolítva -->
             </div>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- A JS fájlokat mindig a body végén töltjük be -->
     <script src="js/translations.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

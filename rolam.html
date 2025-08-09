@@ -4,38 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giada Fervere - Rólam</title>
-    <meta name="description" content="Ismerje meg Giada Fervere multidiszciplináris művészt, akinek alkotói univerzuma a festészet, a zene és a költészet metszéspontjában kel életre.">
-    <meta name="keywords" content="Giada Fervere, rólam, bemutatkozás, művész, festő, zenész, költő">
-    <meta property="og:title" content="Giada Fervere - Rólam">
-    <meta property="og:description" content="Ismerje meg Giada Fervere multidiszciplináris művészt, akinek alkotói univerzuma a festészet, a zene és a költészet metszéspontjában kel életre.">
-    <meta property="og:image" content="g:/giada-fervere-website/assets/images/rolam-bg.jpg">
-    <meta property="og:url" content="[It is recommended to replace this with the actual URL of the website when it is live]">
-    <meta property="og:type" content="website">
+    <meta name="description" content="Ismerje meg Giada Fervere multidiszciplináris művészt...">
+    <meta name="keywords" content="Giada Fervere, rólam, bemutatkozás, művész">
+    <!-- OG Tags... -->
 
     <link rel="stylesheet" href="css/style.css">
-    <!-- Google Fonts Link -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght @assets\images\10.jpg,400..900;1,400..900&family=Cormorant+Garamond:ital,wght @assets\images\10.jpg,300..700;1,300..700&display=swap" rel="stylesheet">
 </head>
 <body data-page-title-key="about_title">
 
-    <!-- Fejléc Szekció -->
+    <!-- Fix Háttérvideó (Követő effektus) -->
+    <!-- Instrukció: Ez a struktúra biztosítja a fix hátteret, a tartalom felette gördül. -->
+    <div class="page-background-video">
+        <video autoplay muted loop playsinline poster="assets/images/rolam-bg.jpg">
+            <source src="assets/videos/hat4_mobil.mp4" type="video/mp4" media="all and (max-width: 768px)">
+            <source src="assets/videos/hat4.mp4" type="video/mp4">
+            A böngésződ nem támogatja a videó elemet.
+        </video>
+        <div class="page-background-overlay"></div>
+    </div>
+
+    <!-- Fejléc Szekció (Rövidebb, aloldali verzió) -->
     <header id="main-header" class="subpage-header">
-        <div class="header-overlay"></div>
         <div class="header-content">
             <h1 class="artist-name" data-translate="main_title">Giada Fervere</h1>
             <nav class="main-nav">
-                <a href="rolam.html" class="nav-item about" data-translate="nav_about">Rólam</a>
-                <a href="eloadasaim.html" class="nav-item performances" data-translate="nav_performances">Előadásaim</a>
-                <a href="alkotasaim.html" class="nav-item creations" data-translate="nav_creations">Alkotásaim</a>
-                <a href="rendezvenyek.html" class="nav-item events" data-translate="nav_events">Rendezvények</a>
-                <a href="kapcsolat.html" class="nav-item contact" data-translate="nav_contact">Kapcsolat</a>
-                <a href="blog.html" target="_blank" class="nav-item blog" data-translate="nav_blog">Friss Hírek, Blogbejegyzések</a>
+                <a href="rolam.html" class="nav-item active" data-translate="nav_about">Rólam</a>
+                <a href="eloadasaim.html" class="nav-item" data-translate="nav_performances">Előadásaim</a>
+                <a href="alkotasaim.html" class="nav-item" data-translate="nav_creations">Alkotásaim</a>
+                <a href="rendezvenyek.html" class="nav-item" data-translate="nav_events">Rendezvények</a>
+                <a href="kapcsolat.html" class="nav-item" data-translate="nav_contact">Kapcsolat</a>
+                <a href="blog.html" class="nav-item" data-translate="nav_blog">Friss Hírek, Blogbejegyzések</a>
             
-                <!-- ÚJ, STÍLUSOS NYELVVÁLTÓ -->
                 <div class="language-switcher">
-                    <!-- Tartalom dinamikusan töltődik be a script.js-ből -->
+                    <!-- Tartalom dinamikusan töltődik be -->
                 </div>
             </nav>
         </div>
@@ -43,22 +45,14 @@
 
     <!-- "Rólam" Szekció Tartalom -->
     <main class="page-section" id="about-section">
-        <div class="section-background">
-            <video autoplay muted loop playsinline poster="assets/images/rolam-bg.jpg">
-                <source src="assets/videos/hat4_mobil.mp4" type="video/mp4" media="all and (max-width: 768px)">
-                <source src="assets/videos/hat4.mp4" type="video/mp4">
-                A böngésződ nem támogatja a videó elemet.
-            </video>
-            <div class="section-overlay"></div>
-        </div>
-
+        <!-- Tartalom a videó felett (CSS által stílusozott dobozban a jobb olvashatóságért) -->
         <div class="section-content">
             <h2 data-translate="about_title">Rólam</h2>
             <p data-translate="about_p1">
-                Giada Fervere egy multidiszciplináris művész, akinek alkotói univerzuma a festészet, a zene és a költészet metszéspontjában kel életre. Munkássága egy mély, belső utazás, ahol az ecsetvonások, a hegedű dallamai és a zongora akkordjai egyetlen, koherens üzenetté fonódnak össze.
+                <!-- Szöveg a translations.js-ből töltődik be -->
             </p>
             <p data-translate="about_p2">
-                Művészete a kifejezés eszköze; egyfajta párbeszéd a látható és a láthatatlan világok között, ahol minden festmény egy vers, és minden dallam egy elmesélt történet. Célja, hogy a sötét esztétika és a finom szimbolizmus segítségével olyan érzelmi tereket hozzon létre, amelyek elgondolkodtatnak, megérintenek és velünk maradnak.
+                <!-- Szöveg a translations.js-ből töltődik be -->
             </p>
             <div class="article-snippet">
                 <blockquote class="article-quote" data-translate="about_quote">
@@ -69,11 +63,11 @@
         </div>
     </main>
 
-    <!-- Lábléc Szekció -->
+    <!-- Lábléc Szekció (Konzisztens) -->
     <footer id="main-footer">
         <div class="footer-container">
             <div class="footer-section footer-sponsors">
-                <h4>Fő támogatóink:</h4>
+                <h4 data-translate="footer_sponsors">Fő támogatóink:</h4>
                 <a href="https://pohanka.company" target="_blank" class="sponsor-link">
                     <img src="assets/images/logot.jpg" alt="Pohánka És Társa Company Logo" class="sponsor-logo">
                     Pohánka És Társa Company
@@ -85,21 +79,21 @@
     
             <div class="footer-section footer-info">
                 <img src="assets/images/logo.png" alt="Giada Fervere Logo" class="footer-logo">
-                 <p>© 2025 Giada Fervere Produkció - minden jog fenntartva.</p>
+                 <p data-translate="copyright">© 2025 Giada Fervere Produkció - minden jog fenntartva.</p>
             </div>
     
             <div class="footer-section footer-links">
-                <a href="impresszum.html" target="_blank" class="impressum-link">Impresszum</a>
+                <a href="impresszum.html" target="_blank" class="impressum-link" data-translate="footer_imprint">Impresszum</a>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/profile.php?id=100070613388519" target="_blank" aria-label="Facebook">FB/Ikon</a>
-                    <a href="#" target="_blank" aria-label="Twitter">TW/Ikon</a>
-                    <a href="https://www.youtube.com/ @giadafervere" target="_blank" aria-label="YouTube">YT/Ikon</a>
+                    <a href="https://www.facebook.com/profile.php?id=100070613388519" target="_blank" aria-label="Facebook">FB</a>
+                    <a href="#" target="_blank" aria-label="Twitter">TW</a>
+                    <a href="https://www.youtube.com/ @giadafervere" target="_blank" aria-label="YouTube">YT</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
     <script src="js/translations.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

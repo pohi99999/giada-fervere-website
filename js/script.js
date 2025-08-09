@@ -1,106 +1,241 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // --- MEGLÉVŐ INTRO ÉS VIDEÓ KÓD ---
-    console.log("DOM fully loaded and parsed.");
-
-    const introSequence = document.getElementById('intro-sequence');
-    const introLogo = document.querySelector('.intro-logo');
-    const mainHeader = document.getElementById('main-header');
-    const artistName = document.querySelector('.artist-name');
-    const mainNav = document.querySelector('.main-nav');
-    const mainFooter = document.getElementById('main-footer');
+    
     const body = document.body;
 
-    function delay(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
+    // --- INTRO ANIMÁCIÓ (Csak a főoldalon) ---
+    function initializeIntro() {
+        // Ha nem a főoldalon vagyunk, a CSS alapból láthatóvá teszi a tartalmat.
+        if (!body.classList.contains('landing-page')) {
+            return; 
+        }
 
-    async function startIntro() {
-        if (!introSequence || !introLogo || !mainHeader || !artistName) {
-            console.error("Intro elements not found, skipping animation.");
-            body.classList.add('loaded');
+        const introSequence = document.getElementById('intro-sequence');
+        const introLogo = document.querySelector('.intro-logo');
+        const mainHeader = document.getElementById('main-header');
+        const artistName = document.querySelector('.artist-name');
+        const mainNav = document.querySelector('.main-nav');
+        const mainFooter = document.getElementById('main-footer');
+
+        async function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function startIntro() {
+            if (!introSequence || !introLogo) return;
+
+            // 1. Logó megjelenik
+            await delay(500);
+            introLogo.classList.add('visible');
+            
+            // 2. Logó eltűnik
+            await delay(2500);
+            introLogo.classList.remove('visible');
+            
+            // 3. Intro képernyő elhalványul, fő tartalom megjelenik
+            await delay(1000);
+            introSequence.style.opacity = '0';
             if(mainHeader) mainHeader.classList.add('visible');
             if(mainFooter) mainFooter.classList.add('visible');
-            return;
+
+            // 4. Intro képernyő eltávolítása
+            await delay(1000); // Várunk az opacity transition végére (CSS-ben 1s)
+            introSequence.style.display = 'none';
+            
+            // 5. Név és Navigáció animációja (CSS transition-ök kezelik az időzítést)
+            if(artistName) artistName.classList.add('visible');
+            if(mainNav) mainNav.classList.add('visible');
         }
-        await delay(500);
-        introLogo.classList.add('visible');
-        await delay(2500);
-        introLogo.classList.remove('visible');
-        await delay(1500);
-        introSequence.style.opacity = '0';
-        mainHeader.classList.add('visible');
-        mainFooter.classList.add('visible');
-        await delay(500);
-        introSequence.style.display = 'none';
-        artistName.classList.add('visible');
-        if(mainNav) mainNav.classList.add('visible');
-        body.classList.add('loaded');
-    }
 
-    if (body.classList.contains('landing-page')) {
         startIntro();
-    } else {
-        body.classList.add('loaded');
-        if(mainHeader) mainHeader.style.opacity = '1';
-        if(mainFooter) mainFooter.style.opacity = '1';
     }
 
-    const video = document.getElementById('background-video');
-    if (video) {
-        video.play().catch(error => {
-            console.error("Video autoplay was prevented.", error);
+    // --- VIDEÓ LEJÁTSZÁS KEZELÉSE ---
+    function handleVideoAutoplay() {
+        // Minden autoplay videót megpróbálunk elindítani
+        const videos = document.querySelectorAll('video[autoplay]');
+        videos.forEach(video => {
+            video.play().catch(error => {
+                // Böngésző policy blokkolhatja az autoplayt, ez normális.
+            });
         });
+    }
+
+    // --- NYELVVÁLTÓ LOGIKA ---
+    const languageSwitcher = document.querySelector('.language-switcher');
+
+    function getStoredLanguage() {
+        return localStorage.getItem('giada-language') || 'hu';
+    }
+
+    function setStoredLanguage(lang) {
+        localStorage.setItem('giada-language', lang);
+    }
+
+    // Az oldal fordítása és metaadatok frissítése
+    function translatePage(lang) {
+        if (typeof translations === 'undefined' || !translations[lang]) return;
+        const t = translations[lang];
+
+        // 1. Szöveges elemek fordítása (innerHTML a versek <br> tagjei miatt!)
+        document.querySelectorAll('[data-translate]').forEach(el => {
+            const key = el.getAttribute('data-translate');
+            if (t[key]) {
+                el.innerHTML = t[key];
+            }
+        });
+
+        // 2. Placeholder szövegek fordítása
+        document.querySelectorAll('[data-translate-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-translate-placeholder');
+            if (t[key]) {
+                el.setAttribute('placeholder', t[key]);
+            }
+        });
+
+        // 3. Oldal címének frissítése
+        const pageTitleKey = document.body.getAttribute('data-page-title-key');
+        if (pageTitleKey && t[pageTitleKey]) {
+             // Főoldalon csak a név, aloldalakon "Cím | Giada Fervere"
+            document.title = body.classList.contains('landing-page') ? t[pageTitleKey] : t[pageTitleKey] + " | Giada Fervere";
+        }
+
+        // 4. SEO Meta Description frissítése
+        const metaDescEl = document.querySelector('meta[name="description"]');
+        if (metaDescEl) {
+            let descriptionKey;
+            if (body.classList.contains('landing-page')) {
+                descriptionKey = 'index_description';
+            } else if (pageTitleKey) {
+                descriptionKey = pageTitleKey.replace('_title', '_description');
+            }
+            
+            if (descriptionKey && t[descriptionKey]) {
+                metaDescEl.setAttribute('content', t[descriptionKey]);
+            }
+        }
+
+        // 5. HTML lang attribútum frissítése
+        document.documentElement.lang = lang;
+    }
+
+    // Nyelvváltó menü felépítése
+    function populateLanguageSwitcher(currentLang) {
+        if (!languageSwitcher || typeof translations === 'undefined' || !translations[currentLang]) return;
+
+        const currentLangData = translations[currentLang];
+        const otherLangs = Object.keys(translations).filter(lang => lang !== currentLang);
+
+        let dropdownHTML = '';
+        otherLangs.forEach(lang => {
+            const langData = translations[lang];
+            dropdownHTML += `
+                <li>
+                    <a href="#" data-lang="${lang}">
+                        <img src="${langData.flag}" alt="${langData.name} flag" class="lang-flag">
+                        <span class="lang-text">${lang.toUpperCase()}</span>
+                    </a>
+                </li>
+            `;
+        });
+
+        const switcherHTML = `
+            <div class="current-language">
+                <img src="${currentLangData.flag}" alt="${currentLangData.name} flag" class="lang-flag">
+                <span class="lang-text">${currentLang.toUpperCase()}</span>
+                <span class="arrow-down">&#9662;</span>
+            </div>
+            <ul class="language-dropdown">
+                ${dropdownHTML}
+            </ul>
+        `;
+
+        languageSwitcher.innerHTML = switcherHTML;
+
+        // Eseményfigyelő hozzáadása az új menühöz
+        languageSwitcher.querySelector('.language-dropdown').addEventListener('click', handleLanguageChange);
+    }
+
+    function handleLanguageChange(e) {
+        const link = e.target.closest('a[data-lang]');
+        if (link) {
+            e.preventDefault();
+            const selectedLang = link.getAttribute('data-lang');
+            setStoredLanguage(selectedLang);
+            translatePage(selectedLang);
+            populateLanguageSwitcher(selectedLang); // Menü újraépítése
+        }
+    }
+
+    function initLocalization() {
+        const initialLang = getStoredLanguage();
+        translatePage(initialLang);
+        populateLanguageSwitcher(initialLang);
     }
 
     // --- ÁLTALÁNOS MODÁLKEZELŐ LOGIKA ---
-    const openModalButtons = document.querySelectorAll('[data-modal-target]');
-    const closeModalButtons = document.querySelectorAll('.modal-close-btn');
-    const modals = document.querySelectorAll('.modal');
+    function initializeModals() {
+        const openModalButtons = document.querySelectorAll('[data-modal-target]');
+        const closeModalButtons = document.querySelectorAll('.modal-close-btn');
+        const modals = document.querySelectorAll('.modal');
 
-    function openModal(modal) {
-        if (modal == null) return;
-        modal.classList.add('visible');
-        document.body.style.overflow = 'hidden';
-    }
+        function openModal(modal) {
+            if (modal == null) return;
+            modal.classList.add('visible');
+            document.body.style.overflow = 'hidden';
+        }
 
-    function closeModal(modal) {
-        if (modal == null) return;
-        modal.classList.remove('visible');
-        document.body.style.overflow = 'auto';
-    }
+        function closeModal(modal) {
+            if (modal == null) return;
+            modal.classList.remove('visible');
+            // Csak akkor állítjuk vissza az overflow-t, ha a lightbox sincs nyitva
+            if (!document.querySelector('.lightbox.visible')) {
+                document.body.style.overflow = 'auto';
+            }
+        }
 
-    openModalButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const modal = document.querySelector(button.dataset.modalTarget);
-            openModal(modal);
+        openModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = document.querySelector(button.dataset.modalTarget);
+                openModal(modal);
+            });
         });
-    });
 
-    closeModalButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const modal = button.closest('.modal');
-            closeModal(modal);
-        });
-    });
-
-    modals.forEach(modal => {
-        modal.addEventListener('click', e => {
-            if (e.target === modal) {
+        closeModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.modal');
                 closeModal(modal);
+            });
+        });
+
+        modals.forEach(modal => {
+            modal.addEventListener('click', e => {
+                if (e.target === modal) {
+                    closeModal(modal);
+                }
+            });
+        });
+        
+        // Escape gomb kezelése
+         document.addEventListener('keydown', (e) => {
+            // Csak akkor zárja be a modált, ha a lightbox nincs nyitva
+            if (e.key === 'Escape' && !document.querySelector('.lightbox.visible')) {
+                const visibleModal = document.querySelector('.modal.visible');
+                if (visibleModal) closeModal(visibleModal);
             }
         });
-    });
+    }
 
     // --- KÉPNAGYÍTÓ LIGHTBOX KÓD ---
     function initializeLightbox() {
         const galleryItems = document.querySelectorAll('.gallery-item');
         const lightbox = document.getElementById('lightbox');
+        
+        if (galleryItems.length === 0 || !lightbox) return;
+
         const lightboxImg = document.getElementById('lightbox-img');
         const lightboxClose = document.querySelector('.lightbox-close');
         const lightboxPrev = document.querySelector('.lightbox-prev');
         const lightboxNext = document.querySelector('.lightbox-next');
-
-        if (galleryItems.length === 0 || !lightbox) return;
 
         let currentIndex = 0;
         const imageSources = Array.from(galleryItems).map(item => item.querySelector('img').src);
@@ -114,36 +249,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function hideLightbox() {
             lightbox.classList.remove('visible');
-            document.body.style.overflow = 'auto';
+            // Csak akkor állítjuk vissza az overflow-t, ha modál sincs nyitva
+            if (!document.querySelector('.modal.visible')) {
+                document.body.style.overflow = 'auto';
+            }
         }
 
-        function showPrevImage() {
+        function showPrevImage(e) {
+            if(e) e.stopPropagation();
             currentIndex = (currentIndex - 1 + imageSources.length) % imageSources.length;
             lightboxImg.src = imageSources[currentIndex];
         }
 
-        function showNextImage() {
+        function showNextImage(e) {
+            if(e) e.stopPropagation();
             currentIndex = (currentIndex + 1) % imageSources.length;
             lightboxImg.src = imageSources[currentIndex];
         }
 
+        // Eseménykezelők
         galleryItems.forEach((item, index) => {
-            item.addEventListener('click', () => {
-                showLightbox(index);
-            });
+            item.addEventListener('click', () => showLightbox(index));
         });
 
-        if (lightboxClose) {
-            lightboxClose.addEventListener('click', hideLightbox);
-        }
-        
-        if (lightboxPrev) {
-            lightboxPrev.addEventListener('click', showPrevImage);
-        }
-        
-        if (lightboxNext) {
-            lightboxNext.addEventListener('click', showNextImage);
-        }
+        if (lightboxClose) lightboxClose.addEventListener('click', hideLightbox);
+        if (lightboxPrev) lightboxPrev.addEventListener('click', showPrevImage);
+        if (lightboxNext) lightboxNext.addEventListener('click', showNextImage);
 
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) {
@@ -151,6 +282,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
+        // Billentyűzet navigáció
         document.addEventListener('keydown', (e) => {
             if (lightbox.classList.contains('visible')) {
                 if (e.key === 'Escape') hideLightbox();
@@ -160,114 +292,131 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- NYELVVÁLTÓ LOGIKA (VERZIÓ 3.0) ---
-    const languageSwitcher = document.querySelector('.language-switcher');
+    // --- CHATBOT LOGIKA ---
+    function initializeChatbot() {
+        const chatWindow = document.querySelector('.chat-window');
+        const chatInput = document.getElementById('chatbot-input');
+        const sendButton = document.getElementById('chatbot-send');
 
-    function getStoredLanguage() {
-        return localStorage.getItem('giada-language') || 'hu';
-    }
-
-    function setStoredLanguage(lang) {
-        localStorage.setItem('giada-language', lang);
-    }
-
-    function translatePage(lang) {
-    const t = translations[lang];
-    if (!t) return;
-
-    // MEGLÉVŐ KÓD
-    document.querySelectorAll('[data-translate]').forEach(el => {
-        const key = el.getAttribute('data-translate');
-        if (t[key]) {
-            el.innerHTML = t[key];
+        // A chatbot csak a kapcsolat oldalon létezik
+        if (!chatWindow || !chatInput || !sendButton) {
+            return;
         }
-    });
 
-    // MEGLÉVŐ KÓD
-    const pageTitleKey = document.body.getAttribute('data-page-title-key');
-    if (pageTitleKey && t[pageTitleKey]) {
-        document.title = t[pageTitleKey];
-    } else {
-        document.title = "Giada Fervere";
-    }
+        // Üdvözlő üzenet eltávolítása az első interakciónál
+        const welcomeMessage = chatWindow.querySelector('.bot-message');
+        let isFirstInteraction = true;
 
-    // --- ÚJ KÓD KEZDETE ---
-    // Meta leírás frissítése
-    const metaDescEl = document.querySelector('meta[name="description"]');
-    if (metaDescEl) {
-        const pageKey = pageTitleKey.replace('_title', ''); // pl. 'about_title' -> 'about'
-        const descriptionKey = `${pageKey}_description`; // pl. 'about_description'
+        const qaPairs = [
+            {
+                keywords: ['ki az a giada fervere', 'róla', 'bemutatkozás', 'életrajz', 'művész'],
+                response: "Giada Fervere egy feltörekvő festőművész, aki a neo-expresszionizmus és az absztrakt művészet határán alkot. Műveiben az emberi érzelmek és a természet kapcsolata áll a középpontban. Bővebb információt a 'Rólam' menüpontban talál."
+            },
+            {
+                keywords: ['kapcsolat', 'elérhetőség', 'hol érlek el', 'e-mail'],
+                response: "Általános kérdésekkel és megkeresésekkel kapcsolatban, kérjük, írjon a management@giadafervere.com e-mail címre. Minden üzenetre igyekszünk a lehető leghamarabb válaszolni."
+            },
+            {
+                keywords: ['közösségi média', 'social media', 'instagram', 'facebook', 'követhetem'],
+                response: 'Kövess minket a közösségi médiában is a friss hírekért és a legújabb alkotásokért! Megtalálsz minket <a href="https://www.instagram.com/giadafervere/#" target="_blank">Instagramon</a> és <a href="https://www.facebook.com/profile.php?id=100070613388519" target="_blank">Facebookon</a>.'
+            },
+            {
+                keywords: ['vásárlás', 'kép vásárlása', 'festményvásárlás', 'ár', 'mennyibe kerül'],
+                response: "Festményvásárlással és az elérhető művekkel kapcsolatosan, kérjük, vegye fel velünk a kapcsolatot a management@giadafervere.com címen. Személyre szabott tájékoztatást és segítséget nyújtunk a választásban."
+            },
+            {
+                keywords: ['elérhető művek', 'galéria', 'képek', 'festmények', 'portfólió'],
+                response: "A jelenleg elérhető alkotásokat megtekintheti az 'Alkotásaim' oldalon a galériában. Ha egy specifikus mű iránt érdeklődik, amely nincs a listában, kérjük, jelezze nekünk e-mailben."
+            },
+            {
+                keywords: ['egyedi megrendelés', 'személyre szabott festmény', 'portré', 'megbízás'],
+                response: "Giada vállal egyedi megrendeléseket is. Ha van egy konkrét elképzelése, kérjük, írja le részletesen a management@giadafervere.com e-mail címre, és felvesszük Önnel a kapcsolatot a részletekkel."
+            },
+            {
+                keywords: ['szállítás', 'posta', 'hogyan kapom meg'],
+                response: "A festmények biztonságos szállítását professzionális futárszolgálattal oldjuk meg, gondos csomagolásban. A szállítási részletekről és költségekről a vásárlás során adunk pontos tájékoztatást."
+            },
+            {
+                keywords: ['kiállítás', 'esemény', 'hol láthatom élőben', 'megnyitó'],
+                response: "A közelgő kiállításokról és eseményekről a 'Rendezvények' menüpontban tájékozódhat. Iratkozzon fel hírlevelünkre, hogy ne maradjon le semmiről!"
+            },
+            {
+                keywords: ['sajtó', 'média', 'interjú', 'publikáció'],
+                response: "Sajtómegkeresésekkel kapcsolatban kérjük, forduljon a menedzsmenthez a management@giadafervere.com e-mail címen. Örömmel állunk rendelkezésre interjúk és egyéb publikációk kapcsán."
+            },
+            {
+                keywords: ['hírlevél', 'feliratkozás'],
+                response: "Szeretne elsőként értesülni a legújabb alkotásokról és a közelgő kiállításokról? Iratkozzon fel hírlevelünkre az oldalon található űrlapon keresztül! (Hírlevél funkció fejlesztés alatt)"
+            },
+            {
+                keywords: ['köszönet', 'köszi', 'szuper', 'remek'],
+                response: "Örülök, hogy segíthettem! Ha további kérdése van, állok rendelkezésére."
+            },
+            {
+                keywords: ['probléma', 'hiba', 'nem működik'],
+                response: "Elnézést kérünk az esetleges kellemetlenségért. Kérjük, írja le a problémát részletesen a management@giadafervere.com címre, hogy mielőbb kivizsgálhassuk."
+            }
+        ];
 
-        // Főoldal speciális kezelése
-        const finalDescriptionKey = document.body.classList.contains('landing-page') ? 'index_description' : descriptionKey;
+        const defaultResponse = "Elnézést, ezt a kérdést nem értem. Kérem, fogalmazza meg másképp, vagy vegye fel velünk a kapcsolatot a management@giadafervere.com e-mail címen.";
 
-        if (t[finalDescriptionKey]) {
-            metaDescEl.setAttribute('content', t[finalDescriptionKey]);
+        function getBotResponse(userInput) {
+            const lowerCaseInput = userInput.toLowerCase();
+            for (const pair of qaPairs) {
+                for (const keyword of pair.keywords) {
+                    if (lowerCaseInput.includes(keyword)) {
+                        return pair.response;
+                    }
+                }
+            }
+            return defaultResponse;
         }
-    }
-    // --- ÚJ KÓD VÉGE ---
 
-    // MEGLÉVŐ KÓD
-    document.documentElement.lang = lang;
-}
+        function appendMessage(message, sender) {
+            const messageElement = document.createElement('p');
+            // Add specific class for user messages for potential styling
+            if (sender === 'user') {
+                messageElement.classList.add('user-message');
+            } else {
+                messageElement.classList.add('bot-message');
+            }
+            messageElement.innerHTML = message; // Use innerHTML to render links
+            chatWindow.appendChild(messageElement);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
 
-    function populateLanguageSwitcher(currentLang) {
-        if (!languageSwitcher) return;
+        function handleUserInput() {
+            const userInput = chatInput.value.trim();
+            if (userInput === "") return;
 
-        const currentLangData = translations[currentLang];
-        const otherLangs = Object.keys(translations).filter(lang => lang !== currentLang);
+            if (isFirstInteraction && welcomeMessage) {
+                chatWindow.innerHTML = ''; // Clear welcome message
+                isFirstInteraction = false;
+            }
 
-        let dropdownHTML = '';
-        otherLangs.forEach(lang => {
-            const langData = translations[lang];
-            dropdownHTML += `
-                <li>
-                    <a href="#" data-lang="${lang}">
-                        <img src="${langData.flag}" alt="${langData.name} (${lang.toUpperCase()}) flag" class="lang-flag">
-                        <span class="lang-text">${lang.toUpperCase()}</span>
-                    </a>
-                </li>
-            `;
+            appendMessage(userInput, 'user');
+            chatInput.value = "";
+
+            const botResponse = getBotResponse(userInput);
+            
+            setTimeout(() => {
+                appendMessage(botResponse, 'bot');
+            }, 500);
+        }
+
+        sendButton.addEventListener('click', handleUserInput);
+        chatInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                handleUserInput();
+            }
         });
-
-        const switcherHTML = `
-            <div class="current-language">
-                <img src="${currentLangData.flag}" alt="${currentLangData.name} flag" class="lang-flag">
-                <span class="lang-text">${currentLang.toUpperCase()}</span>
-                <span class="arrow-down"></span>
-            </div>
-            <ul class="language-dropdown">
-                ${dropdownHTML}
-            </ul>
-        `;
-
-        languageSwitcher.innerHTML = switcherHTML;
-
-        // Újra hozzárendeljük az eseményfigyelőt, mert a tartalom felülíródott
-        languageSwitcher.querySelector('.language-dropdown').addEventListener('click', handleLanguageChange);
-    }
-
-    function handleLanguageChange(e) {
-        const link = e.target.closest('a[data-lang]');
-        if (link) {
-            e.preventDefault();
-            const selectedLang = link.getAttribute('data-lang');
-            setStoredLanguage(selectedLang);
-            translatePage(selectedLang);
-            populateLanguageSwitcher(selectedLang); // Újraépítjük a menüt
-        }
-    }
-
-    function initLocalization() {
-        if (!languageSwitcher || typeof translations === 'undefined') return;
-        const initialLang = getStoredLanguage();
-        translatePage(initialLang);
-        populateLanguageSwitcher(initialLang);
     }
 
     // --- INICIALIZÁLÁS ---
-    if (document.querySelectorAll('.gallery-item').length > 0) {
-        initializeLightbox();
-    }
+    initializeIntro();
+    handleVideoAutoplay();
     initLocalization();
+    initializeModals();
+    initializeLightbox();
+    initializeChatbot();
 });

@@ -4,76 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giada Fervere - Alkotásaim</title>
-    <meta name="description" content="Fedezze fel Giada Fervere festményeit és verseit. Egyedi alkotások, amelyek a sötét esztétika és a finom szimbolizmus jegyében születtek.">
-    <meta name="keywords" content="Giada Fervere, alkotások, festmények, versek, galéria, művészet">
-    <meta property="og:title" content="Giada Fervere - Alkotásaim">
-    <meta property="og:description" content="Fedezze fel Giada Fervere festményeit és verseit. Egyedi alkotások, amelyek a sötét esztétika és a finom szimbolizmus jegyében születtek.">
-    <meta property="og:image" content="g:/giada-fervere-website/assets/images/7.jpg">
-    <meta property="og:url" content="[It is recommended to replace this with the actual URL of the website when it is live]">
-    <meta property="og:type" content="website">
+    <meta name="description" content="Fedezze fel Giada Fervere festményeit és verseit...">
+    <!-- Meta tags... -->
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght @assets\images\10.jpg,400..900;1,400..900&family=Cormorant+Garamond:ital,wght @assets\images\10.jpg,300..700;1,300..700&display=swap" rel="stylesheet">
 </head>
 <body data-page-title-key="creations_title">
 
+    <!-- Fix Háttérvideó (Követő effektus) -->
+    <div class="page-background-video">
+        <video autoplay muted loop playsinline>
+            <source src="assets/videos/hatt7_mobil.mp4" type="video/mp4" media="all and (max-width: 768px)">
+            <source src="assets/videos/hatt7.mp4" type="video/mp4">
+        </video>
+        <div class="page-background-overlay"></div>
+    </div>
+
     <header id="main-header" class="subpage-header">
-        <div class="header-overlay"></div>
         <div class="header-content">
             <h1 class="artist-name" data-translate="main_title">Giada Fervere</h1>
             <nav class="main-nav">
-                <a href="rolam.html" class="nav-item about" data-translate="nav_about">Rólam</a>
-                <a href="eloadasaim.html" class="nav-item performances" data-translate="nav_performances">Előadásaim</a>
-                <a href="alkotasaim.html" class="nav-item creations" data-translate="nav_creations">Alkotásaim</a>
-                <a href="rendezvenyek.html" class="nav-item events" data-translate="nav_events">Rendezvények</a>
-                <a href="kapcsolat.html" class="nav-item contact" data-translate="nav_contact">Kapcsolat</a>
-                <a href="blog.html" target="_blank" class="nav-item blog" data-translate="nav_blog">Friss Hírek, Blogbejegyzések</a>
-            
-                <!-- ÚJ, STÍLUSOS NYELVVÁLTÓ -->
-                <div class="language-switcher">
-                    <!-- Tartalom dinamikusan töltődik be a script.js-ből -->
-                </div>
+                <a href="rolam.html" class="nav-item" data-translate="nav_about">Rólam</a>
+                <a href="eloadasaim.html" class="nav-item" data-translate="nav_performances">Előadásaim</a>
+                <a href="alkotasaim.html" class="nav-item active" data-translate="nav_creations">Alkotásaim</a>
+                <a href="rendezvenyek.html" class="nav-item" data-translate="nav_events">Rendezvények</a>
+                <a href="kapcsolat.html" class="nav-item" data-translate="nav_contact">Kapcsolat</a>
+                <a href="blog.html" class="nav-item" data-translate="nav_blog">Friss Hírek, Blogbejegyzések</a>
+                <div class="language-switcher"></div>
             </nav>
         </div>
     </header>
 
-    <section id="alkotasaim" class="has-video-bg">
-        <video autoplay muted loop playsinline class="section-background-video">
-            <source src="assets/videos/hatt7_mobil.mp4" type="video/mp4" media="all and (max-width: 768px)">
-            <source src="assets/videos/hatt7.mp4" type="video/mp4">
-        </video>
-        <div class="content-wrapper">
-            <main class="page-section" id="creations-section">
-                <div class="section-content-fullwidth">
-                    <h2 data-translate="creations_title">Alkotásaim</h2>
-                    
-                    <div class="choice-card-container">
-                        <div class="choice-card">
-                            <div class="choice-card-image-wrapper">
-                                <img src="assets/images/7.jpg" alt="Festmények borító" class="choice-card-image">
-                            </div>
-                            <h3 class="choice-card-title" data-translate="creations_card_paintings_title">Festmények</h3>
-                            <button class="btn" data-modal-target="#gallery-modal" data-translate="creations_card_paintings_button">Galéria megnyitása</button>
-                        </div>
-                        <div class="choice-card">
-                             <div class="choice-card-image-wrapper">
-                                <img src="assets/images/borito.jpeg" alt="Versek borító" class="choice-card-image">
-                            </div>
-                            <h3 class="choice-card-title" data-translate="creations_card_poems_title">Verseim</h3>
-                            <button class="btn" data-modal-target="#poems-modal" data-translate="creations_card_poems_button">Versek olvasása</button>
-                        </div>
+    <main class="page-section" id="creations-section">
+        <div class="section-content">
+            <h2 data-translate="creations_title">Alkotásaim</h2>
+            
+            <!-- Választó Kártyák -->
+            <div class="choice-card-container">
+                <!-- Festmények Kártya -->
+                <div class="choice-card">
+                    <div class="choice-card-image-wrapper">
+                        <img src="assets/images/7.jpg" alt="Festmények borító" class="choice-card-image">
                     </div>
+                    <h3 class="choice-card-title" data-translate="creations_card_paintings_title">Festmények</h3>
+                    <!-- Gomb, ami a #gallery-modal-t nyitja -->
+                    <button class="btn" data-modal-target="#gallery-modal" data-translate="creations_card_paintings_button">Galéria megnyitása</button>
                 </div>
-            </main>
+                <!-- Versek Kártya -->
+                <div class="choice-card">
+                        <div class="choice-card-image-wrapper">
+                        <img src="assets/images/borito.jpeg" alt="Versek borító" class="choice-card-image">
+                    </div>
+                    <h3 class="choice-card-title" data-translate="creations_card_poems_title">Verseim</h3>
+                    <!-- Gomb, ami a #poems-modal-t nyitja -->
+                    <button class="btn" data-modal-target="#poems-modal" data-translate="creations_card_poems_button">Versek olvasása</button>
+                </div>
+            </div>
         </div>
-    </section>
+    </main>
 
     <footer id="main-footer">
+        <!-- Lábléc tartalma (konzisztens) -->
         <div class="footer-container">
             <div class="footer-section footer-sponsors">
-                <h4>Fő támogatóink:</h4>
+                <h4 data-translate="footer_sponsors">Fő támogatóink:</h4>
                 <a href="https://pohanka.company" target="_blank" class="sponsor-link">
                     <img src="assets/images/logot.jpg" alt="Pohánka És Társa Company Logo" class="sponsor-logo">
                     Pohánka És Társa Company
@@ -85,23 +80,123 @@
     
             <div class="footer-section footer-info">
                 <img src="assets/images/logo.png" alt="Giada Fervere Logo" class="footer-logo">
-                 <p>© 2025 Giada Fervere Produkció - minden jog fenntartva.</p>
+                 <p data-translate="copyright">© 2025 Giada Fervere Produkció - minden jog fenntartva.</p>
             </div>
     
             <div class="footer-section footer-links">
-                <a href="impresszum.html" target="_blank" class="impressum-link">Impresszum</a>
+                <a href="impresszum.html" target="_blank" class="impressum-link" data-translate="footer_imprint">Impresszum</a>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/profile.php?id=100070613388519" target="_blank" aria-label="Facebook">FB/Ikon</a>
-                    <a href="#" target="_blank" aria-label="Twitter">TW/Ikon</a>
-                    <a href="https://www.youtube.com/ @giadafervere" target="_blank" aria-label="YouTube">YT/Ikon</a>
+                    <a href="https://www.facebook.com/profile.php?id=100070613388519" target="_blank" aria-label="Facebook">FB</a>
+                    <a href="#" target="_blank" aria-label="Twitter">TW</a>
+                    <a href="https://www.youtube.com/ @giadafervere" target="_blank" aria-label="YouTube">YT</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- GALÉRIA MODÁL, VERSEK MODÁL, LIGHTBOX, SCRIPTEK... -->
+    <!-- MODÁLIS ABLAKOK ÉS LIGHTBOX STRUKTÚRA -->
 
-    <script src="js/script.js"></script>
+    <!-- 1. Galéria Modál -->
+    <div id="gallery-modal" class="modal">
+        <div class="modal-content large">
+            <button class="modal-close-btn">&times;</button>
+            <div class="modal-body">
+                <h3 class="gallery-title" data-translate="gallery_modal_title">Festmények Galéria</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="assets/images/1.jpg" alt="Alkotás 1"></div>
+                    <div class="gallery-item"><img src="assets/images/2.jpg" alt="Alkotás 2"></div>
+                    <div class="gallery-item"><img src="assets/images/3.jpg" alt="Alkotás 3"></div>
+                    <div class="gallery-item"><img src="assets/images/4.jpg" alt="Alkotás 4"></div>
+                    <div class="gallery-item"><img src="assets/images/5.jpg" alt="Alkotás 5"></div>
+                    <div class="gallery-item"><img src="assets/images/6.jpg" alt="Alkotás 6"></div>
+                    <div class="gallery-item"><img src="assets/images/7.jpg" alt="Alkotás 7"></div>
+                    <div class="gallery-item"><img src="assets/images/8.jpg" alt="Alkotás 8"></div>
+                    <div class="gallery-item"><img src="assets/images/9.jpg" alt="Alkotás 9"></div>
+                    <div class="gallery-item"><img src="assets/images/10.jpg" alt="Alkotás 10"></div>
+                    <div class="gallery-item"><img src="assets/images/11.jpg" alt="Alkotás 11"></div>
+                    <div class="gallery-item"><img src="assets/images/12.jpg" alt="Alkotás 12"></div>
+                    <div class="gallery-item"><img src="assets/images/13.jpg" alt="Alkotás 13"></div>
+                    <div class="gallery-item"><img src="assets/images/14.jpg" alt="Alkotás 14"></div>
+                    <div class="gallery-item"><img src="assets/images/15.jpg" alt="Alkotás 15"></div>
+                    <div class="gallery-item"><img src="assets/images/16.jpg" alt="Alkotás 16"></div>
+                    <div class="gallery-item"><img src="assets/images/17.jpg" alt="Alkotás 17"></div>
+                    <div class="gallery-item"><img src="assets/images/18.jpg" alt="Alkotás 18"></div>
+                    <div class="gallery-item"><img src="assets/images/19.jpg" alt="Alkotás 19"></div>
+                    <div class="gallery-item"><img src="assets/images/20.jpg" alt="Alkotás 20"></div>
+                    <div class="gallery-item"><img src="assets/images/21.jpg" alt="Alkotás 21"></div>
+                    <div class="gallery-item"><img src="assets/images/22.jpg" alt="Alkotás 22"></div>
+                    <div class="gallery-item"><img src="assets/images/23.jpg" alt="Alkotás 23"></div>
+                    <div class="gallery-item"><img src="assets/images/24.jpg" alt="Alkotás 24"></div>
+                    <div class="gallery-item"><img src="assets/images/25.jpg" alt="Alkotás 25"></div>
+                    <div class="gallery-item"><img src="assets/images/26.jpg" alt="Alkotás 26"></div>
+                    <div class="gallery-item"><img src="assets/images/27.jpg" alt="Alkotás 27"></div>
+                    <div class="gallery-item"><img src="assets/images/28.jpg" alt="Alkotás 28"></div>
+                    <div class="gallery-item"><img src="assets/images/29.jpg" alt="Alkotás 29"></div>
+                    <div class="gallery-item"><img src="assets/images/30.jpg" alt="Alkotás 30"></div>
+                    <div class="gallery-item"><img src="assets/images/31.jpg" alt="Alkotás 31"></div>
+                    <div class="gallery-item"><img src="assets/images/32.jpg" alt="Alkotás 32"></div>
+                    <div class="gallery-item"><img src="assets/images/33.jpg" alt="Alkotás 33"></div>
+                    <div class="gallery-item"><img src="assets/images/34.jpg" alt="Alkotás 34"></div>
+                    <div class="gallery-item"><img src="assets/images/35.jpg" alt="Alkotás 35"></div>
+                    <div class="gallery-item"><img src="assets/images/36.jpg" alt="Alkotás 36"></div>
+                    <div class="gallery-item"><img src="assets/images/37.jpg" alt="Alkotás 37"></div>
+                    <div class="gallery-item"><img src="assets/images/38.jpg" alt="Alkotás 38"></div>
+                    <div class="gallery-item"><img src="assets/images/39.jpg" alt="Alkotás 39"></div>
+                    <div class="gallery-item"><img src="assets/images/40.jpg" alt="Alkotás 40"></div>
+                    <div class="gallery-item"><img src="assets/images/41.jpg" alt="Alkotás 41"></div>
+                    <div class="gallery-item"><img src="assets/images/42.jpg" alt="Alkotás 42"></div>
+                    <div class="gallery-item"><img src="assets/images/43.jpg" alt="Alkotás 43"></div>
+                    <div class="gallery-item"><img src="assets/images/44.jpg" alt="Alkotás 44"></div>
+                    <div class="gallery-item"><img src="assets/images/45.jpg" alt="Alkotás 45"></div>
+                    <div class="gallery-item"><img src="assets/images/46.jpg" alt="Alkotás 46"></div>
+                    <div class="gallery-item"><img src="assets/images/47.jpg" alt="Alkotás 47"></div>
+                    <div class="gallery-item"><img src="assets/images/48.jpg" alt="Alkotás 48"></div>
+                    <div class="gallery-item"><img src="assets/images/49.jpg" alt="Alkotás 49"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Versek Modál -->
+    <div id="poems-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <div class="modal-body poetry-container">
+                <h3 class="gallery-title" data-translate="poems_modal_title">Verseim</h3>
+                
+                <!-- Vers 1 -->
+                <article class="poem-article">
+                    <h4 class="poem-title" data-translate="poem_1_title">Haldokló Varázs</h4>
+                    <!-- A szöveg dinamikusan töltődik be a JS által a data-translate alapján, megtartva a <br> tageket -->
+                    <p class="poem-text" data-translate="poem_1_text"></p>
+                </article>
+
+                <!-- Vers 2 -->
+                <article class="poem-article">
+                    <h4 class="poem-title" data-translate="poem_2_title">Metamorfózis</h4>
+                    <p class="poem-text" data-translate="poem_2_text"></p>
+                </article>
+
+                <!-- Vers 3 -->
+                <article class="poem-article">
+                    <h4 class="poem-title" data-translate="poem_3_title">Halálfaló Könnyszivárvány</h4>
+                    <p class="poem-text" data-translate="poem_3_text"></p>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Lightbox (Képnagyító) -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <span class="lightbox-prev">&#10094;</span> <!-- Balra nyíl -->
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="Nagyított kép">
+        </div>
+        <span class="lightbox-next">&#10095;</span> <!-- Jobbra nyíl -->
+    </div>
+
     <script src="js/translations.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

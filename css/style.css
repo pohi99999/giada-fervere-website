@@ -3,20 +3,18 @@
     --color-dark-background: #0d0d0d;
     --color-text-primary: #F5F5DC; /* Törtfehér, bézs */
     --color-accent-gold: #B8860B; /* Sötét arany */
-    --color-accent-red: #8B0000;
     --color-highlight-gold: #D4AF37; /* Világosabb arany */
     --color-intro-text: #A52A2A; /* Pirosas-barna az intro szöveghez */
-    --color-overlay-dark: rgba(0, 0, 0, 0.5);
-    --color-poem-text: #e0d9c6; /* Enyhén barnás törtfehér a versekhez */
+    --color-overlay-dark: rgba(0, 0, 0, 0.6);
+    --color-poem-text: #e0d9c6;
 
     --font-primary: 'Cormorant Garamond', serif;
     --font-secondary: 'Georgia', serif;
-    --font-special: 'Cormorant Garamond', serif;
     --font-header-name: 'Playfair Display', serif;
 }
 
 html {
-    scroll-behavior: smooth; /* Sima görgetés az oldalon */
+    scroll-behavior: smooth;
 }
 
 body {
@@ -27,21 +25,34 @@ body {
     overflow-x: hidden;
 }
 
-/* --- Fix háttérvideó az aloldalakhoz --- */
+a {
+    transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease, opacity 0.3s ease;
+}
+
+/* --- KRITIKUS: Fix (Követő) Háttérvideó Stílusok --- */
+/* Ez a megközelítés biztosítja, hogy a videó mindig a háttérben maradjon görgetés közben. */
+
 .page-background-video {
-    position: fixed;
+    position: fixed; /* Ez biztosítja a követő hatást */
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
-    z-index: -10; /* Mélyen hátul van */
+    z-index: -10;
     pointer-events: none;
+    overflow: hidden;
 }
 
 .page-background-video video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover; /* Biztosítja a teljes kitöltést torzítás nélkül */
 }
 
 .page-background-overlay {
@@ -50,175 +61,120 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Sötétítő réteg */
+    background-color: var(--color-overlay-dark);
 }
 
-
-body.loaded {
-    overflow-y: auto;
-}
-
-/* --- Animált Intro Szekció --- */
+/* --- Intro Szekció (Csak a főoldalon) --- */
 .intro-sequence {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
+    top: 0; left: 0; width: 100%; height: 100vh;
     background-color: var(--color-dark-background);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex; justify-content: center; align-items: center;
     z-index: 9999;
     transition: opacity 1s ease-out;
 }
 
 .intro-logo {
-    width: 150px;
-    height: auto;
-    opacity: 0;
-    transform: scale(0.9);
+    width: 150px; opacity: 0; transform: scale(0.9);
     transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
 }
 
 .intro-logo.visible {
-    opacity: 1;
-    transform: scale(1);
-}
-
-/* --- Fejléc és Fő Tartalom --- */
-#main-header, #main-footer {
-    opacity: 0;
-    transition: opacity 1.5s ease-in;
-}
-
-body:not(.landing-page) #main-header,
-body:not(.landing-page) #main-footer {
-    opacity: 1; /* Aloldalakon azonnal látható */
-}
-
-#main-header.visible, #main-footer.visible {
-    opacity: 1;
+    opacity: 1; transform: scale(1);
 }
 
 /* --- Fejléc Stílusok --- */
 #main-header {
     position: relative;
     width: 100%;
-    height: 100vh; /* Kezdőlapon teljes magasság */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    overflow: hidden;
-    background-color: transparent; /* Legyen átlátszó, hogy a háttérvideó látszódjon alatta */
+    background-color: transparent; /* Átlátszó, a videó látszik alatta */
+    z-index: 5;
 }
 
+/* Főoldalon teljes magasság */
+body.landing-page #main-header {
+    height: 100vh;
+}
+
+/* Aloldalak fejléce alacsonyabb */
 .subpage-header {
-    height: 35vh;
-    min-height: 250px;
-}
-
-#background-video {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Tökéletes középre igazítás */
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -2;
-    object-fit: cover; /* Ez a kulcs a torzításmentes kitöltéshez! */
-}
-
-.video-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fekete, 50%-os áttetszőséggel. Módosítsd ízlés szerint. */
-    z-index: -1; /* A videó és a tartalom között helyezkedik el */
-}
-
-.header-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-overlay-dark);
-    z-index: -1;
+    height: 30vh;
+    min-height: 200px;
+    /* Enyhe elválasztás a tartalomtól, hogy a görgetésnél érezhető legyen a rétegződés */
+    box-shadow: 0 2px 15px rgba(0,0,0,0.5); 
 }
 
 .header-content {
     position: relative;
-    z-index: 1;
 }
 
 .artist-name {
     font-family: var(--font-header-name);
-    font-size: clamp(3em, 8vw, 5em); /* EREDETI: 5em */
+    font-size: clamp(3em, 8vw, 5em);
     font-weight: 300;
     color: var(--color-intro-text);
     text-transform: uppercase;
     text-shadow: 0 0 15px rgba(0,0,0,0.5);
-    opacity: 0;
-    transition: opacity 2s ease-in-out 1s;
 }
 
 .subpage-header .artist-name {
-    font-size: clamp(2.5em, 7vw, 3.5em); /* EREDETI: 3.5em */
-    opacity: 1;
-    transition: none;
+    font-size: clamp(2.5em, 7vw, 3.5em);
 }
 
-.artist-name.visible {
-    opacity: 1;
+/* Intro animációhoz kapcsolódó láthatóság */
+#main-header, #main-footer, .artist-name, .main-nav {
+    opacity: 0;
 }
 
-.artist-name span {
-    display: inline-block;
-    padding: 0 0.2em;
+body:not(.landing-page) #main-header,
+body:not(.landing-page) #main-footer,
+body:not(.landing-page) .artist-name,
+body:not(.landing-page) .main-nav {
+    opacity: 1; /* Aloldalakon azonnal látható */
 }
 
+/* JS által hozzáadott osztályok az animációhoz */
+#main-header.visible { opacity: 1; transition: opacity 1.5s ease-in; }
+#main-footer.visible { opacity: 1; transition: opacity 1.5s ease-in; }
+.artist-name.visible { opacity: 1; transition: opacity 2s ease-in-out 1s; }
+.main-nav.visible { opacity: 1; transition: opacity 1s ease-in-out 3s; }
+
+
+/* --- Navigáció --- */
 .main-nav {
     margin-top: 30px;
-    opacity: 0;
-    transition: opacity 1s ease-in-out 3s;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.subpage-header .main-nav {
-    opacity: 1;
-    transition: none;
-}
-
-.main-nav.visible {
-    opacity: 1;
-}
-
 .nav-item {
     text-decoration: none;
     color: var(--color-text-primary);
-    font-size: 1.2em;
-    margin: 0 15px;
+    font-size: 1.1em;
+    margin: 5px 10px;
     font-family: var(--font-secondary);
     padding: 8px 15px;
     border-radius: 20px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
+}
+
+.nav-item:hover, .nav-item.active {
+    color: var(--color-highlight-gold);
+    background-color: rgba(184, 134, 11, 0.3);
 }
 
 /* --- Nyelvváltó Stílusok --- */
 .language-switcher {
     position: relative;
-    margin-left: 20px;
+    margin-left: 15px;
+    margin-top: 5px;
     font-family: var(--font-secondary);
 }
 
@@ -229,7 +185,6 @@ body:not(.landing-page) #main-footer {
     padding: 5px 10px;
     border: 1px solid rgba(245, 245, 220, 0.3);
     border-radius: 5px;
-    transition: background-color 0.3s ease;
 }
 
 .language-switcher:hover .current-language {
@@ -238,52 +193,34 @@ body:not(.landing-page) #main-footer {
 
 .lang-flag {
     width: 20px;
-    height: auto;
     margin-right: 8px;
-    border-radius: 2px;
 }
 
 .lang-text {
-    font-size: 1em;
-    color: var(--color-text-primary);
+    font-size: 0.9em;
 }
 
 .arrow-down {
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid var(--color-text-primary);
     margin-left: 8px;
     transition: transform 0.3s ease;
 }
 
-.language-switcher:hover .arrow-down {
-    transform: rotate(180deg);
-}
-
 .language-dropdown {
     position: absolute;
-    top: 100%;
-    right: 0;
+    top: 100%; right: 0;
     background-color: var(--color-dark-background);
     border: 1px solid rgba(245, 245, 220, 0.3);
     border-radius: 5px;
     list-style: none;
-    padding: 5px;
-    margin: 5px 0 0 0;
-    min-width: 100%;
+    padding: 5px; margin-top: 5px;
     z-index: 100;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
 }
 
 .language-switcher:hover .language-dropdown {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
 }
 
 .language-dropdown li a {
@@ -291,112 +228,102 @@ body:not(.landing-page) #main-footer {
     align-items: center;
     padding: 8px 12px;
     text-decoration: none;
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
+    color: var(--color-text-primary);
 }
 
 .language-dropdown li a:hover {
     background-color: rgba(245, 245, 220, 0.1);
 }
 
-
 /* --- Általános Szekció Stílusok --- */
 .page-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 100px 20px;
+    padding: 80px 20px;
     box-sizing: border-box;
     text-align: center;
     position: relative;
-    background-color: transparent;
+    /* Biztosítja a magasságot a tartalomnak, hogy legyen mit görgetni a fix háttér felett */
+    min-height: 70vh; 
+    background-color: transparent; /* Fontos, hogy a fix videó látszódjon! */
 }
 
 .page-section h2 {
-    font-size: clamp(2.5em, 6vw, 3.5em); /* EREDETI: 3.5em */
+    font-size: clamp(2.2em, 6vw, 3em);
     color: var(--color-accent-gold);
     font-family: var(--font-header-name);
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
-/* Közvetlenül a .page-section h2 után illeszd be */
-.section-content-fullwidth, .section-content {
+/* A tartalom konténere, ami a fix videó felett jelenik meg */
+.section-content, .section-content-fullwidth {
     width: 100%;
-    max-width: 1200px; /* Megakadályozza a tartalom túlzott szétterülését */
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 20px;
-    padding-right: 20px;
-    box-sizing: border-box; /* Biztosítja, hogy a padding ne növelje a méretet */
-}
-
-/* --- "Rólam" oldal specifikus javítás --- */
-#about-section .section-content {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 40px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+    box-sizing: border-box;
+    /* Vizuális elválasztás a háttértől a jobb olvashatóságért */
+    background-color: rgba(0, 0, 0, 0.65);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* --- ÁLTALÁNOS VIDEÓS HÁTTÉR STÍLUSOK (SZEKCIÓKHOZ) --- */
-.section-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    overflow: hidden;
+/* --- "Rólam" oldal specifikus --- */
+#about-section .section-content {
+    max-width: 800px;
+    text-align: left;
+    line-height: 1.7;
 }
 
-.section-background video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+#about-section p {
+    font-size: 1.1em;
 }
 
-.section-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+.article-snippet {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(184, 134, 11, 0.3);
+    text-align: center;
 }
 
-/* --- "Alkotásaim", "Előadásaim", "Rendezvények" oldalak specifikus stílusai --- */
-#creations-section .section-content-fullwidth,
-#performances-section .section-content-fullwidth,
-#events-section .section-content-fullwidth {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px; 
-    margin: 0 auto;
-    padding: 0 20px;
+.article-quote {
+    font-size: 1.4em;
+    font-style: italic;
+    margin-bottom: 15px;
 }
 
-/* --- Választó kártyák stílusai ("Alkotásaim") --- */
+.article-link {
+    color: var(--color-highlight-gold);
+    text-decoration: none;
+}
+
+.article-link:hover {
+    text-decoration: underline;
+}
+
+/* --- "Alkotásaim" oldal stílusai --- */
 .choice-card-container {
     display: flex;
     justify-content: center;
-    gap: 50px;
+    gap: 40px;
     flex-wrap: wrap;
 }
 
 .choice-card {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
-    border: 1px solid rgba(184, 134, 11, 0.2);
-    backdrop-filter: blur(5px);
-    padding: 30px;
-    width: 400px;
+    border: 1px solid rgba(184, 134, 11, 0.3);
+    padding: 25px;
+    width: 350px;
     max-width: 100%;
     text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.choice-card:hover {
+    transform: translateY(-10px);
 }
 
 .choice-card-image-wrapper {
@@ -404,14 +331,14 @@ body:not(.landing-page) #main-footer {
     aspect-ratio: 4 / 3;
     overflow: hidden;
     border-radius: 8px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .choice-card-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform 0.5s ease;
 }
 
 .choice-card:hover .choice-card-image {
@@ -420,77 +347,21 @@ body:not(.landing-page) #main-footer {
 
 .choice-card-title {
     font-family: var(--font-header-name);
-    font-size: 2.5em;
-    margin-bottom: 25px;
-    color: var(--color-text-primary);
-}
-
-/* --- Galéria, Versek és Videó Konténer Stílusok a MODÁLOKBAN --- */
-.gallery-container, .poetry-container, .video-gallery-container {
-    padding: 0;
-    background-color: transparent;
-    border: none;
-}
-
-.gallery-title {
-    font-family: var(--font-header-name);
-    font-size: 2.8em;
-    font-weight: 400;
-    color: var(--color-text-primary);
-    text-align: center;
-    margin-bottom: 40px;
-    letter-spacing: 1px;
-    border-bottom: 1px solid rgba(184, 134, 11, 0.4);
-    padding-bottom: 20px;
-}
-
-/* --- Képgaléria Stílusok --- */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-}
-
-.gallery-item {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    aspect-ratio: 1 / 1;
-    border-radius: 8px;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.gallery-item:hover {
-    transform: scale(1.03);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.7);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.1);
+    font-size: 2em;
+    margin-bottom: 20px;
 }
 
 /* --- Gomb Stílus --- */
 .btn {
     display: inline-block;
-    padding: 12px 30px;
+    padding: 10px 25px;
     font-family: var(--font-header-name);
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: var(--color-text-primary);
     background-color: transparent;
     border: 2px solid var(--color-accent-gold);
     border-radius: 50px;
     text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: background-color 0.3s ease, color 0.3s ease;
     cursor: pointer;
 }
 
@@ -499,112 +370,37 @@ body:not(.landing-page) #main-footer {
     color: var(--color-dark-background);
 }
 
-/* --- Versek Stílusok a MODÁLBAN --- */
-.poem-article {
-    background-color: #000000;
-    padding: 30px 40px;
-    margin-bottom: 30px;
-    border-left: 3px solid var(--color-accent-gold);
-    text-align: center;
-}
-.poem-article:last-child {
-    margin-bottom: 0;
-}
-
-.poem-title {
-    font-family: var(--font-header-name);
-    font-size: 2.2em;
-    color: var(--color-accent-gold);
-    margin-bottom: 20px;
-}
-
-.poem-text {
-    font-family: var(--font-special);
-    font-size: 1.3em;
-    line-height: 2;
-    color: var(--color-poem-text);
-    font-style: italic;
-    font-weight: 500;
-    white-space: pre-line;
-}
-
-
-/* --- ÁLTALÁNOS MODÁL (FELUGRÓ ABLAK) STÍLUSOK --- */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(13, 13, 13, 0.9);
-    z-index: 10000;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    backdrop-filter: blur(5px);
-}
-
-.modal.visible {
-    display: flex;
-    opacity: 1;
-}
-
-.modal-content {
-    position: relative;
-    background-color: #0d0d0d;
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid rgba(184, 134, 11, 0.3);
-    width: 90%;
-    max-width: 800px;
-    max-height: 90vh;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    animation: modal-fade-in 0.5s ease;
-    display: flex;
-    flex-direction: column;
-}
-
-.modal-content.large {
+/* --- "Előadásaim" (Videógaléria) Stílusok --- */
+/* Ezen az oldalon a tartalom konténer lehet szélesebb és kevésbé átlátszó */
+#performances-section .section-content-fullwidth {
     max-width: 1400px;
+    background-color: rgba(0, 0, 0, 0.75);
 }
 
-.modal-body {
-    overflow-y: auto;
-    padding: 20px;
+.video-gallery-container {
+    margin-bottom: 60px;
 }
 
-@keyframes modal-fade-in {
-    from { transform: translateY(-30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-.modal-close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    background: none;
-    border: none;
-    color: var(--color-text-primary);
+.gallery-title {
+    font-family: var(--font-header-name);
     font-size: 2.5em;
-    cursor: pointer;
-    line-height: 1;
-    z-index: 10;
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(184, 134, 11, 0.4);
 }
 
-/* --- Videógaléria Stílusok --- */
 .video-gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 30px;
 }
 
 .video-item {
-    background-color: rgba(0,0,0,0.4);
-    border-radius: 8px;
+    background-color: rgba(0,0,0,0.6);
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 
 .video-embed-wrapper {
@@ -628,188 +424,58 @@ body:not(.landing-page) #main-footer {
 }
 
 .video-title {
-    font-family: var(--font-header-name);
-    font-size: 1.5em;
+    font-size: 1.4em;
     color: var(--color-highlight-gold);
-    margin: 0 0 10px 0;
-}
-
-.video-description {
-    font-size: 1.1em;
-    line-height: 1.6;
-    color: var(--color-text-primary);
-    margin: 0;
+    margin-bottom: 10px;
 }
 
 /* --- Eseménykártya ("Rendezvények") --- */
 .event-card {
-    background-color: rgba(0,0,0,0.7);
-    border-radius: 10px;
-    border: 1px solid rgba(184, 134, 11, 0.3);
-    backdrop-filter: blur(8px);
-    padding: 40px;
-    max-width: 700px;
+    padding: 50px;
+    max-width: 600px;
     margin: 0 auto;
-}
-
-.event-artist-name {
-    font-family: var(--font-header-name);
-    font-size: 2em;
-    color: var(--color-text-primary);
-    margin: 0;
 }
 
 .event-title {
     font-family: var(--font-header-name);
-    font-size: 3em;
+    font-size: 2.8em;
     color: var(--color-accent-gold);
-    margin: 10px 0;
+    margin: 15px 0;
 }
 
-.event-gallery, .event-address, .event-opening {
-    font-family: var(--font-special);
-    font-size: 1.3em;
-    margin: 10px 0;
+/* --- Kapcsolat oldal & Chatbot Placeholder --- */
+#chatbot-placeholder {
+    max-width: 500px;
+    margin: 40px auto;
+    border-radius: 15px;
+    background-color: #1a1a1a; /* Sötétebb alap */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    color: var(--color-highlight-gold); /* Alapértelmezett szövegszín aranyra állítva */
+    overflow: hidden;
+    text-align: left;
 }
 
-.event-link {
-    margin-top: 30px;
-}
-
-/* --- Kapcsolat oldal --- */
-#contact-section .section-content {
-    max-width: 800px;
-}
-.contact-intro {
-    margin-bottom: 40px;
-}
-.contact-details {
-    text-align: center;
-}
-.contact-name {
-    font-family: var(--font-header-name);
-    font-size: 2.5em;
-    color: var(--color-highlight-gold);
-    margin-bottom: 30px;
-}
-.contact-info-group {
-    margin-bottom: 25px;
-}
-.contact-info-title {
-    font-size: 1.1em;
-    text-transform: uppercase;
-    color: rgba(245, 245, 220, 0.7);
-    letter-spacing: 1px;
-    margin: 0 0 5px 0;
-}
-.contact-email {
-    font-size: 1.4em;
+.chatbot-header {
+    background-color: var(--color-dark-background);
     color: var(--color-text-primary);
-    text-decoration: none;
+    padding: 20px;
 }
 
-
-/* --- Cikk részlet ("Rólam" oldal) --- */
-.article-snippet {
-    margin-top: 40px;
-    padding-top: 30px;
-    border-top: 1px solid rgba(184, 134, 11, 0.3);
+.chat-window {
+    height: 250px;
+    padding: 20px;
+    background-color: #2c2c2c; /* Sötétebb háttér */
+    color: var(--color-highlight-gold); /* Világos arany szöveg */
 }
 
-.article-quote {
-    font-family: var(--font-special);
-    font-size: 1.5em;
-    font-style: italic;
-    color: var(--color-text-primary);
-    margin: 0 0 20px 0;
-    padding: 0;
-    border: none;
+.bot-message {
+    color: var(--color-highlight-gold); /* Explicit megerősítés */
 }
 
-.article-link {
-    font-family: var(--font-secondary);
-    font-size: 1.1em;
-    color: var(--color-highlight-gold);
-    text-decoration: none;
-}
-
-.article-link:hover {
-    color: var(--color-text-primary);
-    text-decoration: underline;
-}
-
-
-/* --- Képnagyító Lightbox --- */
-.lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(13, 13, 13, 0.95);
-    z-index: 10001;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.lightbox.visible {
+.chatbot-footer {
     display: flex;
-    opacity: 1;
-}
-
-.lightbox-content {
-    position: relative;
-    max-width: 90vw;
-    max-height: 85vh;
-    animation: lightbox-zoom 0.5s ease;
-}
-
-@keyframes lightbox-zoom {
-    from { transform: scale(0.8); }
-    to { transform: scale(1); }
-}
-
-#lightbox-img {
-    max-width: 100%;
-    max-height: 85vh;
-    object-fit: contain;
-    border: 3px solid var(--color-accent-gold);
-    border-radius: 4px;
-}
-
-.lightbox-close, .lightbox-prev, .lightbox-next {
-    position: absolute;
-    color: var(--color-text-primary);
-    font-size: 2.5em;
-    font-weight: bold;
-    cursor: pointer;
-    user-select: none;
-    transition: color 0.2s ease;
-}
-
-.lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover {
-    color: var(--color-highlight-gold);
-}
-
-.lightbox-close {
-    top: 15px;
-    right: 35px;
-}
-
-.lightbox-prev, .lightbox-next {
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.lightbox-prev {
-    left: 15px;
-}
-
-.lightbox-next {
-    right: 15px;
+    padding: 15px;
+    background-color: #1a1a1a;
 }
 
 /* --- Blog Oldal Stílusok --- */
@@ -819,54 +485,153 @@ body:not(.landing-page) #main-footer {
 }
 
 .blog-post {
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
-    padding: 30px;
+    background-color: rgba(20, 20, 20, 0.8);
+    padding: 35px;
     margin-bottom: 40px;
-    border-left: 3px solid var(--color-accent-gold);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.blog-post:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-
-.blog-post:last-child {
-    margin-bottom: 0;
+    border-left: 4px solid var(--color-accent-gold);
 }
 
 .blog-post-title {
-    font-family: var(--font-header-name);
-    font-size: 2.2em;
+    font-size: 2em;
     color: var(--color-highlight-gold);
-    margin: 0 0 10px 0;
 }
 
-.blog-post-meta {
-    font-family: var(--font-secondary);
-    font-size: 0.9em;
-    color: rgba(245, 245, 220, 0.7);
-    margin-bottom: 20px;
+/* --- MODÁL (FELUGRÓ ABLAK) STÍLUSOK --- */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(13, 13, 13, 0.92);
+    z-index: 10000;
+    display: none; /* JS kapcsolja be */
+    justify-content: center; align-items: center;
+    opacity: 0; transition: opacity 0.4s ease;
+    backdrop-filter: blur(8px);
+}
+
+.modal.visible {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content.large {
+    max-width: 1400px;
+}
+
+.modal-body {
+    overflow-y: auto; /* Görgethetőség a modálon belül */
+    padding: 20px;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px; right: 20px;
+    background: none; border: none;
+    color: var(--color-text-primary);
+    font-size: 2.5em;
+    cursor: pointer;
+}
+
+/* --- Képgaléria Stílusok (Modálban) --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.gallery-item {
+    cursor: pointer;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.gallery-item img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* --- Versek Stílusok (Modálban) --- */
+.poem-article {
+    background-color: #0d0d0d;
+    padding: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.poem-title {
+    font-family: var(--font-header-name);
+    font-size: 2em;
+    color: var(--color-accent-gold);
+    margin-bottom: 25px;
+}
+
+.poem-text {
+    font-size: 1.2em;
+    line-height: 2;
+    color: var(--color-poem-text);
     font-style: italic;
+    /* white-space: pre-line; - Nem szükséges, mert innerHTML-t használunk <br> tagekkel */
 }
 
-.blog-post-content p {
-    font-size: 1.1em;
-    line-height: 1.7;
-    margin-bottom: 15px;
+/* --- Képnagyító Lightbox --- */
+.lightbox {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 10001;
+    display: none;
+    justify-content: center; align-items: center;
+    opacity: 0; transition: opacity 0.4s ease;
 }
 
-.blog-post-content .btn {
-    margin-top: 15px;
+.lightbox.visible {
+    display: flex; opacity: 1;
 }
 
-/* --- Lábléc Stílusok (Frissített) --- */
+.lightbox-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+}
+
+#lightbox-img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border: 3px solid var(--color-accent-gold);
+}
+
+.lightbox-close, .lightbox-prev, .lightbox-next {
+    position: absolute;
+    color: var(--color-text-primary);
+    font-size: 2.5em;
+    cursor: pointer;
+}
+
+.lightbox-close { top: 15px; right: 35px; }
+.lightbox-prev { top: 50%; left: 25px; transform: translateY(-50%); }
+.lightbox-next { top: 50%; right: 25px; transform: translateY(-50%); }
+
+/* --- Lábléc Stílusok --- */
 #main-footer {
     background-color: #0a0a0a;
-    color: var(--color-text-primary);
-    padding: 60px 0 40px 0;
-    font-size: 0.9em;
+    padding: 50px 0 30px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     z-index: 10;
@@ -875,7 +640,7 @@ body:not(.landing-page) #main-footer {
 .footer-container {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
@@ -884,18 +649,8 @@ body:not(.landing-page) #main-footer {
 
 .footer-section {
     flex: 1;
-    min-width: 280px;
-    margin: 20px;
-    padding: 0 20px;
-}
-
-.footer-section h4 {
-    font-family: var(--font-header-name);
-    font-size: 1.4em;
-    color: var(--color-highlight-gold);
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    min-width: 250px;
+    margin: 15px;
 }
 
 /* Támogatók */
@@ -904,24 +659,12 @@ body:not(.landing-page) #main-footer {
     align-items: center;
     color: var(--color-text-primary);
     text-decoration: none;
-    margin-bottom: 20px;
-    transition: opacity 0.3s ease;
+    margin-bottom: 15px;
 }
 
-.footer-sponsors .sponsor-link:hover {
-    opacity: 0.8;
-}
-
-.footer-sponsors .sponsor-logo {
-    height: 40px;
-    width: auto;
-    margin-right: 15px;
-    filter: grayscale(50%);
-    transition: filter 0.3s ease;
-}
-
-.footer-sponsors .sponsor-link:hover .sponsor-logo {
-    filter: grayscale(0%);
+.sponsor-logo {
+    height: 35px;
+    margin-right: 10px;
 }
 
 /* Középső rész */
@@ -930,15 +673,8 @@ body:not(.landing-page) #main-footer {
 }
 
 .footer-logo {
-    max-height: 90px;
-    margin-bottom: 20px;
-    opacity: 0.9;
-}
-
-.footer-info p {
-    font-size: 0.9em;
-    color: rgba(245, 245, 220, 0.7);
-    margin: 0;
+    max-height: 80px;
+    margin-bottom: 15px;
 }
 
 /* Linkek és Social Media */
@@ -946,40 +682,29 @@ body:not(.landing-page) #main-footer {
     text-align: right;
 }
 
-.footer-links .impressum-link {
+.impressum-link {
     color: var(--color-text-primary);
     text-decoration: none;
     display: block;
-    margin-bottom: 25px;
-    transition: color 0.3s ease;
-}
-
-.footer-links .impressum-link:hover {
-    color: var(--color-highlight-gold);
+    margin-bottom: 20px;
 }
 
 .social-icons a {
     display: inline-block;
-    margin-left: 20px;
+    margin-left: 15px;
     color: var(--color-text-primary);
-    font-size: 1.5em; /* Nagyobb ikonok */
-    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 1.4em;
 }
 
-.social-icons a:hover {
-    color: var(--color-highlight-gold);
-    transform: scale(1.1);
-}
+/* --- Reszponzív Beállítások (Media Queries) --- */
 
-
-/* --- Reszponzív Beállítások --- */
-@media (max-width: 992px) {
+ @media (max-width: 1024px) {
     .main-nav {
         flex-direction: column;
         align-items: center;
     }
     .nav-item {
-        margin: 10px 0;
+        margin: 8px 0;
     }
     .language-switcher {
         margin-top: 15px;
@@ -992,1187 +717,57 @@ body:not(.landing-page) #main-footer {
     }
     .footer-section, .footer-links {
         text-align: center;
-        width: 100%;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
     }
     .footer-sponsors .sponsor-link {
         justify-content: center;
-    }
-    .footer-links {
-        text-align: center;
     }
     .social-icons a {
         margin: 0 15px;
     }
 }
 
-@media (max-width: 768px) {
-    .artist-name { font-size: 3.5em; }
-    .subpage-header .artist-name { font-size: 2.5em; }
-    .page-section h2 { font-size: 2.5em; }
-    .page-section p { font-size: 1.1em; }
-    #main-footer { padding: 40px 20px; }
-    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
-    .gallery-title { font-size: 2.2em; }
-    .poem-title { font-size: 1.8em; }
-    .poem-text { font-size: 1.1em; }
-    .choice-card-container { flex-direction: column; align-items: center; }
-    .choice-card { width: 90%; }
-    .video-gallery-grid { grid-template-columns: 1fr; }
-    .blog-post-title { font-size: 1.8em; }
-}
-
-@media (max-width: 480px) {
-    .artist-name { font-size: 2.8em; }
-    .nav-item { font-size: 1.1em; padding: 8px 12px; }
-    .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-    .lightbox-prev, .lightbox-next { font-size: 2em; }
-}
-
-/* --- Video Háttér Stílusok --- */
-.has-video-bg {
-    position: relative;
-    overflow: hidden;
-    color: #ffffff; /* Biztosítja a kontrasztot a sötét háttérrel szemben */
-}
-
-.section-background-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: cover; /* Teljes lefedettség */
-    transform: translateX(-50%) translateY(-50%);
-    z-index: 1; /* Videó a legalján */
-}
-
-/* Overlay a videó felett a jobb olvashatóságért (Pseudo-element) */
-.has-video-bg::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Sötétítés mértéke állítható */
-    z-index: 2; /* Overlay a videó felett */
-}
-
-.content-wrapper {
-    position: relative;
-    z-index: 3; /* Tartalom az overlay felett */
-    /* padding: 20px; Javasolt padding hozzáadása, ha még nincs */
-}
-
-/* --- Reszponzivitás Javítás (4. kérés) --- */
  @media (max-width: 768px) {
-    .responsive-event-title {
-        font-size: 1.8rem; /* Csökkentett méret tableten */
-        white-space: normal;
-        overflow-wrap: break-word;
-        text-align: center;
+    .page-section {
+        padding: 60px 10px;
+    }
+    .section-content, .section-content-fullwidth {
+        padding: 30px;
+    }
+    .video-gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    /* Biztosítja, hogy az esemény címe ne lógjon ki mobilon */
+    .event-title.responsive-event-title {
+        font-size: 2rem;
     }
 }
 
  @media (max-width: 480px) {
-    .responsive-event-title {
-        font-size: 1.4rem; /* Tovább csökkentett méret mobilon, hogy biztosan elférjen */
+    .event-title.responsive-event-title {
+        font-size: 1.6rem;
+    }
+    .poem-text {
+        font-size: 1.1em;
+        line-height: 1.8;
+    }
+    .modal-content {
+        padding: 15px;
+    }
+    .modal-close-btn {
+        font-size: 2em;
+        top: 10px;
+        right: 10px;
     }
 }
 
-/* --- Chatbot Placeholder Stílusok --- */
-#chatbot-placeholder {
-    max-width: 450px;
-    margin: 30px auto;
-    border-radius: 10px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    color: #333; /* Sötét szöveg */
-    overflow: hidden;
-}
-
-.chatbot-header {
-    background-color: #333; /* Vagy a design fő színe */
-    color: #fff;
-    padding: 15px;
-    text-align: center;
-}
-
-.chatbot-header h3 {
-    margin: 0;
-    font-size: 1.1em;
-}
-
-.chat-window {
-    height: 200px;
-    overflow-y: auto;
-    padding: 15px;
-    background-color: #f9f9f9;
-}
-
-.bot-message {
-    background-color: #e0e0e0;
-    padding: 10px;
-    border-radius: 8px;
-    display: inline-block;
-    max-width: 80%;
-}
-
-.chatbot-footer {
-    display: flex;
-    padding: 10px;
-    border-top: 1px solid #eee;
-}
-
-#chatbot-placeholder input {
-    flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#chatbot-placeholder button {
-    margin-left: 10px;
-    padding: 10px 15px;
-}
-
-/* --- Javasolt Link Animációk --- */
-.nav-item, .social-icons a, .impressum-link, .sponsor-link, .contact-email, .article-link {
-    transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease, opacity 0.3s ease;
-}
-
-.nav-item:hover {
-    color: var(--color-highlight-gold);
-    background-color: rgba(184, 134, 11, 0.2);
-    transform: translateY(-2px);
-}
-
-.social-icons a:hover, .impressum-link:hover, .sponsor-link:hover, .contact-email:hover, .article-link:hover {
-    color: var(--color-highlight-gold);
-    opacity: 0.8;
-    transform: translateY(-2px);
-}
-
-
-/* --- Fix háttérvideó az aloldalakhoz --- */
-.page-background-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: -10; /* Mélyen hátul van */
-    pointer-events: none;
-}
-
-.page-background-video video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.page-background-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Sötétítő réteg */
-}
-
-
-body.loaded {
-    overflow-y: auto;
-}
-
-/* --- Animált Intro Szekció --- */
-.intro-sequence {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: var(--color-dark-background);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 1s ease-out;
-}
-
-.intro-logo {
-    width: 150px;
-    height: auto;
-    opacity: 0;
-    transform: scale(0.9);
-    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
-}
-
-.intro-logo.visible {
-    opacity: 1;
-    transform: scale(1);
-}
-
-/* --- Fejléc és Fő Tartalom --- */
-#main-header, #main-footer {
-    opacity: 0;
-    transition: opacity 1.5s ease-in;
-}
-
-body:not(.landing-page) #main-header,
-body:not(.landing-page) #main-footer {
-    opacity: 1; /* Aloldalakon azonnal látható */
-}
-
-#main-header.visible, #main-footer.visible {
-    opacity: 1;
-}
-
-/* --- Fejléc Stílusok --- */
-#main-header {
-    position: relative;
-    width: 100%;
-    height: 100vh; /* Kezdőlapon teljes magasság */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-    background-color: transparent; /* Legyen átlátszó, hogy a háttérvideó látszódjon alatta */
-}
-
-.subpage-header {
-    height: 35vh;
-    min-height: 250px;
-}
-
-#background-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -2;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-}
-
-.header-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--color-overlay-dark);
-    z-index: -1;
-}
-
-.header-content {
-    position: relative;
-    z-index: 1;
-}
-
-.artist-name {
-    font-family: var(--font-header-name);
-    font-size: clamp(3em, 8vw, 5em); /* EREDETI: 5em */
-    font-weight: 300;
-    color: var(--color-intro-text);
-    text-transform: uppercase;
-    text-shadow: 0 0 15px rgba(0,0,0,0.5);
-    opacity: 0;
-    transition: opacity 2s ease-in-out 1s;
-}
-
-.subpage-header .artist-name {
-    font-size: clamp(2.5em, 7vw, 3.5em); /* EREDETI: 3.5em */
-    opacity: 1;
-    transition: none;
-}
-
-.artist-name.visible {
-    opacity: 1;
-}
-
-.artist-name span {
-    display: inline-block;
-    padding: 0 0.2em;
-}
-
-.main-nav {
-    margin-top: 30px;
-    opacity: 0;
-    transition: opacity 1s ease-in-out 3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.subpage-header .main-nav {
-    opacity: 1;
-    transition: none;
-}
-
-.main-nav.visible {
-    opacity: 1;
-}
-
-.nav-item {
-    text-decoration: none;
-    color: var(--color-text-primary);
-    font-size: 1.2em;
-    margin: 0 15px;
-    font-family: var(--font-secondary);
-    transition: color 0.3s ease, background-color 0.3s ease;
-    padding: 8px 15px;
-    border-radius: 20px;
-    background-color: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-}
-
-.nav-item:hover {
-    color: var(--color-highlight-gold);
-    background-color: rgba(184, 134, 11, 0.2);
-}
-
-/* --- Nyelvváltó Stílusok --- */
-.language-switcher {
-    position: relative;
-    margin-left: 20px;
-    font-family: var(--font-secondary);
-}
-
-.current-language {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    padding: 5px 10px;
-    border: 1px solid rgba(245, 245, 220, 0.3);
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.language-switcher:hover .current-language {
-    background-color: rgba(245, 245, 220, 0.1);
-}
-
-.lang-flag {
-    width: 20px;
-    height: auto;
-    margin-right: 8px;
-    border-radius: 2px;
-}
-
-.lang-text {
-    font-size: 1em;
-    color: var(--color-text-primary);
-}
-
-.arrow-down {
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid var(--color-text-primary);
-    margin-left: 8px;
-    transition: transform 0.3s ease;
-}
-
-.language-switcher:hover .arrow-down {
-    transform: rotate(180deg);
-}
-
-.language-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: var(--color-dark-background);
-    border: 1px solid rgba(245, 245, 220, 0.3);
-    border-radius: 5px;
-    list-style: none;
-    padding: 5px;
-    margin: 5px 0 0 0;
-    min-width: 100%;
-    z-index: 100;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-}
-
-.language-switcher:hover .language-dropdown {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.language-dropdown li a {
-    display: flex;
-    align-items: center;
-    padding: 8px 12px;
-    text-decoration: none;
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
-}
-
-.language-dropdown li a:hover {
-    background-color: rgba(245, 245, 220, 0.1);
-}
-
-
-/* --- Általános Szekció Stílusok --- */
-.page-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 100px 20px;
-    box-sizing: border-box;
-    text-align: center;
-    position: relative;
-    background-color: transparent;
-}
-
-.page-section h2 {
-    font-size: clamp(2.5em, 6vw, 3.5em); /* EREDETI: 3.5em */
+/* --- Impresszum Specifikus Stílusok --- */
+#imprint-section a {
     color: var(--color-accent-gold);
-    font-family: var(--font-header-name);
-    margin-bottom: 30px;
-}
-
-/* Közvetlenül a .page-section h2 után illeszd be */
-.section-content-fullwidth, .section-content {
-    width: 100%;
-    max-width: 1400px; /* Megakadályozza a tartalom túlzott szétterülését */
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 20px;
-    padding-right: 20px;
-    box-sizing: border-box; /* Biztosítja, hogy a padding ne növelje a méretet */
-}
-
-/* --- "Rólam" oldal specifikus javítás --- */
-#about-section .section-content {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 0 25px rgba(0,0,0,0.5);
-}
-
-/* --- ÁLTALÁNOS VIDEÓS HÁTTÉR STÍLUSOK (SZEKCIÓKHOZ) --- */
-.section-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    overflow: hidden;
-}
-
-.section-background video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.section-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-/* --- "Alkotásaim", "Előadásaim", "Rendezvények" oldalak specifikus stílusai --- */
-#creations-section .section-content-fullwidth,
-#performances-section .section-content-fullwidth,
-#events-section .section-content-fullwidth {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px; 
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* --- Választó kártyák stílusai ("Alkotásaim") --- */
-.choice-card-container {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    flex-wrap: wrap;
-}
-
-.choice-card {
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-    border: 1px solid rgba(184, 134, 11, 0.2);
-    backdrop-filter: blur(5px);
-    padding: 30px;
-    width: 400px;
-    max-width: 100%;
-    text-align: center;
-}
-
-.choice-card-image-wrapper {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-    border-radius: 8px;
-    margin-bottom: 25px;
-}
-
-.choice-card-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.choice-card:hover .choice-card-image {
-    transform: scale(1.1);
-}
-
-.choice-card-title {
-    font-family: var(--font-header-name);
-    font-size: 2.5em;
-    margin-bottom: 25px;
-    color: var(--color-text-primary);
-}
-
-/* --- Galéria, Versek és Videó Konténer Stílusok a MODÁLOKBAN --- */
-.gallery-container, .poetry-container, .video-gallery-container {
-    padding: 0;
-    background-color: transparent;
-    border: none;
-}
-
-.gallery-title {
-    font-family: var(--font-header-name);
-    font-size: 2.8em;
-    font-weight: 400;
-    color: var(--color-text-primary);
-    text-align: center;
-    margin-bottom: 40px;
-    letter-spacing: 1px;
-    border-bottom: 1px solid rgba(184, 134, 11, 0.4);
-    padding-bottom: 20px;
-}
-
-/* --- Képgaléria Stílusok --- */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-}
-
-.gallery-item {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    aspect-ratio: 1 / 1;
-    border-radius: 8px;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.gallery-item:hover {
-    transform: scale(1.03);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.7);
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.1);
-}
-
-/* --- Gomb Stílus --- */
-.btn {
-    display: inline-block;
-    padding: 12px 30px;
-    font-family: var(--font-header-name);
-    font-size: 1.2em;
-    color: var(--color-text-primary);
-    background-color: transparent;
-    border: 2px solid var(--color-accent-gold);
-    border-radius: 50px;
     text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    cursor: pointer;
 }
 
-.btn:hover {
-    background-color: var(--color-accent-gold);
-    color: var(--color-dark-background);
-}
-
-/* --- Versek Stílusok a MODÁLBAN --- */
-.poem-article {
-    background-color: #000000;
-    padding: 30px 40px;
-    margin-bottom: 30px;
-    border-left: 3px solid var(--color-accent-gold);
-    text-align: center;
-}
-.poem-article:last-child {
-    margin-bottom: 0;
-}
-
-.poem-title {
-    font-family: var(--font-header-name);
-    font-size: 2.2em;
-    color: var(--color-accent-gold);
-    margin-bottom: 20px;
-}
-
-.poem-text {
-    font-family: var(--font-special);
-    font-size: 1.3em;
-    line-height: 2;
-    color: var(--color-poem-text);
-    font-style: italic;
-    font-weight: 500;
-    white-space: pre-line;
-}
-
-
-/* --- ÁLTALÁNOS MODÁL (FELUGRÓ ABLAK) STÍLUSOK --- */
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(13, 13, 13, 0.9);
-    z-index: 10000;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    backdrop-filter: blur(5px);
-}
-
-.modal.visible {
-    display: flex;
-    opacity: 1;
-}
-
-.modal-content {
-    position: relative;
-    background-color: #0d0d0d;
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid rgba(184, 134, 11, 0.3);
-    width: 90%;
-    max-width: 800px;
-    max-height: 90vh;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    animation: modal-fade-in 0.5s ease;
-    display: flex;
-    flex-direction: column;
-}
-
-.modal-content.large {
-    max-width: 1400px;
-}
-
-.modal-body {
-    overflow-y: auto;
-    padding: 20px;
-}
-
-@keyframes modal-fade-in {
-    from { transform: translateY(-30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-.modal-close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    background: none;
-    border: none;
-    color: var(--color-text-primary);
-    font-size: 2.5em;
-    cursor: pointer;
-    line-height: 1;
-    z-index: 10;
-}
-
-/* --- Videógaléria Stílusok --- */
-.video-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 30px;
-}
-
-.video-item {
-    background-color: rgba(0,0,0,0.4);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.5);
-}
-
-.video-embed-wrapper {
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%; /* 16:9 arány */
-}
-
-.video-embed-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-.video-info {
-    padding: 20px;
-    text-align: left;
-}
-
-.video-title {
-    font-family: var(--font-header-name);
-    font-size: 1.5em;
+#imprint-section a:hover {
     color: var(--color-highlight-gold);
-    margin: 0 0 10px 0;
-}
-
-.video-description {
-    font-size: 1.1em;
-    line-height: 1.6;
-    color: var(--color-text-primary);
-    margin: 0;
-}
-
-/* --- Eseménykártya ("Rendezvények") --- */
-.event-card {
-    background-color: rgba(0,0,0,0.7);
-    border-radius: 10px;
-    border: 1px solid rgba(184, 134, 11, 0.3);
-    backdrop-filter: blur(8px);
-    padding: 40px;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-.event-artist-name {
-    font-family: var(--font-header-name);
-    font-size: 2em;
-    color: var(--color-text-primary);
-    margin: 0;
-}
-
-.event-title {
-    font-family: var(--font-header-name);
-    font-size: 3em;
-    color: var(--color-accent-gold);
-    margin: 10px 0;
-}
-
-.event-gallery, .event-address, .event-opening {
-    font-family: var(--font-special);
-    font-size: 1.3em;
-    margin: 10px 0;
-}
-
-.event-link {
-    margin-top: 30px;
-}
-
-/* --- Kapcsolat oldal --- */
-#contact-section .section-content {
-    max-width: 800px;
-}
-.contact-intro {
-    margin-bottom: 40px;
-}
-.contact-details {
-    text-align: center;
-}
-.contact-name {
-    font-family: var(--font-header-name);
-    font-size: 2.5em;
-    color: var(--color-highlight-gold);
-    margin-bottom: 30px;
-}
-.contact-info-group {
-    margin-bottom: 25px;
-}
-.contact-info-title {
-    font-size: 1.1em;
-    text-transform: uppercase;
-    color: rgba(245, 245, 220, 0.7);
-    letter-spacing: 1px;
-    margin: 0 0 5px 0;
-}
-.contact-email {
-    font-size: 1.4em;
-    color: var(--color-text-primary);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-.contact-email:hover {
-    color: var(--color-highlight-gold);
-}
-
-
-/* --- Cikk részlet ("Rólam" oldal) --- */
-.article-snippet {
-    margin-top: 40px;
-    padding-top: 30px;
-    border-top: 1px solid rgba(184, 134, 11, 0.3);
-}
-
-.article-quote {
-    font-family: var(--font-special);
-    font-size: 1.5em;
-    font-style: italic;
-    color: var(--color-text-primary);
-    margin: 0 0 20px 0;
-    padding: 0;
-    border: none;
-}
-
-.article-link {
-    font-family: var(--font-secondary);
-    font-size: 1.1em;
-    color: var(--color-highlight-gold);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.article-link:hover {
-    color: var(--color-text-primary);
     text-decoration: underline;
-}
-
-
-/* --- Képnagyító Lightbox --- */
-.lightbox {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(13, 13, 13, 0.95);
-    z-index: 10001;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.lightbox.visible {
-    display: flex;
-    opacity: 1;
-}
-
-.lightbox-content {
-    position: relative;
-    max-width: 90vw;
-    max-height: 85vh;
-    animation: lightbox-zoom 0.5s ease;
-}
-
-@keyframes lightbox-zoom {
-    from { transform: scale(0.8); }
-    to { transform: scale(1); }
-}
-
-#lightbox-img {
-    max-width: 100%;
-    max-height: 85vh;
-    object-fit: contain;
-    border: 3px solid var(--color-accent-gold);
-    border-radius: 4px;
-}
-
-.lightbox-close, .lightbox-prev, .lightbox-next {
-    position: absolute;
-    color: var(--color-text-primary);
-    font-size: 2.5em;
-    font-weight: bold;
-    cursor: pointer;
-    user-select: none;
-    transition: color 0.2s ease;
-}
-
-.lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover {
-    color: var(--color-highlight-gold);
-}
-
-.lightbox-close {
-    top: 15px;
-    right: 35px;
-}
-
-.lightbox-prev, .lightbox-next {
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.lightbox-prev {
-    left: 15px;
-}
-
-.lightbox-next {
-    right: 15px;
-}
-
-/* --- Lábléc Stílusok (Frissített) --- */
-footer {
-    background-color: #1a1a1a; /* Sötét háttér */
-    color: #fff;
-    padding: 40px 0;
-    font-size: 0.9em;
-}
-
-.footer-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start; /* Felfelé igazítva */
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.footer-section {
-    flex: 1;
-    min-width: 250px;
-    margin: 10px;
-}
-
-/* Támogatók stílusa */
-.footer-sponsors h4 {
-    margin-bottom: 15px;
-}
-
-.sponsor-link {
-    display: flex;
-    align-items: center;
-    color: #fff;
-    text-decoration: none;
-    margin-bottom: 15px;
-    transition: opacity 0.3s;
-}
-
-.sponsor-link:hover {
-    opacity: 0.8;
-}
-
-.sponsor-logo {
-    height: 40px; /* Állítsd be a Pohánka logó méretét */
-    width: auto;
-    margin-right: 15px;
-}
-
-/* Középső rész stílusa */
-.footer-info {
-    text-align: center;
-}
-
-.footer-logo {
-    max-height: 80px; /* Állítsd be Giada logójának méretét */
-    margin-bottom: 15px;
-}
-
-/* Linkek stílusa */
-.footer-links {
-    text-align: right;
-}
-
-.impressum-link {
-    color: #fff;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 20px;
-}
-
-.social-icons a {
-    /* Biztosítsd, hogy a social ikonok stílusa konzisztens maradjon */
-    display: inline-block;
-    margin-left: 15px;
-    color: #fff;
-    transition: color 0.3s ease;
-}
-
-.social-icons a:hover {
-    color: var(--color-highlight-gold);
-}
-
-/* Mobil nézet (egymás alá rendezés) */
- @media (max-width: 992px) {
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .footer-section, .footer-links {
-        text-align: center;
-        width: 100%;
-        margin-bottom: 40px;
-    }
-    .sponsor-link {
-        justify-content: center;
-    }
-    .social-icons a {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-}
-
-
-/* --- Reszponzív Beállítások --- */
-@media (max-width: 768px) {
-    .artist-name { font-size: 3.5em; }
-    .subpage-header .artist-name { font-size: 2.5em; }
-    .page-section h2 { font-size: 2.5em; }
-    .page-section p { font-size: 1.1em; }
-    .nav-item { font-size: 1em; margin: 0 10px; }
-    #main-footer { padding: 15px 20px; }
-    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
-    .gallery-title { font-size: 2.2em; }
-    .poem-title { font-size: 1.8em; }
-    .poem-text { font-size: 1.1em; }
-    .choice-card-container { flex-direction: column; align-items: center; }
-    .choice-card { width: 90%; }
-    .video-gallery-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 480px) {
-    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
-}
-
-/* --- Video Háttér Stílusok --- */
-.has-video-bg {
-    position: relative;
-    overflow: hidden;
-    color: #ffffff; /* Biztosítja a kontrasztot a sötét háttérrel szemben */
-}
-
-.section-background-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: cover; /* Teljes lefedettség */
-    transform: translateX(-50%) translateY(-50%);
-    z-index: 1; /* Videó a legalján */
-}
-
-/* Overlay a videó felett a jobb olvashatóságért (Pseudo-element) */
-.has-video-bg::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Sötétítés mértéke állítható */
-    z-index: 2; /* Overlay a videó felett */
-}
-
-.content-wrapper {
-    position: relative;
-    z-index: 3; /* Tartalom az overlay felett */
-    /* padding: 20px; Javasolt padding hozzáadása, ha még nincs */
-}
-
-/* --- Reszponzivitás Javítás (4. kérés) --- */
- @media (max-width: 768px) {
-    .responsive-event-title {
-        font-size: 1.8rem; /* Csökkentett méret tableten */
-        white-space: normal;
-        overflow-wrap: break-word;
-        text-align: center;
-    }
-}
-
- @media (max-width: 480px) {
-    .responsive-event-title {
-        font-size: 1.4rem; /* Tovább csökkentett méret mobilon, hogy biztosan elférjen */
-    }
-}
-
-/* --- Chatbot Placeholder Stílusok --- */
-#chatbot-placeholder {
-    max-width: 450px;
-    margin: 30px auto;
-    border-radius: 10px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    color: #333; /* Sötét szöveg */
-    overflow: hidden;
-}
-
-.chatbot-header {
-    background-color: #333; /* Vagy a design fő színe */
-    color: #fff;
-    padding: 15px;
-    text-align: center;
-}
-
-.chatbot-header h3 {
-    margin: 0;
-    font-size: 1.1em;
-}
-
-.chat-window {
-    height: 200px;
-    overflow-y: auto;
-    padding: 15px;
-    background-color: #f9f9f9;
-}
-
-.bot-message {
-    background-color: #e0e0e0;
-    padding: 10px;
-    border-radius: 8px;
-    display: inline-block;
-    max-width: 80%;
-}
-
-.chatbot-footer {
-    display: flex;
-    padding: 10px;
-    border-top: 1px solid #eee;
-}
-
-#chatbot-placeholder input {
-    flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#chatbot-placeholder button {
-    margin-left: 10px;
-    padding: 10px 15px;
 }

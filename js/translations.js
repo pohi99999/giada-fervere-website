@@ -1,5 +1,5 @@
 const translations = {
-    // MAGYAR
+    // MAGYAR (HU)
     hu: {
         name: "Magyar",
         flag: "assets/images/flags/hu.svg",
@@ -9,32 +9,41 @@ const translations = {
         nav_creations: "Alkotásaim",
         nav_events: "Rendezvények",
         nav_contact: "Kapcsolat",
+        nav_blog: "Friss Hírek, Blogbejegyzések",
+        footer_sponsors: "Fő támogatóink:",
         copyright: "© 2025 Giada Fervere Produkció - minden jog fenntartva.",
+        footer_imprint: "Impresszum",
 
-        // Főoldal (index.html)
+        // Főoldal
         main_title: "Giada Fervere",
+        index_description: "Giada Fervere hivatalos weboldala. Fedezze fel alkotásaimat, olvasson a blogomon és vegye fel velem a kapcsolatot.",
 
-        // Rólam oldal (rolam.html)
+        // Rólam
         about_title: "Rólam",
+        about_description: "Ismerje meg Giada Fervere multidiszciplináris művészt, akinek alkotói univerzuma a festészet, a zene és a költészet metszéspontjában kel életre.",
         about_p1: "Giada Fervere egy multidiszciplináris művész, akinek alkotói univerzuma a festészet, a zene és a költészet metszéspontjában kel életre. Munkássága egy mély, belső utazás, ahol az ecsetvonások, a hegedű dallamai és a zongora akkordjai egyetlen, koherens üzenetté fonódnak össze.",
         about_p2: "Művészete a kifejezés eszköze; egyfajta párbeszéd a látható és a láthatatlan világok között, ahol minden festmény egy vers, és minden dallam egy elmesélt történet. Célja, hogy a sötét esztétika és a finom szimbolizmus segítségével olyan érzelmi tereket hozzon létre, amelyek elgondolkodtatnak, megérintenek és velünk maradnak.",
         about_quote: "„Amikor a tükörbe néztem, már nem láttam a régi lányt”",
         about_article_link: "cikk: www.heol.hu",
 
-        // Alkotásaim oldal (alkotasaim.html)
+        // Alkotásaim
         creations_title: "Alkotásaim",
+        creations_description: "Fedezze fel Giada Fervere festményeit és verseit. Egyedi alkotások, amelyek a sötét esztétika és a finom szimbolizmus jegyében születtek.",
         creations_card_paintings_title: "Festmények",
         creations_card_paintings_button: "Galéria megnyitása",
         creations_card_poems_title: "Verseim",
         creations_card_poems_button: "Versek olvasása",
         
-        // Előadásaim oldal (eloadasaim.html)
+        // Előadásaim
         performances_title: "Előadásaim",
+        performances_description: "Nézze meg Giada Fervere élő vers- és zenei előadásait. Videók a legemlékezetesebb pillanatokról.",
         performances_live_poetry_title: "Élő Versek",
         performances_music_title: "Zenei Előadások",
+        video_desc_1: "A 'Fekete Szirom' c. versem, 2023-ban, az izraeli-palesztin konfliktus, és az abból fakadó szörnyűségek hatására született meg bennem.",
 
-        // Rendezvények oldal (rendezvenyek.html)
+        // Rendezvények
         events_title: "Rendezvények",
+        events_description: "Tekintse meg Giada Fervere közelgő eseményeit, kiállításait és fellépéseit. Ne maradjon le a legújabb rendezvényekről!",
         events_card_artist: "Giada Fervere",
         events_card_title: "A Láthatatlan Visszhangjai",
         events_card_gallery: "KORTÁRS KÉPZŐMŰVÉSZETI GALÉRIA",
@@ -42,15 +51,27 @@ const translations = {
         events_card_opening: "MEGNYITÓ: 2025. 08. 15. 18:00",
         events_card_button: "További Információk",
 
-        // Kapcsolat oldal (kapcsolat.html)
+        // Kapcsolat
         contact_title: "Kapcsolat",
-        contact_intro: "Lépj kapcsolatba Giada Ferverével. Írj neki üzenetet az alábbi elérhetőségek valamelyikén.",
-        contact_artist_name: "Giada Fervere",
-        contact_general_title: "Általános / Produkció",
-        contact_art_title: "Művészeti Projektek",
-        contact_music_title: "Zenei Projektek",
+        contact_description: "Lépjen kapcsolatba Giada Ferverével. MI asszisztens ügyfélszolgálat.",
+        chatbot_title: "Ügyfélszolgálat (MI Asszisztens)",
+        chatbot_welcome: "Üdvözöljük! Az MI chat robot hamarosan elérhető lesz. Itt válaszol majd az ügyfélkapcsolati kérdésekre.",
+        chatbot_input_placeholder: "Írja be kérdését...",
+        chatbot_send_button: "Küldés",
 
-        // Modálok
+        // Blog
+        blog_title: "Blog",
+        blog_description: "Olvasd el Giada Fervere legfrissebb gondolatait, híreit és bejegyzéseit a művészetről, alkotásról és az életről.",
+        blog_section_title: "Friss Hírek és Gondolatok",
+        blog_read_more: "Teljes bejegyzés...",
+        blog_post_1_title: "Az alkotás folyamata: a háttérben rejlő történetek",
+        blog_post_1_meta: "Publikálva: 2025. augusztus 9.",
+        blog_post_1_excerpt: "Sokan kérdezik, honnan jön az ihlet, mi rejlik egy-egy festmény vagy egy vers mögött. A válasz sosem egyszerű...",
+        blog_post_2_title: "A színek szimbolikája a művészetemben",
+        blog_post_2_meta: "Publikálva: 2025. július 28.",
+        blog_post_2_excerpt: "A vörös a szenvedély, a kék a végtelen, az arany az isteni. A színek nem csupán esztétikai elemek...",
+
+        // Modálok és Versek (A <br> tagek megtartása fontos!)
         gallery_modal_title: "Festmények Galéria",
         poems_modal_title: "Verseim",
         poem_1_title: "Haldokló Varázs",
@@ -60,43 +81,80 @@ const translations = {
         poem_3_title: "Halálfaló Könnyszivárvány",
         poem_3_text: `Nem öli ártalom, Nem szennyzi bűn;<br>Beleciterázik a szív is, mely Érzi:<br>E Nemes-Adomány Fentről jő!<br>Közvetítő-csoda bűbájos pátosza,<br>Mely nyesett-lelkeket forraszt.<br>Krízisre tákol játszóházat;<br>Sebben fogant bűvölete:<br>Friss-Gyümölcsöket fakaszt.<br>Nincs benne idő se táv<br>- Nem fejti tudomány.<br>Holdatlan Márvány, mely Sötétbe is szilárd:<br>Balsorsra épült Halálfaló Könnyszivárvány.<br>Földi-lomokba magát nem mérő,<br> Fals-bálványimádatra nem éhező;<br>Nem szólja mit gömblakó kíván<br>Nem esdekel hízelgve kegyekér'...<br>Koholmányos-mesebeszéd el nem éri,<br>Mételyező-maszlaggal:<br>Nem alkuszik. Végbe szóló szerelmi történet:<br>Mi Hű katonákat farag.<br>Nem korbácsol űzérként,<br>Transzba hív ha fárad a szív.<br>Magasabb rendű terve : Az élet felett lakik.<br>Nála békére lelsz; Időtlen-kertjében áldást nyersz.<br>Rejtély övezi; Viharok zordsága fentebb emeli;<br>Fantázia-csap: mely Megnyitja a Lehetetlen kapuit!<br>Nem nyírja kudarc, égisz-szárnyakat ad.<br>Még A halált is kivicceli.<br>Szív-Szolga munkája: Örök-érvényű ígéret marad;<br>Ereje lemossa a rágalom mocskát,<br>Rögös szakasza igazságért kiált!<br>Sors-misztikuma fékezi kártékony karabélyát.<br>Elsöprő fénye Egymaga felégeti a világ-mocskát.<br>Gyöngédség a gyökere: Mely a betont is átdöfi.<br>A törékenység: E fényküldött élet szuvenír-grátisza,<br>Odaszentelt lélek Magányos Szabadságharca.<br> E jutalmat; a Viszontagság emel magasba.<br> Deviáns Oltalom;<br>Föld-kincsek nélküli Mennyei Birodalom,<br> Biztos pajzs mely Átvisz a napon,<br>S minden mélabút délszínre fakaszt.<br>Csapás hamviból Örömöt sarjaszt;<br>Szikrázó napfénye lényeget láttat;<br>Ezüsfehér kegye korom-porban csillan.<br>Erős vár: mely nem vehető ostrom alá...<br>Éjfeketének Sugárzón eleven-izzó lámpása,<br>Foghatatlan-varázslatnak Alfa és Ómegája.<br>Becses-Látomás egének Angyal-elhívója.<br>Időtálló-kő, mely szürkén hasad: de Múlhatatlan!<br> Beléd költözött fékevesztett kitörő,<br> Mely jajság útján galamblélekkel ékesít.<br>Igazsága tiszta mint az Artézi víz;<br>Tisztessége mint az irdatlan ár.<br>Tekintélyét önkény-surranója : el nem tiporja!<br> Hű-komornyika: Lobbanékony-túláradó,<br>Gáttalanul szenvedélyes, Sérülékeny-kölyökszív;<br>Mely Ezer fokon ég: Így fürgébben elenyész'...<br>S Vigyázz: Az önkívület vész!<br>Üvöltő lángji csak távolról szép,<br> A közelében minden élő pernyévé lész.<br>Gyökét több zónán futtatja;<br>E hangos világban: A csönd az igaza!<br>Nevével sokan takaróznak;<br>De a való nem kelt önricsajt:<br>Öntudatlan szórja fényét.<br>A lármás-kirakat: csak becstelen-porhintés.<br>Érdek-szülte mesterségük,<br>Jó-éltükkel együtt foszlik szét.<br>Szigorú-magja az alázat;<br>A művész: Adatra gondolva elveszti érzékét!<br>Nem önhasznú ténykedés;<br>Önzetlen-Küldetés.<br>Elvisel éhséget,fagyot, pokoljárta-hullámot,<br>Óriás lélek-puttonyt, mely pislantással mélybe taszít.<br>Ő választ téged, Mindig szól; de sose kér!<br>Nem rontja föld-rang, se ember-beszéd;<br>Erős Jelleme: a Tényáttörés.<br>Önmagáért beszél;<br>Égésnyomból bont szirmokat, A tisztán győzött ék.<br>Angyali-segedelem; Ad s nem elvesz;<br>Gyógyít, s nem pusztít...<br>Könnyekből párolog szivárványt,<br>Termése: a halált is megeszi.<br>Magasztos-Renomé, mely gyermetegül-mészfehér.<br>Az Értő becsüli; a közöny: gyötri...<br>Nem kell emelni: saját Méltósága védi!...<br>A Halhatatlan Művészet Örök Rózsája,<br>Mely Gyönyör-tüskéivel a világot is Elemészti!`,
     },
-    // ANGOL
+    
+    // ANGOL (EN)
     en: {
         name: "English",
         flag: "assets/images/flags/gb.svg",
+        // Navigation & Footer
         nav_about: "About",
         nav_performances: "Performances",
         nav_creations: "Creations",
         nav_events: "Events",
         nav_contact: "Contact",
+        nav_blog: "News & Blog Posts",
+        footer_sponsors: "Main Sponsors:",
         copyright: "© 2025 Giada Fervere Production - all rights reserved.",
+        footer_imprint: "Imprint",
+
+        // Home
         main_title: "Giada Fervere",
+        index_description: "The official website of Giada Fervere. Explore my creations, read my blog, and get in touch.",
+
+        // About
         about_title: "About Me",
+        about_description: "Meet Giada Fervere, a multidisciplinary artist whose creative universe comes to life at the intersection of painting, music, and poetry.",
         about_p1: "Giada Fervere is a multidisciplinary artist whose creative universe comes to life at the intersection of painting, music, and poetry. Her work is a deep, inner journey where brushstrokes, violin melodies, and piano chords weave together into a single, coherent message.",
         about_p2: "Her art is a means of expression; a dialogue between the visible and invisible worlds, where every painting is a poem, and every melody is a told story. Her goal is to create emotional spaces through dark aesthetics and subtle symbolism that make us think, touch us, and stay with us.",
         about_quote: `"When I looked in the mirror, I no longer saw the old girl"`,
         about_article_link: "article: www.heol.hu",
+
+        // Creations
         creations_title: "Creations",
+        creations_description: "Explore Giada Fervere's paintings and poems. Unique creations born in the spirit of dark aesthetics and subtle symbolism.",
         creations_card_paintings_title: "Paintings",
         creations_card_paintings_button: "Open Gallery",
         creations_card_poems_title: "My Poems",
         creations_card_poems_button: "Read Poems",
+        
+        // Performances
         performances_title: "Performances",
+        performances_description: "Watch Giada Fervere's live poetry and music performances. Videos of the most memorable moments.",
         performances_live_poetry_title: "Live Poetry",
         performances_music_title: "Music Performances",
+        video_desc_1: "My poem 'Black Petal' was born in me in 2023, influenced by the Israeli-Palestinian conflict and the resulting horrors.",
+
+        // Events
         events_title: "Events",
+        events_description: "View Giada Fervere's upcoming events, exhibitions, and performances. Don't miss the latest events!",
         events_card_artist: "Giada Fervere",
         events_card_title: "Echoes of the Unseen",
         events_card_gallery: "CONTEMPORARY ART GALLERY",
         events_card_address: "V. BUDAPEST, MAGYAR U. 44.",
         events_card_opening: "OPENING: 15. 08. 2025. 18:00",
         events_card_button: "More Information",
+
+        // Contact
         contact_title: "Contact",
-        contact_intro: "Get in touch with Giada Fervere. Send her a message at one of the contacts below.",
-        contact_artist_name: "Giada Fervere",
-        contact_general_title: "General / Production",
-        contact_art_title: "Art Projects",
-        contact_music_title: "Music Projects",
+        contact_description: "Get in touch with Giada Fervere. AI assistant customer service.",
+        chatbot_title: "Customer Service (AI Assistant)",
+        chatbot_welcome: "Welcome! The AI chatbot will be available soon. It will answer customer service questions here.",
+        chatbot_input_placeholder: "Type your question...",
+        chatbot_send_button: "Send",
+
+        // Blog
+        blog_title: "Blog",
+        blog_description: "Read Giada Fervere's latest thoughts, news, and posts about art, creation, and life.",
+        blog_section_title: "Fresh News and Thoughts",
+        blog_read_more: "Full Post...",
+        blog_post_1_title: "The Creative Process: Stories Behind the Scenes",
+        blog_post_1_meta: "Published: August 9, 2025",
+        blog_post_1_excerpt: "Many ask where inspiration comes from, what lies behind a painting or a poem. The answer is never simple...",
+        blog_post_2_title: "The Symbolism of Colors in My Art",
+        blog_post_2_meta: "Published: July 28, 2025",
+        blog_post_2_excerpt: "Red is passion, blue is the infinite, gold is the divine. Colors are not just aesthetic elements...",
+
+        // Modals and Poems
         gallery_modal_title: "Paintings Gallery",
         poems_modal_title: "My Poems",
         poem_1_title: "Dying Magic",
@@ -106,7 +164,8 @@ const translations = {
         poem_3_title: "Death-Eating Rainbow of Tears",
         poem_3_text: `It is not killed by harm, not stained by sin;<br>Even the heart that Feels it, resonates:<br>This Noble-Gift comes from Above!<br>The enchanting pathos of a mediating-miracle,<br>That welds severed-souls.<br>It builds a playhouse for crisis;<br>Its charm, conceived in a wound:<br>Brings forth Fresh-Fruits.<br>In it, there is no time nor distance<br>- Science cannot unravel it.<br>A moonless Marble, that is solid even in Darkness:<br>A Death-Eating Rainbow of Tears built on misfortune.<br>Not measuring itself in earthly-junk,<br>Not hungry for false-idol-worship;<br>It does not speak what the globe-dweller desires<br>It does not beg fawningly for favors...<br>Fabricated-tales cannot reach it,<br>With corrupting-drivel:<br>It does not compromise. A love story that speaks to the end:<br>That forges Loyal soldiers.<br>It does not whip like a usurer,<br>It calls to a trance when the heart is tired.<br>Its higher purpose: resides above life.<br>With it, you find peace; in its timeless-garden, you gain blessings.<br>Mystery surrounds it; the harshness of storms lifts it higher;<br>A fantasy-stream: that Opens the gates of the Impossible!<br>It is not trimmed by failure, it gives aegis-wings.<br>It even outwits death itself.<br>The work of a Heart-Servant: remains an ever-valid promise;<br>Its power washes away the filth of slander,<br>Its rugged path cries out for justice!<br>Its fate-mysticism curbs its harmful carbine.<br>Its overwhelming light alone burns up the world's-filth.<br>Tenderness is its root: Which pierces even concrete.<br>Fragility: the souvenir-gratis of this light-sent life,<br>The lonely Freedom-Fight of a dedicated soul.<br>This reward; is raised high by Adversity.<br>A deviant Protection;<br>A Heavenly Empire without earthly-treasures,<br>A sure shield that carries you through the day,<br>And makes all melancholy bloom into southern-color.<br>From the ashes of a blow, it sprouts Joy;<br>Its sparkling sunlight reveals the essence;<br>Its silver-white grace shines in soot-dust.<br>A strong fortress: that cannot be besieged...<br>For the jet-black, a Radiantly vibrant-glowing lantern,<br>The Alpha and Omega of an intangible-magic.<br>The Angel-caller of its precious-Vision's sky.<br>A timeless-stone, which cracks gray: but is Imperishable!<br>A rampant eruption has moved into you,<br>Which on the path of woe adorns with a dove-soul.<br>Its truth is pure as Artesian water;<br>Its integrity like the immense flood.<br>Its authority: an arbitrary-sneak cannot trample it!<br>Its loyal-chamberlain: a Flashy-effusive,<br>Unbridledly passionate, Vulnerable-cub's-heart;<br>Which burns at a Thousand degrees: Thus vanishes more swiftly...<br>And Beware: ecstasy is a peril!<br>Its howling flames are beautiful only from afar,<br>Near it, all living things become cinders.<br>It runs its roots through several zones;<br>In this loud world: Silence is its truth!<br>Many hide behind its name;<br>But the real thing does not create self-praise:<br>It spreads its light unconsciously.<br>The noisy-shop-window: is just dishonest-dust-throwing.<br>Their craft, born of interest,<br>Disintegrates along with their well-being.<br>Its strict-core is humility;<br>The artist: thinking of data, loses their sense!<br>Not a self-serving activity;<br>A selfless-Mission.<br>It endures hunger, frost, hell-ridden-waves,<br>A giant soul-hod, which with a blink casts into the deep.<br>It chooses you, Always speaks; but never asks!<br>It is not corrupted by earthly-rank, nor human-speech;<br>Its strong Character: is the Breakthrough-of-Fact.<br>It speaks for itself;<br>From a burn-mark, it unfurls petals, The jewel of a pure victory.<br>Angelic-assistance; It gives and does not take;<br>It heals, and does not destroy...<br>From tears, it evaporates a rainbow,<br>Its fruit: eats even death.<br>A sublime-Renown, which is childishly-chalk-white.<br>The Connoisseur values it; indifference: torments it...<br>It need not be lifted: its own Dignity protects it!...<br>The Eternal Rose of Immortal Art,<br>Which with its Thorns-of-Delight, also Devours the world!`
     },
-    // NÉMET
+    
+    // NÉMET (DE)
     de: {
         name: "Deutsch",
         flag: "assets/images/flags/de.svg",
@@ -115,22 +174,31 @@ const translations = {
         nav_creations: "Kreationen",
         nav_events: "Veranstaltungen",
         nav_contact: "Kontakt",
+        nav_blog: "Nachrichten & Blog",
+        footer_sponsors: "Hauptsponsoren:",
         copyright: "© 2025 Giada Fervere Produktion - alle Rechte vorbehalten.",
+        footer_imprint: "Impressum",
         main_title: "Giada Fervere",
+        index_description: "Die offizielle Website von Giada Fervere. Entdecken Sie meine Werke, lesen Sie meinen Blog und kontaktieren Sie mich.",
         about_title: "Über mich",
+        about_description: "Lernen Sie Giada Fervere kennen, eine multidisziplinäre Künstlerin, deren kreatives Universum an der Schnittstelle von Malerei, Musik und Poesie zum Leben erwacht.",
         about_p1: "Giada Fervere ist eine multidisziplinäre Künstlerin, deren kreatives Universum an der Schnittstelle von Malerei, Musik und Poesie zum Leben erwacht. Ihr Werk ist eine tiefe, innere Reise, wo Pinselstriche, Geigenmelodien und Klavierakkorde zu einer einzigen, kohärenten Botschaft verwoben werden.",
         about_p2: "Ihre Kunst ist ein Ausdrucksmittel; ein Dialog zwischen der sichtbaren und unsichtbaren Welt, wo jedes Gemälde ein Gedicht ist und jede Melodie eine erzählte Geschichte. Ihr Ziel ist es, durch dunkle Ästhetik und subtile Symbolik emotionale Räume zu schaffen, die zum Nachdenken anregen, uns berühren und bei uns bleiben.",
         about_quote: "„Als ich in den Spiegel schaute, sah ich das alte Mädchen nicht mehr“",
         about_article_link: "artikel: www.heol.hu",
         creations_title: "Kreationen",
+        creations_description: "Entdecken Sie Giada Ferveres Gemälde und Gedichte. Einzigartige Werke im Zeichen dunkler Ästhetik und subtiler Symbolik.",
         creations_card_paintings_title: "Gemälde",
         creations_card_paintings_button: "Galerie öffnen",
         creations_card_poems_title: "Meine Gedichte",
         creations_card_poems_button: "Gedichte lesen",
         performances_title: "Aufführungen",
+        performances_description: "Sehen Sie sich Giada Ferveres Live-Poesie- und Musikdarbietungen an. Videos der denkwürdigsten Momente.",
         performances_live_poetry_title: "Live-Poesie",
         performances_music_title: "Musikalische Darbietungen",
+        video_desc_1: "Mein Gedicht 'Schwarzes Blütenblatt' entstand 2023 unter dem Eindruck des israelisch-palästinensischen Konflikts und der daraus resultierenden Schrecken.",
         events_title: "Veranstaltungen",
+        events_description: "Sehen Sie sich Giada Ferveres bevorstehende Veranstaltungen, Ausstellungen und Auftritte an. Verpassen Sie nicht die neuesten Events!",
         events_card_artist: "Giada Fervere",
         events_card_title: "Echos des Unsichtbaren",
         events_card_gallery: "GALERIE FÜR ZEITGENÖSSISCHE KUNST",
@@ -138,11 +206,21 @@ const translations = {
         events_card_opening: "ERÖFFNUNG: 15. 08. 2025. 18:00",
         events_card_button: "Mehr Informationen",
         contact_title: "Kontakt",
-        contact_intro: "Nehmen Sie Kontakt mit Giada Fervere auf. Senden Sie ihr eine Nachricht an eine der unten stehenden Adressen.",
-        contact_artist_name: "Giada Fervere",
-        contact_general_title: "Allgemein / Produktion",
-        contact_art_title: "Kunstprojekte",
-        contact_music_title: "Musikprojekte",
+        contact_description: "Kontaktieren Sie Giada Fervere. KI-Assistent Kundendienst.",
+        chatbot_title: "Kundendienst (KI-Assistent)",
+        chatbot_welcome: "Willkommen! Der KI-Chatbot wird in Kürze verfügbar sein. Er wird hier Fragen zum Kundenservice beantworten.",
+        chatbot_input_placeholder: "Geben Sie Ihre Frage ein...",
+        chatbot_send_button: "Senden",
+        blog_title: "Blog",
+        blog_description: "Lesen Sie Giada Ferveres neueste Gedanken, Nachrichten und Beiträge über Kunst, Schaffen und das Leben.",
+        blog_section_title: "Aktuelle Nachrichten und Gedanken",
+        blog_read_more: "Vollständiger Beitrag...",
+        blog_post_1_title: "Der kreative Prozess: Geschichten hinter den Kulissen",
+        blog_post_1_meta: "Veröffentlicht: 9. August 2025",
+        blog_post_1_excerpt: "Viele fragen, woher die Inspiration kommt, was hinter einem Gemälde oder einem Gedicht steckt. Die Antwort ist nie einfach...",
+        blog_post_2_title: "Die Symbolik der Farben in meiner Kunst",
+        blog_post_2_meta: "Veröffentlicht: 28. Juli 2025",
+        blog_post_2_excerpt: "Rot ist Leidenschaft, Blau ist das Unendliche, Gold ist das Göttliche. Farben sind nicht nur ästhetische Elemente...",
         gallery_modal_title: "Gemäldegalerie",
         poems_modal_title: "Meine Gedichte",
         poem_1_title: "Sterbende Magie",
@@ -152,7 +230,8 @@ const translations = {
         poem_3_title: "Todfressender Regenbogen der Tränen",
         poem_3_text: `Kein Leid tötet es, keine Sünde befleckt es;<br>Selbst das Herz, das es fühlt, schwingt mit:<br>Dieses edle-Geschenk kommt von Oben!<br>Das bezaubernde Pathos eines vermittelnden-Wunders,<br>Das zerschnittene-Seelen zusammenschweißt.<br>Es zimmert ein Spielhaus für die Krise;<br>Sein in einer Wunde empfangener Zauber:<br>Bringt frische-Früchte hervor.<br>In ihm gibt es keine Zeit und keine Entfernung<br>- Die Wissenschaft kann es nicht enträtseln.<br>Ein mondloser Marmor, der selbst in der Dunkelheit fest ist:<br>Ein auf Unglück gebauter Todfressender Regenbogen der Tränen.<br>Sich nicht in irdischem-Ramsch messend,<br>Nicht hungrig nach falscher-Götzenanbetung;<br>Es sagt nicht, was der Globusbewohner wünscht<br>Es bettelt nicht schmeichelnd um Gunst...<br>Erfundene-Märchen erreichen es nicht,<br>Mit verderbendem-Geschwätz:<br>Es geht keine Kompromisse ein. Eine Liebesgeschichte, die bis zum Ende spricht:<br>Die treue Soldaten schmiedet.<br>Es peitscht nicht wie ein Wucherer,<br>Es ruft in die Trance, wenn das Herz müde ist.<br>Sein höherer Plan: wohnt über dem Leben.<br>Bei ihm findest du Frieden; in seinem zeitlosen-Garten erlangst du Segen.<br>Geheimnis umgibt es; die Härte der Stürme hebt es höher;<br>Ein Fantasie-Strom: der die Tore des Unmöglichen öffnet!<br>Es wird nicht vom Scheitern beschnitten, es gibt Ägis-Flügel.<br>Es überlistet sogar den Tod selbst.<br>Die Arbeit eines Herz-Dieners: bleibt ein ewig-gültiges Versprechen;<br>Seine Kraft wäscht den Schmutz der Verleumdung ab,<br>Sein steiniger Weg schreit nach Gerechtigkeit!<br>Seine Schicksals-Mystik zügelt sein schädliches Karabiner.<br>Sein überwältigendes Licht allein verbrennt den Welt-Schmutz.<br>Zärtlichkeit ist seine Wurzel: die sogar Beton durchdringt.<br>Zerbrechlichkeit: das Souvenir-Gratis dieses lichtgesandten Lebens,<br>Der einsame Freiheits-Kampf einer gewidmeten Seele.<br>Diese Belohnung; wird von der Widerwärtigkeit hochgehoben.<br>Ein abweichender Schutz;<br>Ein himmlisches Reich ohne irdische-Schätze,<br>Ein sicherer Schild, der dich durch den Tag trägt,<br>Und alle Melancholie zur südlichen-Farbe erblühen lässt.<br>Aus der Asche eines Schlages sprießt Freude;<br>Sein funkelndes Sonnenlicht enthüllt das Wesentliche;<br>Seine silberweiße Gnade scheint im Ruß-Staub.<br>Eine starke Festung: die nicht belagert werden kann...<br>Für das Tiefschwarze, eine strahlend lebendig-glühende Laterne,<br>Das Alpha und Omega einer unfassbaren-Magie.<br>Der Engel-Rufer seines kostbaren-Visions-Himmels.<br>Ein zeitloser-Stein, der grau bricht: aber unvergänglich ist!<br>Ein zügelloser Ausbruch ist in dich eingezogen,<br>Der auf dem Weg des Wehs mit einer Tauben-Seele schmückt.<br>Seine Wahrheit ist rein wie artesisches Wasser;<br>Seine Rechtschaffenheit wie die unermessliche Flut.<br>Seine Autorität: ein willkürlicher-Schleicher kann sie nicht zertrampeln!<br>Sein treuer-Kammerdiener: ein aufflackernd-überschwängliches,<br>Hemmungslos leidenschaftliches, verletzliches-Welpenherz;<br>Das bei tausend Grad brennt: so vergeht es schneller...<br>Und Vorsicht: die Ekstase ist eine Gefahr!<br>Seine heulenden Flammen sind nur aus der Ferne schön,<br>In seiner Nähe wird alles Lebende zu Asche.<br>Es treibt seine Wurzeln durch mehrere Zonen;<br>In dieser lauten Welt: die Stille ist seine Wahrheit!<br>Viele verstecken sich hinter seinem Namen;<br>Aber das Echte macht kein Eigenlob:<br>Es verbreitet sein Licht unbewusst.<br>Das laute-Schaufenster: ist nur unehrliches-Staubwerfen.<br>Ihr Handwerk, aus Interesse geboren,<br>Löst sich zusammen mit ihrem Wohlstand auf.<br>Sein strenger-Kern ist Demut;<br>Der Künstler: wenn er an Daten denkt, verliert er sein Gefühl!<br>Keine eigennützige Tätigkeit;<br>Eine selbstlose-Mission.<br>Es erträgt Hunger, Frost, höllische-Wellen,<br>Eine riesige Seelen-Kiepe, die mit einem Wimpernschlag in die Tiefe stürzt.<br>Es wählt dich, spricht immer; aber fragt nie!<br>Es wird nicht vom irdischen-Rang verdorben, noch von Menschen-Rede;<br>Sein starker Charakter: ist der Durchbruch-der-Tatsache.<br>Es spricht für sich selbst;<br>Aus einer Brandnarbe entfaltet es Blütenblätter, das Juwel eines reinen Sieges.<br>Himmlische-Hilfe; es gibt und nimmt nicht;<br>Es heilt und zerstört nicht...<br>Aus Tränen verdunstet es einen Regenbogen,<br>Seine Frucht: isst sogar den Tod.<br>Ein erhabener-Ruf, der kindlich-kreidebleich ist.<br>Der Kenner schätzt es; die Gleichgültigkeit: quält es...<br>Es muss nicht gehoben werden: seine eigene Würde schützt es!...<br>Die ewige Rose der unsterblichen Kunst,<br>Die mit ihren Dornen-des-Entzückens auch die Welt verschlingt!`
     },
-    // FRANCIA
+
+    // FRANCIA (FR)
     fr: {
         name: "Français",
         flag: "assets/images/flags/fr.svg",
@@ -161,22 +240,31 @@ const translations = {
         nav_creations: "Créations",
         nav_events: "Événements",
         nav_contact: "Contact",
+        nav_blog: "Actualités & Blog",
+        footer_sponsors: "Sponsors principaux :",
         copyright: "© 2025 Giada Fervere Production - tous droits réservés.",
+        footer_imprint: "Mentions légales",
         main_title: "Giada Fervere",
+        index_description: "Le site officiel de Giada Fervere. Explorez mes créations, lisez mon blog et contactez-moi.",
         about_title: "À propos de moi",
+        about_description: "Découvrez Giada Fervere, une artiste multidisciplinaire dont l'univers créatif prend vie à l'intersection de la peinture, de la musique et de la poésie.",
         about_p1: "Giada Fervere est une artiste multidisciplinaire dont l'univers créatif prend vie à l'intersection de la peinture, de la musique et de la poésie. Son travail est un voyage profond et intérieur où les coups de pinceau, les mélodies de violon et les accords de piano se tissent en un message unique et cohérent.",
         about_p2: "Son art est un moyen d'expression ; un dialogue entre les mondes visible et invisible, où chaque peinture est un poème et chaque mélodie une histoire racontée. Son objectif est de créer des espaces émotionnels à travers une esthétique sombre et un symbolisme subtil qui nous font réfléchir, nous touchent et restent avec nous.",
         about_quote: "« Quand j'ai regardé dans le miroir, je n'ai plus vu l'ancienne fille »",
         about_article_link: "article: www.heol.hu",
         creations_title: "Créations",
+        creations_description: "Explorez les peintures et poèmes de Giada Fervere. Des créations uniques nées sous le signe de l'esthétique sombre et du symbolisme subtil.",
         creations_card_paintings_title: "Peintures",
         creations_card_paintings_button: "Ouvrir la galerie",
         creations_card_poems_title: "Mes poèmes",
         creations_card_poems_button: "Lire les poèmes",
         performances_title: "Spectacles",
+        performances_description: "Regardez les performances de poésie et de musique en direct de Giada Fervere. Vidéos des moments les plus mémorables.",
         performances_live_poetry_title: "Poésie en direct",
         performances_music_title: "Performances musicales",
+        video_desc_1: "Mon poème 'Pétale Noir' est né en moi en 2023, influencé par le conflit israélo-palestinien et les horreurs qui en découlent.",
         events_title: "Événements",
+        events_description: "Consultez les événements, expositions et performances à venir de Giada Fervere. Ne manquez pas les derniers événements !",
         events_card_artist: "Giada Fervere",
         events_card_title: "Échos de l'invisible",
         events_card_gallery: "GALERIE D'ART CONTEMPORAIN",
@@ -184,11 +272,21 @@ const translations = {
         events_card_opening: "OUVERTURE: 15. 08. 2025. 18:00",
         events_card_button: "Plus d'informations",
         contact_title: "Contact",
-        contact_intro: "Prenez contact avec Giada Fervere. Envoyez-lui un message à l'un des contacts ci-dessous.",
-        contact_artist_name: "Giada Fervere",
-        contact_general_title: "Général / Production",
-        contact_art_title: "Projets artistiques",
-        contact_music_title: "Projets musicaux",
+        contact_description: "Contactez Giada Fervere. Service client assistant IA.",
+        chatbot_title: "Service Client (Assistant IA)",
+        chatbot_welcome: "Bienvenue! Le chatbot IA sera bientôt disponible. Il répondra ici aux questions du service client.",
+        chatbot_input_placeholder: "Tapez votre question...",
+        chatbot_send_button: "Envoyer",
+        blog_title: "Blog",
+        blog_description: "Lisez les dernières pensées, nouvelles et articles de Giada Fervere sur l'art, la création et la vie.",
+        blog_section_title: "Nouvelles fraîches et réflexions",
+        blog_read_more: "Article complet...",
+        blog_post_1_title: "Le processus créatif : Histoires en coulisses",
+        blog_post_1_meta: "Publié le : 9 août 2025",
+        blog_post_1_excerpt: "Beaucoup demandent d'où vient l'inspiration, ce qui se cache derrière une peinture ou un poème. La réponse n'est jamais simple...",
+        blog_post_2_title: "Le symbolisme des couleurs dans mon art",
+        blog_post_2_meta: "Publié le : 28 juillet 2025",
+        blog_post_2_excerpt: "Le rouge est la passion, le bleu est l'infini, l'or est le divin. Les couleurs ne sont pas seulement des éléments esthétiques...",
         gallery_modal_title: "Galerie de peintures",
         poems_modal_title: "Mes poèmes",
         poem_1_title: "Magie Mourante",
@@ -198,7 +296,8 @@ const translations = {
         poem_3_title: "Arc-en-ciel de Larmes Mangeur de Mort",
         poem_3_text: `Le mal ne le tue pas, le péché ne le souille pas;<br>Même le cœur qui le Sent, résonne:<br>Ce Noble-Don vient d'En-Haut!<br>Le pathos enchanteur d'un miracle-médiateur,<br>Qui soude les âmes-tranchées.<br>Il bricole une maison de jeu pour la crise;<br>Son charme, conçu dans une blessure:<br>Fait naître des Fruits-Frais.<br>En lui, il n'y a ni temps ni distance<br>- La science ne peut le déchiffrer.<br>Un Marbre sans lune, qui est solide même dans l'Obscurité:<br>Un Arc-en-ciel de Larmes Mangeur de Mort bâti sur le malheur.<br>Ne se mesurant pas en camelote-terrestre,<br>N'ayant pas faim d'adoration-de-fausses-idoles;<br>Il ne dit pas ce que l'habitant-du-globe désire<br>Il ne mendie pas servilement des faveurs...<br>Les contes-fabriqués ne l'atteignent pas,<br>Avec de la bouillie-corruptrice:<br>Il ne fait pas de compromis. Une histoire d'amour qui parle jusqu'à la fin:<br>Qui forge de Loyaux soldats.<br>Il ne fouette pas comme un usurier,<br>Il appelle à la transe quand le cœur est fatigué.<br>Son dessein supérieur: réside au-dessus de la vie.<br>Avec lui, tu trouves la paix; dans son jardin-intemporel, tu obtiens des bénédictions.<br>Le mystère l'entoure; la rudesse des tempêtes l'élève plus haut;<br>Un courant-de-fantaisie: qui Ouvre les portes de l'Impossible!<br>L'échec ne le taille pas, il donne des ailes-d'égide.<br>Il déjoue même la mort elle-même.<br>L'œuvre d'un Serviteur-du-Cœur: reste une promesse toujours-valable;<br>Sa puissance lave la saleté de la calomnie,<br>Son chemin escarpé crie justice!<br>Son mysticisme-du-destin freine sa carabine nuisible.<br>Sa lumière écrasante à elle seule brûle la saleté-du-monde.<br>La tendresse est sa racine: Qui perce même le béton.<br>La fragilité: le souvenir-gratuit de cette vie envoyée-par-la-lumière,<br>Le Combat-pour-la-Liberté solitaire d'une âme dévouée.<br>Cette récompense; est élevée par l'Adversité.<br>Une Protection déviante;<br>Un Empire Céleste sans trésors-terrestres,<br>Un bouclier sûr qui te porte à travers le jour,<br>Et fait fleurir toute mélancolie en couleur-du-sud.<br>Des cendres d'un coup, il fait germer la Joie;<br>Sa lumière du soleil étincelante révèle l'essence;<br>Sa grâce blanc-argenté brille dans la poussière-de-suie.<br>Une forteresse solide: qui ne peut être assiégée...<br>Pour le noir-de-jais, une lanterne Radieusement vive-incandescente,<br>L'Alpha et l'Oméga d'une magie-insaisissable.<br>L'Appelant-d'Anges du ciel de sa précieuse-Vision.<br>Une pierre-intemporelle, qui se fissure en gris: mais est Impérissable!<br>Une éruption déchaînée s'est installée en toi,<br>Qui sur le chemin du malheur orne d'une âme-de-colombe.<br>Sa vérité est pure comme l'eau Artésienne;<br>Son intégrité comme le déluge immense.<br>Son autorité: un furtif-arbitraire ne peut la piétiner!<br>Son loyal-chambellan: un cœur-de-chiot Flamboyant-effusif,<br>Passionnément sans entraves, Vulnérable;<br>Qui brûle à Mille degrés: Ainsi disparaît plus vite...<br>Et Prends garde: l'extase est un péril!<br>Ses flammes hurlantes ne sont belles que de loin,<br>Près de lui, tout ce qui vit devient cendres.<br>Il étend ses racines à travers plusieurs zones;<br>Dans ce monde bruyant: le Silence est sa vérité!<br>Beaucoup se cachent derrière son nom;<br>Mais le vrai ne fait pas son propre-éloge:<br>Il répand sa lumière inconsciemment.<br>La vitrine-bruyante: n'est que de la poudre-aux-yeux-malhonnête.<br>Leur art, né de l'intérêt,<br>Se désintègre avec leur bien-être.<br>Son noyau-strict est l'humilité;<br>L'artiste: en pensant aux données, perd son sens!<br>Pas une activité égoïste;<br>Une Mission-désintéressée.<br>Il endure la faim, le gel, les vagues-infernales,<br>Une hotte d'âme géante, qui d'un clin d'œil jette dans les profondeurs.<br>Il te choisit, Parle toujours; mais ne demande jamais!<br>Il n'est pas corrompu par le rang-terrestre, ni par la parole-humaine;<br>Son Caractère fort: est la Percée-du-Fait.<br>Il parle pour lui-même;<br>D'une marque de brûlure, il déploie des pétales, Le joyau d'une victoire pure.<br>Aide-angélique; Il donne et ne prend pas;<br>Il guérit, et ne détruit pas...<br>Des larmes, il évapore un arc-en-ciel,<br>Son fruit: mange même la mort.<br>Une sublime-Renommée, qui est puérilement-blanche-comme-la-craie.<br>Le Connaisseur l'apprécie; l'indifférence: le tourmente...<br>Il n'a pas besoin d'être élevé: sa propre Dignité le protège!...<br>La Rose Éternelle de l'Art Immortel,<br>Qui avec ses Épines-de-Délice, Dévore aussi le monde!`
     },
-    // OLASZ
+    
+    // OLASZ (IT)
     it: {
         name: "Italiano",
         flag: "assets/images/flags/it.svg",
@@ -207,22 +306,31 @@ const translations = {
         nav_creations: "Creazioni",
         nav_events: "Eventi",
         nav_contact: "Contatto",
+        nav_blog: "Notizie & Blog",
+        footer_sponsors: "Sponsor Principali:",
         copyright: "© 2025 Giada Fervere Produzione - tutti i diritti riservati.",
+        footer_imprint: "Impressum",
         main_title: "Giada Fervere",
+        index_description: "Il sito ufficiale di Giada Fervere. Esplora le mie creazioni, leggi il mio blog e contattami.",
         about_title: "Chi sono",
+        about_description: "Incontra Giada Fervere, un'artista multidisciplinare il cui universo creativo prende vita all'intersezione tra pittura, musica e poesia.",
         about_p1: "Giada Fervere è un'artista multidisciplinare il cui universo creativo prende vita all'intersezione tra pittura, musica e poesia. Il suo lavoro è un viaggio profondo e interiore dove pennellate, melodie di violino e accordi di pianoforte si intrecciano in un messaggio unico e coerente.",
         about_p2: "La sua arte è un mezzo di espressione; un dialogo tra i mondi visibile e invisibile, dove ogni dipinto è una poesia e ogni melodia una storia raccontata. Il suo obiettivo è creare spazi emotivi attraverso un'estetica scura e un simbolismo sottile che ci fanno riflettere, ci toccano e rimangono con noi.",
         about_quote: `"Quando mi sono guardata allo specchio, non ho più visto la vecchia ragazza"`,
         about_article_link: "articolo: www.heol.hu",
         creations_title: "Creazioni",
+        creations_description: "Esplora i dipinti e le poesie di Giada Fervere. Creazioni uniche nate nel segno dell'estetica oscura e del simbolismo sottile.",
         creations_card_paintings_title: "Dipinti",
         creations_card_paintings_button: "Apri galleria",
         creations_card_poems_title: "Le mie poesie",
         creations_card_poems_button: "Leggi le poesie",
         performances_title: "Spettacoli",
+        performances_description: "Guarda le esibizioni di poesia e musica dal vivo di Giada Fervere. Video dei momenti più memorabili.",
         performances_live_poetry_title: "Poesia dal vivo",
         performances_music_title: "Esibizioni musicali",
+        video_desc_1: "La mia poesia 'Petalo Nero' è nata in me nel 2023, influenzata dal conflitto israelo-palestinese e dagli orrori che ne derivano.",
         events_title: "Eventi",
+        events_description: "Visualizza i prossimi eventi, mostre e spettacoli di Giada Fervere. Non perdere gli ultimi eventi!",
         events_card_artist: "Giada Fervere",
         events_card_title: "Echi dell'invisibile",
         events_card_gallery: "GALLERIA D'ARTE CONTEMPORANEA",
@@ -230,11 +338,21 @@ const translations = {
         events_card_opening: "INAUGURAZIONE: 15. 08. 2025. 18:00",
         events_card_button: "Più informazioni",
         contact_title: "Contatto",
-        contact_intro: "Mettiti in contatto con Giada Fervere. Inviale un messaggio a uno dei contatti qui sotto.",
-        contact_artist_name: "Giada Fervere",
-        contact_general_title: "Generale / Produzione",
-        contact_art_title: "Progetti artistici",
-        contact_music_title: "Progetti musicali",
+        contact_description: "Contatta Giada Fervere. Servizio clienti assistente AI.",
+        chatbot_title: "Servizio Clienti (Assistente AI)",
+        chatbot_welcome: "Benvenuto! Il chatbot AI sarà presto disponibile. Risponderà qui alle domande del servizio clienti.",
+        chatbot_input_placeholder: "Digita la tua domanda...",
+        chatbot_send_button: "Invia",
+        blog_title: "Blog",
+        blog_description: "Leggi gli ultimi pensieri, notizie e post di Giada Fervere sull'arte, la creazione e la vita.",
+        blog_section_title: "Notizie fresche e pensieri",
+        blog_read_more: "Post completo...",
+        blog_post_1_title: "Il processo creativo: Storie dietro le quinte",
+        blog_post_1_meta: "Pubblicato: 9 agosto 2025",
+        blog_post_1_excerpt: "Molti chiedono da dove venga l'ispirazione, cosa si nasconda dietro un dipinto o una poesia. La risposta non è mai semplice...",
+        blog_post_2_title: "Il simbolismo dei colori nella mia arte",
+        blog_post_2_meta: "Pubblicato: 28 luglio 2025",
+        blog_post_2_excerpt: "Il rosso è passione, il blu è l'infinito, l'oro è il divino. I colori non sono solo elementi estetici...",
         gallery_modal_title: "Galleria dei dipinti",
         poems_modal_title: "Le mie poesie",
         poem_1_title: "Magia Morente",
