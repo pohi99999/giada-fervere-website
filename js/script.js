@@ -163,6 +163,11 @@ document.addEventListener('DOMContentLoaded', function() {
             setStoredLanguage(selectedLang);
             translatePage(selectedLang);
             populateLanguageSwitcher(selectedLang); // Menü újraépítése
+            
+            // Dispatch custom event for other components to listen to
+            document.dispatchEvent(new CustomEvent('languageChanged', { 
+                detail: { language: selectedLang } 
+            }));
         }
     }
 
@@ -181,14 +186,21 @@ document.addEventListener('DOMContentLoaded', function() {
         function openModal(modal) {
             if (modal == null) return;
             modal.classList.add('visible');
-            document.body.style.overflow = 'hidden';
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+            
+            // Focus management - focus the modal
+            modal.focus();
         }
 
         function closeModal(modal) {
             if (modal == null) return;
             modal.classList.remove('visible');
-            // Csak akkor állítjuk vissza az overflow-t, ha a lightbox sincs nyitva
-            if (!document.querySelector('.lightbox.visible')) {
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+            
+            // Only restore scroll if nav is not open
+            if (!document.body.classList.contains('nav-open')) {
                 document.body.style.overflow = 'auto';
             }
         }
@@ -208,6 +220,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         modals.forEach(modal => {
+            // Set initial aria-hidden
+            modal.setAttribute('aria-hidden', 'true');
+            
             modal.addEventListener('click', e => {
                 if (e.target === modal) {
                     closeModal(modal);
@@ -215,14 +230,43 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Escape gomb kezelése
-         document.addEventListener('keydown', (e) => {
-            // Csak akkor zárja be a modált, ha a lightbox nincs nyitva
-            if (e.key === 'Escape' && !document.querySelector('.lightbox.visible')) {
+        // Escape key handling for modals
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                // Close lightbox first if open
+                const visibleLightbox = document.querySelector('.lightbox.visible');
+                if (visibleLightbox) {
+                    hideLightbox();
+                    return;
+                }
+                
+                // Then close modal if open
                 const visibleModal = document.querySelector('.modal.visible');
-                if (visibleModal) closeModal(visibleModal);
+                if (visibleModal) {
+                    closeModal(visibleModal);
+                    return;
+                }
+                
+                // Finally close navigation if open
+                const navOpen = document.body.classList.contains('nav-open');
+                if (navOpen) {
+                    // This will be handled by the hamburger menu logic
+                    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+                }
             }
         });
+
+        // Make hideLightbox available globally for the escape handler
+        window.hideLightbox = function() {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox) {
+                lightbox.classList.remove('visible');
+                // Only restore scroll if no modal or nav is open
+                if (!document.querySelector('.modal.visible') && !document.body.classList.contains('nav-open')) {
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        };
     }
 
     // --- KÉPNAGYÍTÓ LIGHTBOX KÓD ---
@@ -249,8 +293,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function hideLightbox() {
             lightbox.classList.remove('visible');
-            // Csak akkor állítjuk vissza az overflow-t, ha modál sincs nyitva
-            if (!document.querySelector('.modal.visible')) {
+            // Only restore scroll if no modal or nav is open
+            if (!document.querySelector('.modal.visible') && !document.body.classList.contains('nav-open')) {
                 document.body.style.overflow = 'auto';
             }
         }
@@ -416,13 +460,80 @@ document.addEventListener('DOMContentLoaded', function() {
     function initializeHamburgerMenu() {
         const navToggle = document.querySelector('.nav-toggle');
         const mainNav = document.querySelector('.main-nav');
+        const body = document.body;
 
-        if (navToggle) {
-            navToggle.addEventListener('click', () => {
-                mainNav.classList.toggle('nav-active');
-                navToggle.classList.toggle('nav-active');
-            });
+        if (!navToggle || !mainNav) return;
+
+        // Initial state
+        let isNavOpen = false;
+
+        function updateNavToggleLabel() {
+            const currentLang = getStoredLanguage();
+            if (typeof translations !== 'undefined' && translations[currentLang]) {
+                const labelKey = isNavOpen ? 'nav_close_menu_label' : 'nav_open_menu_label';
+                const label = translations[currentLang][labelKey];
+                if (label) {
+                    navToggle.setAttribute('aria-label', label);
+                }
+            }
         }
+
+        function toggleNav() {
+            isNavOpen = !isNavOpen;
+            
+            // Toggle classes
+            body.classList.toggle('nav-open', isNavOpen);
+            navToggle.classList.toggle('nav-active', isNavOpen);
+            
+            // Update ARIA attributes
+            navToggle.setAttribute('aria-expanded', isNavOpen.toString());
+            updateNavToggleLabel();
+            
+            // Prevent body scroll when nav is open
+            if (isNavOpen) {
+                body.style.overflow = 'hidden';
+            } else {
+                // Only restore scroll if no modal is open
+                if (!document.querySelector('.modal.visible')) {
+                    body.style.overflow = 'auto';
+                }
+            }
+        }
+
+        function closeNav() {
+            if (isNavOpen) {
+                toggleNav();
+            }
+        }
+
+        // Click handler
+        navToggle.addEventListener('click', toggleNav);
+
+        // Close nav when clicking outside (overlay)
+        document.addEventListener('click', (e) => {
+            if (isNavOpen && !mainNav.contains(e.target) && !navToggle.contains(e.target)) {
+                closeNav();
+            }
+        });
+
+        // ESC key handler
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isNavOpen) {
+                closeNav();
+            }
+        });
+
+        // Close nav when navigating to another page
+        const navLinks = mainNav.querySelectorAll('a[href]');
+        navLinks.forEach(link => {
+            link.addEventListener('click', closeNav);
+        });
+
+        // Update label on language change
+        document.addEventListener('languageChanged', updateNavToggleLabel);
+        
+        // Set initial label
+        updateNavToggleLabel();
     }
 
     // --- INICIALIZÁLÁS ---

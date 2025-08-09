@@ -503,6 +503,11 @@ body:not(.landing-page) .main-nav {
 }
 
 /* --- MODÁL (FELUGRÓ ABLAK) STÍLUSOK --- */
+/* Body class when modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+
 .modal {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -704,7 +709,50 @@ body:not(.landing-page) .main-nav {
 
 /* --- Reszponzív Beállítások (Media Queries) --- */
 
- @media (max-width: 1024px) {
+/* --- Hamburger Menu Button Styles --- */
+.nav-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 9999;
+    display: none; /* Hidden by default, shown in mobile */
+}
+
+.hamburger {
+    display: block;
+    position: relative;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text-primary);
+    transition: all 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text-primary);
+    transition: all 0.3s ease;
+}
+
+.hamburger::before {
+    top: -8px;
+}
+
+.hamburger::after {
+    top: 8px;
+}
+
+/* --- Mobile Navigation Styles --- */
+body.nav-open {
+    overflow: hidden;
+}
+
+@media (max-width: 1024px) {
     .nav-toggle {
         display: block;
     }
@@ -716,19 +764,22 @@ body:not(.landing-page) .main-nav {
         right: 0;
         bottom: 0;
         background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
         flex-direction: column;
         justify-content: center;
         align-items: center;
         transform: translateX(100%);
         transition: transform 250ms ease-in-out;
+        z-index: 8888;
     }
 
-    .main-nav.nav-active {
+    body.nav-open .main-nav {
         transform: translateX(0);
     }
 
     .nav-toggle.nav-active .hamburger {
         transform: rotate(0.625turn);
+        background-color: transparent;
     }
 
     .nav-toggle.nav-active .hamburger::before {
