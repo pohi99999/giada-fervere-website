@@ -12,16 +12,6 @@
 </head>
 <body data-page-title-key="events_title">
 
-    <!-- Fix háttérvideó ehhez az oldalhoz -->
-    <div class="page-background-video">
-        <video autoplay muted loop playsinline>
-    <source src="assets/videos/hat6_mobil.mp4" type="video/mp4" media="all and (max-width: 768px)">
-    <source src="assets/videos/hat6.mp4" type="video/mp4">
-    A böngésződ nem támogatja a videó elemet.
-</video>
-        <div class="page-background-overlay"></div>
-    </div>
-
     <header id="main-header" class="subpage-header">
         <div class="header-overlay"></div>
         <div class="header-content">
@@ -32,6 +22,7 @@
                 <a href="alkotasaim.html" class="nav-item creations" data-translate="nav_creations">Alkotásaim</a>
                 <a href="rendezvenyek.html" class="nav-item events" data-translate="nav_events">Rendezvények</a>
                 <a href="kapcsolat.html" class="nav-item contact" data-translate="nav_contact">Kapcsolat</a>
+                <li><a href="blog.html" target="_blank">Friss Hírek, Blogbejegyzések</a></li>
 
                 <!-- ÚJ, STÍLUSOS NYELVVÁLTÓ -->
                 <div class="language-switcher">
@@ -71,27 +62,69 @@
         </div>
     </header>
 
-    <main class="page-section" id="events-section">
-        <div class="section-content-fullwidth">
-            <h2 data-translate="events_title">Rendezvények</h2>
-            
-            <div class="event-card">
-                <h3 class="event-artist-name" data-translate="events_card_artist">Giada Fervere</h3>
-                <h4 class="event-title" data-translate="events_card_title">A Láthatatlan Visszhangjai</h4>
-                <p class="event-gallery" data-translate="events_card_gallery">KORTÁRS KÉPZŐMŰVÉSZETI GALÉRIA</p>
-                <p class="event-address" data-translate="events_card_address">V. BUDAPEST, MAGYAR U. 44.</p>
-                <p class="event-opening" data-translate="events_card_opening">MEGNYITÓ: 2025. 08. 15. 18:00</p>
-                <a href="https://giadaferverewebsite.netlify.app" target="_blank" class="btn event-link" data-translate="events_card_button">További Információk</a>
+    <section id="rendezvenyek" class="has-video-bg">
+        <video autoplay muted loop playsinline class="section-background-video">
+            <!-- Ellenőrizd az elérési utat: assets/rend.mp4 -->
+            <source src="assets/videos/rend.mp4" type="video/mp4">
+        </video>
+        <div class="content-wrapper">
+            <main class="page-section" id="events-section">
+                <div class="section-content-fullwidth">
+                    <h2 data-translate="events_title">Rendezvények</h2>
+                    
+                    <div class="event-card">
+                        <h3 class="event-artist-name" data-translate="events_card_artist">Giada Fervere</h3>
+                        <h4 class="event-title responsive-event-title" data-translate="events_card_title">A Láthatatlan Visszhangjai</h4>
+                        <p class="event-gallery" data-translate="events_card_gallery">KORTÁRS KÉPZŐMŰVÉSZETI GALÉRIA</p>
+                        <p class="event-address" data-translate="events_card_address">V. BUDAPEST, MAGYAR U. 44.</p>
+                        <p class="event-opening" data-translate="events_card_opening">MEGNYITÓ: 2025. 08. 15. 18:00</p>
+                        <a href="https://giadaferverewebsite.netlify.app" target="_blank" class="btn event-link" data-translate="events_card_button">További Információk</a>
+                    </div>
+        
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <footer>
+    <div class="footer-container">
+        <!-- Bal oldal: Támogatók (5. kérés) -->
+        <div class="footer-section footer-sponsors">
+            <h4>Fő támogatóink:</h4>
+            <a href="https://pohanka.company" target="_blank" class="sponsor-link">
+                <!-- Ellenőrizd az elérési utat: assets/images/logot.jpg -->
+                <img src="assets/images/logot.jpg" alt="Pohánka És Társa Company Logo" class="sponsor-logo">
+                Pohánka És Társa Company
+            </a>
+            <a href="https://classica2.com" target="_blank" class="sponsor-link">
+                Classica-2 Kft
+            </a>
+        </div>
+
+        <!-- Középső rész: Logo és Copyright -->
+        <div class="footer-section footer-info">
+            <!-- Ide helyezd át a meglévő Logót. Ellenőrizd az elérési utat (pl. assets/images/logo.png) -->
+            <img src="assets/images/logo.png" alt="Giada Fervere Logo" class="footer-logo">
+             <p>© 2025 Giada Fervere Produkció - minden jog fenntartva.</p>
+        </div>
+
+        <!-- Jobb oldal: Linkek és Social Media -->
+        <div class="footer-section footer-links">
+            <a href="impresszum.html" target="_blank" class="impressum-link">Impresszum</a>
+            <div class="social-icons">
+                <!-- Meglévő Facebook link (Őrizd meg a meglévő struktúrát/ikont, csak a linket ellenőrizd) -->
+                <a href="https://www.facebook.com/profile.php?id=100070613388519" target="_blank" aria-label="Facebook">FB/Ikon</a>
+                
+                <!-- Meglévő Twitter link (Őrizd meg a meglévő struktúrát/ikont) -->
+                <a href="#" target="_blank" aria-label="Twitter">TW/Ikon</a>
+                
+                <!-- Új YouTube link (Használd ugyanazt a stílust/ikont, mint a többinél) -->
+                <a href="https://www.youtube.com/ @giadafervere" target="_blank" aria-label="YouTube">YT/Ikon</a>
             </div>
-
+            <!-- production @giadafervere.com eltávolítva -->
         </div>
-    </main>
-
-    <footer id="main-footer">
-        <div class="copyright" data-translate="copyright">
-            © 2025 Giada Fervere Produkció - minden jog fenntartva.
-        </div>
-    </footer>
+    </div>
+</footer>
 
     <script src="js/script.js"></script>
     <script src="js/translations.js"></script>
