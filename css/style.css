@@ -198,11 +198,17 @@ body:not(.landing-page) #main-footer {
     font-size: 1.2em;
     margin: 0 15px;
     font-family: var(--font-secondary);
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .nav-item:hover {
     color: var(--color-highlight-gold);
+    background-color: rgba(184, 134, 11, 0.2);
 }
 
 /* --- Nyelvváltó Stílusok --- */
@@ -817,7 +823,7 @@ footer {
 
 .footer-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-start; /* Felfelé igazítva */
     flex-wrap: wrap;
     max-width: 1200px;
@@ -882,6 +888,11 @@ footer {
     display: inline-block;
     margin-left: 15px;
     color: #fff;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--color-highlight-gold);
 }
 
 /* Mobil nézet (egymás alá rendezés) */
@@ -893,7 +904,7 @@ footer {
     .footer-section, .footer-links {
         text-align: center;
         width: 100%;
-        margin-bottom: 30px;
+        margin-bottom: 40px;
     }
     .sponsor-link {
         justify-content: center;
