@@ -172,26 +172,44 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function translatePage(lang) {
-        const t = translations[lang];
-        if (!t) return;
+    const t = translations[lang];
+    if (!t) return;
 
-        document.querySelectorAll('[data-translate]').forEach(el => {
-            const key = el.getAttribute('data-translate');
-            if (t[key]) {
-                el.innerHTML = t[key];
-            }
-        });
-        
-        const pageTitleKey = document.body.getAttribute('data-page-title-key');
-        if (pageTitleKey && t[pageTitleKey]) {
-            document.title = t[pageTitleKey];
-        } else {
-            document.title = "Giada Fervere";
+    // MEGLÉVŐ KÓD
+    document.querySelectorAll('[data-translate]').forEach(el => {
+        const key = el.getAttribute('data-translate');
+        if (t[key]) {
+            el.innerHTML = t[key];
         }
+    });
 
-        // Frissítjük a HTML lang attribútumot is
-        document.documentElement.lang = lang;
+    // MEGLÉVŐ KÓD
+    const pageTitleKey = document.body.getAttribute('data-page-title-key');
+    if (pageTitleKey && t[pageTitleKey]) {
+        document.title = t[pageTitleKey];
+    } else {
+        document.title = "Giada Fervere";
     }
+
+    // --- ÚJ KÓD KEZDETE ---
+    // Meta leírás frissítése
+    const metaDescEl = document.querySelector('meta[name="description"]');
+    if (metaDescEl) {
+        const pageKey = pageTitleKey.replace('_title', ''); // pl. 'about_title' -> 'about'
+        const descriptionKey = `${pageKey}_description`; // pl. 'about_description'
+
+        // Főoldal speciális kezelése
+        const finalDescriptionKey = document.body.classList.contains('landing-page') ? 'index_description' : descriptionKey;
+
+        if (t[finalDescriptionKey]) {
+            metaDescEl.setAttribute('content', t[finalDescriptionKey]);
+        }
+    }
+    // --- ÚJ KÓD VÉGE ---
+
+    // MEGLÉVŐ KÓD
+    document.documentElement.lang = lang;
+}
 
     function populateLanguageSwitcher(currentLang) {
         if (!languageSwitcher) return;
