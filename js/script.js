@@ -412,6 +412,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // --- HAMBURGER MENU LOGIKA ---
+    function initializeHamburgerMenu() {
+        const navToggle = document.querySelector('.nav-toggle');
+        const mainNav = document.querySelector('.main-nav');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('nav-active');
+                navToggle.classList.toggle('nav-active');
+            });
+        }
+    }
+
     // --- INICIALIZÁLÁS ---
     initializeIntro();
     handleVideoAutoplay();
@@ -419,4 +432,5 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeModals();
     initializeLightbox();
     initializeChatbot();
+    initializeHamburgerMenu();
 });

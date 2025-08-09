@@ -71,6 +71,14 @@ const translations = {
         blog_post_2_meta: "Publikálva: 2025. július 28.",
         blog_post_2_excerpt: "A vörös a szenvedély, a kék a végtelen, az arany az isteni. A színek nem csupán esztétikai elemek...",
 
+        // Impresszum
+        imprint_title: "Impresszum",
+        imprint_operator: "A weboldal üzemeltetője:",
+        imprint_address: "Székhely:",
+        imprint_tax: "Adószám:",
+        imprint_email: "E-mail:",
+        imprint_hosting: "Tárhely szolgáltató:",
+
         // Modálok és Versek (A <br> tagek megtartása fontos!)
         gallery_modal_title: "Festmények Galéria",
         poems_modal_title: "Verseim",
@@ -154,6 +162,14 @@ const translations = {
         blog_post_2_meta: "Published: July 28, 2025",
         blog_post_2_excerpt: "Red is passion, blue is the infinite, gold is the divine. Colors are not just aesthetic elements...",
 
+        // Imprint
+        imprint_title: "Imprint",
+        imprint_operator: "Website Operator:",
+        imprint_address: "Registered Office:",
+        imprint_tax: "VAT ID:",
+        imprint_email: "E-mail:",
+        imprint_hosting: "Hosting Provider:",,
+
         // Modals and Poems
         gallery_modal_title: "Paintings Gallery",
         poems_modal_title: "My Poems",
@@ -221,6 +237,14 @@ const translations = {
         blog_post_2_title: "Die Symbolik der Farben in meiner Kunst",
         blog_post_2_meta: "Veröffentlicht: 28. Juli 2025",
         blog_post_2_excerpt: "Rot ist Leidenschaft, Blau ist das Unendliche, Gold ist das Göttliche. Farben sind nicht nur ästhetische Elemente...",
+
+        // Impressum
+        imprint_title: "Impressum",
+        imprint_operator: "Betreiber der Website:",
+        imprint_address: "Sitz:",
+        imprint_tax: "USt-IdNr:",
+        imprint_email: "E-Mail:",
+        imprint_hosting: "Hosting-Anbieter:",,
         gallery_modal_title: "Gemäldegalerie",
         poems_modal_title: "Meine Gedichte",
         poem_1_title: "Sterbende Magie",
@@ -287,6 +311,14 @@ const translations = {
         blog_post_2_title: "Le symbolisme des couleurs dans mon art",
         blog_post_2_meta: "Publié le : 28 juillet 2025",
         blog_post_2_excerpt: "Le rouge est la passion, le bleu est l'infini, l'or est le divin. Les couleurs ne sont pas seulement des éléments esthétiques...",
+
+        // Imprint
+        imprint_title: "Mentions Légales",
+        imprint_operator: "Opérateur du site web :",
+        imprint_address: "Siège social :",
+        imprint_tax: "Numéro de TVA :",
+        imprint_email: "E-mail :",
+        imprint_hosting: "Hébergeur :",,
         gallery_modal_title: "Galerie de peintures",
         poems_modal_title: "Mes poèmes",
         poem_1_title: "Magie Mourante",
@@ -353,6 +385,14 @@ const translations = {
         blog_post_2_title: "Il simbolismo dei colori nella mia arte",
         blog_post_2_meta: "Pubblicato: 28 luglio 2025",
         blog_post_2_excerpt: "Il rosso è passione, il blu è l'infinito, l'oro è il divino. I colori non sono solo elementi estetici...",
+
+        // Impressum
+        imprint_title: "Impressum",
+        imprint_operator: "Operatore del sito web:",
+        imprint_address: "Sede legale:",
+        imprint_tax: "Partita IVA:",
+        imprint_email: "E-mail:",
+        imprint_hosting: "Provider di hosting:",,
         gallery_modal_title: "Galleria dei dipinti",
         poems_modal_title: "Le mie poesie",
         poem_1_title: "Magia Morente",

@@ -448,15 +448,16 @@ body:not(.landing-page) .main-nav {
     max-width: 500px;
     margin: 40px auto;
     border-radius: 15px;
-    background-color: #1a1a1a; /* Sötétebb alap */
+    background-color: rgba(26, 26, 26, 0.7); /* Még áttetszőbb alap */
     box-shadow: 0 8px 25px rgba(0,0,0,0.2);
     color: var(--color-highlight-gold); /* Alapértelmezett szövegszín aranyra állítva */
     overflow: hidden;
     text-align: left;
+    backdrop-filter: blur(5px);
 }
 
 .chatbot-header {
-    background-color: var(--color-dark-background);
+    background-color: rgba(13, 13, 13, 0.7); /* Sötét, de áttetsző fejléc */
     color: var(--color-text-primary);
     padding: 20px;
 }
@@ -464,7 +465,7 @@ body:not(.landing-page) .main-nav {
 .chat-window {
     height: 250px;
     padding: 20px;
-    background-color: #2c2c2c; /* Sötétebb háttér */
+    background-color: rgba(44, 44, 44, 0.6); /* Még áttetszőbb chat ablak */
     color: var(--color-highlight-gold); /* Világos arany szöveg */
 }
 
@@ -472,10 +473,15 @@ body:not(.landing-page) .main-nav {
     color: var(--color-highlight-gold); /* Explicit megerősítés */
 }
 
+.user-message {
+    color: var(--color-text-primary);
+    text-align: right;
+}
+
 .chatbot-footer {
     display: flex;
     padding: 15px;
-    background-color: #1a1a1a;
+    background-color: rgba(60, 60, 60, 0.6); /* Szürke, áttetsző lábléc */
 }
 
 /* --- Blog Oldal Stílusok --- */
@@ -699,17 +705,50 @@ body:not(.landing-page) .main-nav {
 /* --- Reszponzív Beállítások (Media Queries) --- */
 
  @media (max-width: 1024px) {
+    .nav-toggle {
+        display: block;
+    }
+
     .main-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.95);
         flex-direction: column;
+        justify-content: center;
         align-items: center;
+        transform: translateX(100%);
+        transition: transform 250ms ease-in-out;
     }
+
+    .main-nav.nav-active {
+        transform: translateX(0);
+    }
+
+    .nav-toggle.nav-active .hamburger {
+        transform: rotate(0.625turn);
+    }
+
+    .nav-toggle.nav-active .hamburger::before {
+        transform: rotate(90deg) translateX(-8px);
+    }
+
+    .nav-toggle.nav-active .hamburger::after {
+        opacity: 0;
+    }
+
     .nav-item {
-        margin: 8px 0;
+        font-size: 1.5rem;
+        margin: 1rem 0;
     }
+
     .language-switcher {
-        margin-top: 15px;
+        margin-top: 2rem;
         margin-left: 0;
     }
+
     .footer-container {
         flex-direction: column;
         align-items: center;
