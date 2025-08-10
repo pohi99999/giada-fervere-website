@@ -264,12 +264,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function initLocalization() {
         const initialLang = getStoredLanguage();
         // Add FOUC prevention class removal after translations loaded
-        body.classList.add('i18n-loading');
+        document.body.classList.add('i18n-loading');
         translatePage(initialLang);
         populateLanguageSwitcher(initialLang);
         // Remove FOUC prevention class
         setTimeout(() => {
-            body.classList.remove('i18n-loading');
+            document.body.classList.remove('i18n-loading');
         }, 100);
     }
 
