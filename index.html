@@ -51,12 +51,12 @@
                 <span>G</span><span>I</span><span>A</span><span>D</span><span>A</span><span> </span><span>F</span><span>E</span><span>R</span><span>V</span><span>E</span><span>R</span><span>E</span>
             </h1>
 
-            <button class="nav-toggle" aria-label="toggle navigation">
+            <button class="nav-toggle" aria-expanded="false" aria-controls="primary-navigation" aria-label="toggle navigation">
                 <span class="hamburger"></span>
             </button>
 
             <!-- Navigáció -->
-            <nav class="main-nav">
+            <nav class="main-nav" id="primary-navigation">
                 <a href="rolam.html" class="nav-item" data-translate="nav_about">Rólam</a>
                 <a href="eloadasaim.html" class="nav-item" data-translate="nav_performances">Előadásaim</a>
                 <a href="alkotasaim.html" class="nav-item" data-translate="nav_creations">Alkotásaim</a>
@@ -65,7 +65,7 @@
                 <a href="blog.html" class="nav-item" data-translate="nav_blog">Friss Hírek, Blogbejegyzések</a>
             
                 <!-- Nyelvváltó (Dinamikusan tölti be a JS) -->
-                <div class="language-switcher">
+                <div class="language-switcher" id="language-switcher">
                     <!-- Tartalom JS által generálva -->
                 </div>
             </nav>

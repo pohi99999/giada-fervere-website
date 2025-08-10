@@ -58,6 +58,7 @@ const translations = {
         chatbot_welcome: "Üdvözöljük! Az MI chat robot hamarosan elérhető lesz. Itt válaszol majd az ügyfélkapcsolati kérdésekre.",
         chatbot_input_placeholder: "Írja be kérdését...",
         chatbot_send_button: "Küldés",
+        chatbot_not_understood: "Sajnálom, nem értem a kérdését. Kérem, próbálja meg másképp megfogalmazni, vagy vegye fel a kapcsolatot közvetlenül velünk.",
 
         // Blog
         blog_title: "Blog",
@@ -149,6 +150,7 @@ const translations = {
         chatbot_welcome: "Welcome! The AI chatbot will be available soon. It will answer customer service questions here.",
         chatbot_input_placeholder: "Type your question...",
         chatbot_send_button: "Send",
+        chatbot_not_understood: "Sorry, I don't understand your question. Please try rephrasing it or contact us directly.",
 
         // Blog
         blog_title: "Blog",
@@ -227,6 +229,7 @@ const translations = {
         chatbot_welcome: "Willkommen! Der KI-Chatbot wird in Kürze verfügbar sein. Er wird hier Fragen zum Kundenservice beantworten.",
         chatbot_input_placeholder: "Geben Sie Ihre Frage ein...",
         chatbot_send_button: "Senden",
+        chatbot_not_understood: "Entschuldigung, ich verstehe Ihre Frage nicht. Bitte versuchen Sie, sie anders zu formulieren, oder kontaktieren Sie uns direkt.",
         blog_title: "Blog",
         blog_description: "Lesen Sie Giada Ferveres neueste Gedanken, Nachrichten und Beiträge über Kunst, Schaffen und das Leben.",
         blog_section_title: "Aktuelle Nachrichten und Gedanken",
@@ -301,6 +304,7 @@ const translations = {
         chatbot_welcome: "Bienvenue! Le chatbot IA sera bientôt disponible. Il répondra ici aux questions du service client.",
         chatbot_input_placeholder: "Tapez votre question...",
         chatbot_send_button: "Envoyer",
+        chatbot_not_understood: "Désolé, je ne comprends pas votre question. Veuillez essayer de la reformuler ou nous contacter directement.",
         blog_title: "Blog",
         blog_description: "Lisez les dernières pensées, nouvelles et articles de Giada Fervere sur l'art, la création et la vie.",
         blog_section_title: "Nouvelles fraîches et réflexions",
@@ -375,6 +379,7 @@ const translations = {
         chatbot_welcome: "Benvenuto! Il chatbot AI sarà presto disponibile. Risponderà qui alle domande del servizio clienti.",
         chatbot_input_placeholder: "Digita la tua domanda...",
         chatbot_send_button: "Invia",
+        chatbot_not_understood: "Mi dispiace, non capisco la tua domanda. Per favore prova a riformularla o contattaci direttamente.",
         blog_title: "Blog",
         blog_description: "Leggi gli ultimi pensieri, notizie e post di Giada Fervere sull'arte, la creazione e la vita.",
         blog_section_title: "Notizie fresche e pensieri",

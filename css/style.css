@@ -170,7 +170,71 @@ body:not(.landing-page) .main-nav {
     background-color: rgba(184, 134, 11, 0.3);
 }
 
-/* --- Nyelvváltó Stílusok --- */
+/* --- Hamburger Menu / Nav Toggle --- */
+.nav-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 9999;
+}
+
+.hamburger {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--color-text-primary);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    background: var(--color-text-primary);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger::before {
+    top: -8px;
+}
+
+.hamburger::after {
+    top: 8px;
+}
+
+/* --- Accessibility and FOUC Prevention --- */
+body.i18n-loading {
+    visibility: hidden;
+}
+
+body.nav-locked {
+    overflow: hidden;
+}
+
+.main-nav.nav-open {
+    transform: translateX(0);
+}
+
+/* Focus styles for better accessibility */
+.nav-toggle:focus,
+.nav-item:focus,
+.lang-current-btn:focus,
+.language-dropdown a:focus {
+    outline: 2px solid var(--color-accent-gold);
+    outline-offset: 2px;
+}
+
+/* --- Nyelvváltó Stílusok (Improved for Accessibility) --- */
 .language-switcher {
     position: relative;
     margin-left: 15px;
@@ -178,16 +242,21 @@ body:not(.landing-page) .main-nav {
     font-family: var(--font-secondary);
 }
 
-.current-language {
+.lang-current-btn {
     display: flex;
     align-items: center;
-    cursor: pointer;
-    padding: 5px 10px;
+    background: none;
     border: 1px solid rgba(245, 245, 220, 0.3);
     border-radius: 5px;
+    padding: 5px 10px;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.3s ease;
 }
 
-.language-switcher:hover .current-language {
+.lang-current-btn:hover,
+.lang-current-btn:focus {
     background-color: rgba(245, 245, 220, 0.1);
 }
 
@@ -205,7 +274,7 @@ body:not(.landing-page) .main-nav {
     transition: transform 0.3s ease;
 }
 
-.language-dropdown {
+.lang-dropdown {
     position: absolute;
     top: 100%; right: 0;
     background-color: var(--color-dark-background);
@@ -214,25 +283,32 @@ body:not(.landing-page) .main-nav {
     list-style: none;
     padding: 5px; margin-top: 5px;
     z-index: 100;
-    opacity: 0; visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s;
+    opacity: 0; 
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, visibility 0.3s, transform 0.3s ease;
 }
 
-.language-switcher:hover .language-dropdown {
+.lang-dropdown.open {
     opacity: 1;
     visibility: visible;
+    transform: translateY(0);
 }
 
-.language-dropdown li a {
+.lang-dropdown li a {
     display: flex;
     align-items: center;
     padding: 8px 12px;
     text-decoration: none;
     color: var(--color-text-primary);
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
 }
 
-.language-dropdown li a:hover {
+.lang-dropdown li a:hover,
+.lang-dropdown li a:focus {
     background-color: rgba(245, 245, 220, 0.1);
+}
 }
 
 /* --- Általános Szekció Stílusok --- */
@@ -723,7 +799,7 @@ body:not(.landing-page) .main-nav {
         transition: transform 250ms ease-in-out;
     }
 
-    .main-nav.nav-active {
+    .main-nav.nav-open {
         transform: translateX(0);
     }
 
